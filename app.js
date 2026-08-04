@@ -5,6 +5,28 @@ const autoVideos = [...document.querySelectorAll("[data-auto-video]")];
 const topButton = document.querySelector(".top-button");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+function revealVisibleTargets() {
+  for (const target of revealTargets) {
+    if (target.classList.contains("is-visible")) continue;
+    const rect = target.getBoundingClientRect();
+    const entersViewport =
+      rect.top < window.innerHeight * 1.12 &&
+      rect.bottom > -window.innerHeight * 0.15;
+    if (entersViewport) target.classList.add("is-visible");
+  }
+}
+
+let revealTicking = false;
+
+function scheduleRevealVisibleTargets() {
+  if (revealTicking) return;
+  revealTicking = true;
+  requestAnimationFrame(() => {
+    revealTicking = false;
+    revealVisibleTargets();
+  });
+}
+
 function markVideoReady(video) {
   if (video.classList.contains("hero-video")) {
     video.classList.add("is-ready");
@@ -53,6 +75,11 @@ if (reducedMotion.matches || !("IntersectionObserver" in window)) {
   );
 
   for (const video of autoVideos) videoObserver.observe(video);
+
+  window.addEventListener("load", revealVisibleTargets, { once: true });
+  window.addEventListener("hashchange", scheduleRevealVisibleTargets);
+  window.addEventListener("scroll", scheduleRevealVisibleTargets, { passive: true });
+  window.setTimeout(revealVisibleTargets, 900);
 }
 
 function updateTopButton() {
