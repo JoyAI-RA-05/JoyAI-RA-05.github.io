@@ -1533,11 +1533,11 @@ main {
   margin-top: 16px;
 }
 
-.report-meta > small {
-  display: block;
-  margin-top: 28px;
+.author-note {
+  margin-left: 10px;
   color: rgba(255, 255, 255, 0.38);
   font-size: 0.65rem;
+  font-weight: 760;
 }
 
 .site-footer {

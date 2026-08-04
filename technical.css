@@ -798,9 +798,11 @@ p {
   color: var(--ink);
 }
 
-.report-card small {
+.report-card .author-note {
   color: var(--subtle);
   font-weight: 700;
+  margin-left: 10px;
+  font-size: 0.82rem;
 }
 
 .site-footer {
