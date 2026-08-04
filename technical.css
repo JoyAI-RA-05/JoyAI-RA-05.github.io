@@ -218,14 +218,6 @@ p {
   overflow-wrap: anywhere;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 34px;
-}
-
-.hero-actions a,
 .report-card a {
   display: inline-flex;
   min-height: 46px;
@@ -240,7 +232,6 @@ p {
   font-weight: 800;
 }
 
-.hero-actions a + a,
 .report-card a {
   color: var(--red);
   background: #fff;
@@ -971,7 +962,7 @@ p {
   }
 
   .hero-facts {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
     border-top: 0;
   }
@@ -1071,17 +1062,6 @@ p {
   .section-body p,
   .section-body .section-lead {
     max-width: 30ch;
-  }
-
-  .hero-actions {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: calc(100vw - 48px);
-    max-width: 342px;
-  }
-
-  .hero-actions a {
-    width: 100%;
   }
 
   .abstract,
