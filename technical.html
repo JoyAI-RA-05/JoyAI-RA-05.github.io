@@ -66,16 +66,6 @@
               that turns action-free video and incompatible trajectories into
               complementary supervision for executable robot control.
             </p>
-            <figure class="hero-media" data-reveal>
-              <div class="hero-media-shell">
-                <img
-                  src="assets/architecture.png"
-                  alt="JoyAI-RA architecture showing heterogeneous data, latent-action learning, unified action representation, LAC-WM, VLM, and action expert"
-                  width="3064"
-                  height="1462"
-                />
-              </div>
-            </figure>
           </div>
         </div>
       </section>
@@ -140,47 +130,63 @@
             </div>
           </div>
 
-          <div class="overview-cards">
-            <aside class="report-note" data-reveal>
-              <span>WHY IT MATTERS</span>
-              <p>
-                Robot data is expensive. Human video scales, but it lacks executable
-                actions. Simulation and robot trajectories carry actions, but their
-                embodiments disagree.
-              </p>
-            </aside>
+          <figure class="paper-figure evidence-figure" data-reveal>
+            <img
+              src="assets/data-composition.png"
+              alt="JoyAI-RA heterogeneous data composition across human egocentric videos, simulation trajectories, and real-robot demonstrations"
+              width="2400"
+              height="1803"
+              loading="lazy"
+            />
+            <button
+              class="image-action"
+              type="button"
+              data-lightbox-src="assets/data-composition.png"
+              data-lightbox-alt="JoyAI-RA heterogeneous data composition across human egocentric videos, simulation trajectories, and real-robot demonstrations"
+            >
+              View full image
+            </button>
+            <figcaption>
+              Heterogeneous pretraining corpus · human egocentric video,
+              simulation trajectories, and real-robot demonstrations.
+            </figcaption>
+          </figure>
 
+          <div class="overview-cards">
             <div class="compact-grid">
               <article data-reveal>
-                <h3>Dual action alignment</h3>
+                <h3>Human Video Scaling</h3>
                 <p>
-                  Two complementary channels route each data source to the
-                  supervision it can reliably provide—latent dynamics or grounded
-                  physical actions.
+                  Robot demonstrations are scarce, while human egocentric videos
+                  scale best but usually lack executable actions. JoyAI-RA 0.5 turns
+                  this abundant weak supervision into transferable dynamics learning
+                  and stronger robot-policy initialization.
                 </p>
               </article>
               <article data-reveal>
-                <h3>Vision–Language–World–Action</h3>
+                <h3>Dual Action Alignment</h3>
                 <p>
-                  A VLM contributes task semantics, a frozen LAC-WM contributes
-                  physical-dynamics priors, and an action expert converts both into
-                  control.
+                  Implicit alignment infers latent actions from visual transitions,
+                  allowing action-free human, simulation, and robot videos to train
+                  the LAC-WM. Explicit alignment grounds reliable trajectories in a
+                  shared physical action space.
                 </p>
               </article>
               <article data-reveal>
-                <h3>Canonical action space</h3>
+                <h3>Canonical Action Space</h3>
                 <p>
-                  A unified 130-D representation gives heterogeneous embodiments
-                  shared semantic slots without forcing incompatible controls to
-                  mean the same thing.
+                  Reliable human and robot trajectories are mapped into a 130-D
+                  canonical representation with fixed left-hand, right-hand, and body
+                  slots, plus camera-frame chunk-relative end-effector actions for
+                  cross-embodiment supervision.
                 </p>
               </article>
               <article data-reveal>
-                <h3>Human video as a scaling axis</h3>
+                <h3>Vision–Language–World–Action Model</h3>
                 <p>
-                  More egocentric video consistently improves dynamics learning and
-                  policy initialization, with no observed saturation at the largest
-                  tested scale.
+                  The VLM encodes task semantics, the frozen LAC-WM supplies learned
+                  physical-dynamics priors, and the flow-matching action expert fuses
+                  both streams into continuous executable robot actions.
                 </p>
               </article>
             </div>
@@ -238,6 +244,28 @@
               </p>
             </article>
           </div>
+
+          <figure class="paper-figure evidence-figure evidence-figure-wide" data-reveal>
+            <img
+              src="assets/data-pipeline.png"
+              alt="JoyAI-RA data preprocessing and dual alignment pipeline"
+              width="3600"
+              height="1326"
+              loading="lazy"
+            />
+            <button
+              class="image-action"
+              type="button"
+              data-lightbox-src="assets/data-pipeline.png"
+              data-lightbox-alt="JoyAI-RA data preprocessing and dual alignment pipeline"
+            >
+              View full image
+            </button>
+            <figcaption>
+              Data preprocessing and routing · implicit latent-action alignment
+              and explicit canonical-action alignment.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -318,6 +346,28 @@
             </article>
           </div>
 
+          <figure class="paper-figure evidence-figure evidence-figure-wide" data-reveal>
+            <img
+              src="assets/ablation-seen-unseen.png"
+              alt="Real-world seen and unseen task scores comparing JoyAI-RA 0.5 with baselines and dual-alignment ablations"
+              width="2287"
+              height="1156"
+              loading="lazy"
+            />
+            <button
+              class="image-action"
+              type="button"
+              data-lightbox-src="assets/ablation-seen-unseen.png"
+              data-lightbox-alt="Real-world seen and unseen task scores comparing JoyAI-RA 0.5 with baselines and dual-alignment ablations"
+            >
+              View full image
+            </button>
+            <figcaption>
+              Seen and unseen task scores · method comparison and
+              dual-alignment ablations.
+            </figcaption>
+          </figure>
+
         </div>
       </section>
 
@@ -369,6 +419,28 @@
             </article>
           </div>
         </div>
+
+        <figure class="wide-figure evidence-figure scaling-evidence-figure" data-reveal>
+          <img
+            src="assets/egolive-policy-scaling.png"
+            alt="EgoLive policy pretraining scaling curves and downstream seen and unseen task scores"
+            width="2233"
+            height="981"
+            loading="lazy"
+          />
+          <button
+            class="image-action"
+            type="button"
+            data-lightbox-src="assets/egolive-policy-scaling.png"
+            data-lightbox-alt="EgoLive policy pretraining scaling curves and downstream seen and unseen task scores"
+          >
+            View full image
+          </button>
+          <figcaption>
+            EgoLive policy pretraining · larger human-video subsets improve
+            validation behavior and downstream robot scores.
+          </figcaption>
+        </figure>
       </section>
 
       <section class="section" id="rl">

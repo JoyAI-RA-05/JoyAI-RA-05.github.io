@@ -576,11 +576,10 @@ p {
 }
 
 .overview-cards {
-  display: grid;
-  grid-template-columns: 310px minmax(0, 1fr);
-  gap: 22px;
+  max-width: 1080px;
   margin-top: 28px;
-  align-items: stretch;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .report-note,
@@ -658,6 +657,21 @@ p {
   color: var(--muted);
   font-size: 1.268rem;
   line-height: 1.78;
+}
+
+.evidence-figure {
+  position: relative;
+  margin-top: 32px;
+}
+
+.evidence-figure-wide {
+  width: min(1120px, 100%);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.scaling-evidence-figure {
+  width: min(1120px, calc(100% - 48px));
 }
 
 .result-grid {
@@ -1025,6 +1039,10 @@ p {
   .container,
   .wide-figure,
   .site-footer {
+    width: min(var(--max), calc(100% - 28px));
+  }
+
+  .scaling-evidence-figure {
     width: min(var(--max), calc(100% - 28px));
   }
 
