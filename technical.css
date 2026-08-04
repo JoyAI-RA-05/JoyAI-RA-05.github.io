@@ -213,9 +213,10 @@ p {
 .hero h1 {
   margin: 0;
   color: var(--red);
-  font-size: clamp(4.2rem, 10vw, 9rem);
+  font-size: clamp(4.2rem, 8.8vw, 8.4rem);
   line-height: 0.9;
   letter-spacing: -0.055em;
+  white-space: nowrap;
 }
 
 .subtitle {
@@ -527,18 +528,25 @@ p {
 
 .scaling-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.7fr);
+  grid-template-columns: minmax(420px, 0.9fr) minmax(360px, 0.7fr);
   gap: 28px;
   margin-top: 44px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .paper-figure {
+  align-self: start;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: #fff;
+}
+
+.paper-figure img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .scaling-notes {
@@ -637,6 +645,22 @@ p {
 
 .report-card p {
   color: var(--muted);
+}
+
+.report-card details {
+  margin: 16px 0 14px;
+  color: var(--muted);
+}
+
+.report-card summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--red);
+  font-weight: 850;
+}
+
+.report-card strong {
+  color: var(--ink);
 }
 
 .report-card small {
@@ -835,12 +859,12 @@ p {
   }
 
   .hero h1 {
-    font-size: clamp(3.25rem, 15.2vw, 5rem);
+    font-size: clamp(2.7rem, 12.4vw, 4.75rem);
     letter-spacing: -0.06em;
   }
 
   .hero h1 span {
-    display: block;
+    display: inline;
   }
 
   .subtitle {
