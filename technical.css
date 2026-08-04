@@ -248,20 +248,20 @@ p {
 
 .report-layout {
   display: grid;
-  grid-template-columns: 310px minmax(0, 1fr);
-  gap: 70px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
   align-items: start;
   min-width: 0;
 }
 
 .section-title h2 {
-  position: sticky;
-  top: 116px;
+  position: static;
   margin: 0;
   color: var(--red);
-  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-size: clamp(2.4rem, 4.6vw, 4.25rem);
   line-height: 1.06;
   letter-spacing: -0.045em;
+  white-space: nowrap;
 }
 
 .section-body {
@@ -931,6 +931,7 @@ p {
 
   .section-title h2 {
     position: static;
+    font-size: clamp(1.8rem, 5.8vw, 2.5rem);
   }
 
   .method-grid,
@@ -1022,6 +1023,11 @@ p {
   .abstract,
   .section-body {
     font-size: 1.05rem;
+  }
+
+  .section-title h2 {
+    font-size: clamp(1.03rem, 4.55vw, 1.55rem);
+    letter-spacing: -0.035em;
   }
 
   .wide-figure.contained {
