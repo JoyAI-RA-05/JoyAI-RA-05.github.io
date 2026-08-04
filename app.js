@@ -2,6 +2,7 @@ document.documentElement.classList.add("js-ready");
 
 const revealTargets = [...document.querySelectorAll("[data-reveal]")];
 const autoVideos = [...document.querySelectorAll("[data-auto-video]")];
+const lightboxTriggers = [...document.querySelectorAll("[data-lightbox-src]")];
 const topButton = document.querySelector(".top-button");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -33,6 +34,52 @@ function markVideoReady(video) {
   }
 }
 
+let lightbox;
+let lightboxImage;
+
+function closeLightbox() {
+  lightbox?.classList.remove("is-open");
+  lightboxImage?.removeAttribute("src");
+  document.body.style.removeProperty("overflow");
+}
+
+function ensureLightbox() {
+  if (lightbox) return lightbox;
+
+  lightbox = document.createElement("div");
+  lightbox.className = "figure-lightbox";
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
+  lightbox.setAttribute("aria-label", "Expanded figure preview");
+
+  lightboxImage = document.createElement("img");
+  lightboxImage.alt = "";
+
+  const closeButton = document.createElement("button");
+  closeButton.className = "figure-lightbox-close";
+  closeButton.type = "button";
+  closeButton.setAttribute("aria-label", "Close expanded figure preview");
+  closeButton.textContent = "×";
+
+  lightbox.append(lightboxImage, closeButton);
+  document.body.append(lightbox);
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  closeButton.addEventListener("click", closeLightbox);
+
+  return lightbox;
+}
+
+function openLightbox(src, alt) {
+  ensureLightbox();
+  lightboxImage.src = src;
+  lightboxImage.alt = alt || "";
+  document.body.style.overflow = "hidden";
+  lightbox.classList.add("is-open");
+}
+
 for (const video of autoVideos) {
   if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
     markVideoReady(video);
@@ -42,6 +89,16 @@ for (const video of autoVideos) {
     });
   }
 }
+
+for (const trigger of lightboxTriggers) {
+  trigger.addEventListener("click", () => {
+    openLightbox(trigger.dataset.lightboxSrc, trigger.dataset.lightboxAlt);
+  });
+}
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeLightbox();
+});
 
 if (reducedMotion.matches || !("IntersectionObserver" in window)) {
   for (const target of revealTargets) target.classList.add("is-visible");

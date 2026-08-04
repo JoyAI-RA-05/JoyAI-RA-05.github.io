@@ -1176,6 +1176,7 @@ main {
 }
 
 .experiment-figure {
+  position: relative;
   margin: 22px 0 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1187,10 +1188,87 @@ main {
   width: 100%;
 }
 
+.figure-zoom-button {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(24, 8, 8, 0.76);
+  box-shadow: 0 14px 30px rgba(24, 8, 8, 0.24);
+  backdrop-filter: blur(14px);
+  cursor: zoom-in;
+  font-size: 0.74rem;
+  font-weight: 760;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.figure-zoom-button:hover {
+  background: var(--red);
+  transform: translateY(-1px);
+}
+
 .experiment-figure figcaption {
   color: rgba(255, 255, 255, 0.56);
   border-color: rgba(255, 255, 255, 0.11);
   background: #2a1010;
+}
+
+.figure-lightbox {
+  position: fixed;
+  z-index: 90;
+  inset: 0;
+  display: grid;
+  padding: 28px;
+  background: rgba(10, 4, 4, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  place-items: center;
+  transition: opacity 180ms ease;
+}
+
+.figure-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.figure-lightbox img {
+  max-width: min(100%, 1500px);
+  max-height: calc(100vh - 112px);
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.44);
+}
+
+.figure-lightbox-close {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(24, 8, 8, 0.84);
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  place-items: center;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.figure-lightbox-close:hover {
+  background: var(--red);
+  transform: translateY(-1px);
 }
 
 .section-scaling {
@@ -1970,6 +2048,27 @@ main {
   .experiment-figure img {
     width: 100%;
     max-width: 100%;
+  }
+
+  .figure-zoom-button {
+    top: 12px;
+    right: 12px;
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 0.68rem;
+  }
+
+  .figure-lightbox {
+    overflow: auto;
+    align-items: start;
+    justify-items: start;
+    padding: 76px 18px 28px;
+  }
+
+  .figure-lightbox img {
+    width: 980px;
+    max-width: none;
+    max-height: none;
   }
 
   .embedding-figure img {
