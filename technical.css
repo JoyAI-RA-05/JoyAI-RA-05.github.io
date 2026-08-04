@@ -389,53 +389,9 @@ p {
   line-height: 1.85;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 4px;
-}
-
-.btn,
-.report-card a {
-  display: inline-flex;
-  min-height: 48px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 0 24px;
-  border: 1px solid rgba(112, 140, 210, 0.22);
-  border-radius: 999px;
-  color: #edf5ff;
-  background: linear-gradient(180deg, rgba(18, 23, 38, 0.86), rgba(10, 13, 22, 0.92));
-  box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  font-size: 0.98rem;
-  font-weight: 560;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.btn:hover,
-.btn:focus-visible,
-.report-card a:hover,
-.report-card a:focus-visible {
-  transform: translateY(-1px);
-  border-color: rgba(8, 200, 247, 0.34);
-  box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(8, 200, 247, 0.12),
-    inset 0 0 36px rgba(8, 200, 247, 0.08);
-}
-
 .hero-media {
   width: min(100%, var(--content));
-  margin: 34px auto 0;
+  margin: 48px auto 0;
 }
 
 .hero-media-shell,
@@ -570,7 +526,7 @@ p {
 .scaling-notes article,
 .featured-demo,
 .video-grid article,
-.report-card {
+.citation-card {
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(18, 23, 38, 0.84), rgba(10, 13, 22, 0.9));
   box-shadow:
@@ -633,7 +589,7 @@ p {
 .scaling-notes article,
 .featured-demo,
 .video-grid article,
-.report-card {
+.citation-card {
   border-radius: 24px;
 }
 
@@ -645,7 +601,7 @@ p {
 .video-grid span,
 .method-grid span,
 .scaling-notes span,
-.report-card span {
+.citation-card span {
   display: block;
   color: var(--cyan);
   font-size: 0.8rem;
@@ -789,10 +745,10 @@ p {
 
 .scaling-layout {
   display: grid;
-  grid-template-columns: minmax(420px, 0.95fr) minmax(360px, 0.7fr);
+  grid-template-columns: minmax(520px, 0.95fr) minmax(480px, 0.7fr);
   gap: 28px;
   margin-top: 44px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .paper-figure {
@@ -803,16 +759,28 @@ p {
 
 .scaling-notes {
   display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   gap: 18px;
+  height: 100%;
 }
 
 .scaling-notes article {
-  padding: 26px;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(30px, 3vw, 46px);
 }
 
 .scaling-notes p {
-  margin: 16px 0 0;
+  margin: 22px 0 0;
   color: var(--muted);
+  font-size: clamp(1.12rem, 1.45vw, 1.42rem);
+  line-height: 1.72;
+}
+
+.scaling-notes span {
+  font-size: clamp(0.92rem, 1vw, 1.05rem);
 }
 
 .video-grid {
@@ -882,52 +850,23 @@ p {
   padding-bottom: 96px;
 }
 
-.report-card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 50px;
-  padding: 44px;
+.citation-card {
+  min-height: 280px;
+  padding: clamp(34px, 4vw, 56px);
 }
 
-.report-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 22px;
-}
-
-.report-card h2 {
-  margin: 12px 0 10px;
-  color: var(--red-bright);
-  font-size: 3.6rem;
-  line-height: 0.95;
+.citation-card h2 {
+  margin: 18px 0 12px;
+  color: var(--text);
+  font-size: clamp(2.2rem, 4.5vw, 4.1rem);
+  line-height: 0.98;
   letter-spacing: -0.055em;
 }
 
-.report-card h3 {
-  margin: 0 0 14px;
-  color: var(--text);
-  font-size: 1.5rem;
-}
-
-.report-card p,
-.report-card details {
+.citation-card p {
+  margin: 0;
   color: var(--muted);
-}
-
-.report-card details {
-  margin: 16px 0 14px;
-}
-
-.report-card summary {
-  width: fit-content;
-  cursor: pointer;
-  color: var(--cyan);
-  font-weight: 760;
-}
-
-.report-card strong {
-  color: var(--text);
+  font-size: 1.12rem;
 }
 
 .site-footer {
@@ -1059,7 +998,6 @@ p {
   .scaling-layout,
   .video-grid,
   .featured-demo,
-  .report-card,
   .site-footer {
     grid-template-columns: 1fr;
   }
@@ -1109,17 +1047,6 @@ p {
     font-size: 1rem;
   }
 
-  .hero-actions {
-    gap: 10px;
-  }
-
-  .btn,
-  .report-card a {
-    min-height: 42px;
-    padding: 0 18px;
-    font-size: 0.92rem;
-  }
-
   .section {
     padding: 68px 0;
   }
@@ -1151,7 +1078,7 @@ p {
   }
 
   .score-panel,
-  .report-card,
+  .citation-card,
   .method-grid article,
   .scaling-notes article {
     padding: 22px;
@@ -1161,8 +1088,7 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .score-summary strong,
-  .report-card h2 {
+  .score-summary strong {
     font-size: 3rem;
   }
 
