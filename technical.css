@@ -196,13 +196,6 @@ button {
   max-width: 100%;
 }
 
-.meta-line {
-  margin: 0 0 22px;
-  color: var(--red);
-  font-size: 1.28rem;
-  font-weight: 800;
-}
-
 h1,
 h2,
 h3,
@@ -1106,11 +1099,6 @@ p {
 
   .hero-actions a {
     width: 100%;
-  }
-
-  .meta-line {
-    font-size: 1.03rem;
-    line-height: 1.35;
   }
 
   .abstract,
