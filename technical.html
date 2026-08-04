@@ -67,17 +67,16 @@
             <h2>JoyAI-RA Framework</h2>
           </div>
           <div class="section-body" data-reveal>
-            <p class="section-lead">Heterogeneous experience, aligned twice.</p>
             <p>
-              JoyAI-RA 0.5 couples physical world-dynamics priors with visual
-              semantics. Implicit alignment turns action-free video into dynamics
-              supervision; explicit alignment grounds reliable human and robot
-              trajectories in a shared physical action space.
+              JoyAI-RA 0.5 aligns heterogeneous experience through two
+              complementary paths: implicit latent-dynamics alignment and explicit
+              physical-action alignment. It couples visual semantics from the VLM
+              with physical world-dynamics priors from LAC-WM.
             </p>
             <p>
-              The VLM supplies instruction-grounded understanding. The frozen
-              LAC-WM supplies learned physical-dynamics features. A flow-matching
-              action expert fuses both streams into continuous action chunks.
+              A flow-matching action expert then fuses instruction-grounded
+              understanding and learned dynamics features into continuous action
+              chunks for executable robot control.
             </p>
           </div>
         </div>
@@ -176,15 +175,12 @@
             <h2>Dual Action Alignment</h2>
           </div>
           <div class="section-body" data-reveal>
-            <p class="section-lead">
-              Semantics tell the robot <em>what</em>. Dynamics tell it <em>how</em>.
-            </p>
             <p>
-              Robot data is expensive. Human video scales, but it lacks executable
-              actions. Simulation and robot trajectories carry actions, but their
-              embodiments disagree. JoyAI-RA 0.5 uses two complementary channels
-              to route each data source to the supervision it can reliably provide:
-              latent dynamics or grounded physical actions.
+              Semantics tell the robot <em>what</em>, while dynamics tell it
+              <em>how</em>. Because human video scales without executable actions
+              and embodied trajectories carry incompatible action spaces, JoyAI-RA
+              0.5 routes each data source to the supervision it can reliably
+              provide: latent dynamics or grounded physical actions.
             </p>
           </div>
         </div>
@@ -193,34 +189,33 @@
           <div class="method-grid">
             <article data-reveal>
               <span>Implicit alignment</span>
-              <h3>LAC-WM pretraining</h3>
               <p>
-                Latent actions inferred from visual transitions turn action-free
-                video into supervision for learning transferable physical dynamics.
+                LAC-WM pretraining infers latent actions from visual transitions,
+                turning action-free video into supervision for transferable
+                physical dynamics.
               </p>
             </article>
             <article data-reveal>
               <span>Explicit alignment</span>
-              <h3>Cross-embodiment VLWA pretraining</h3>
               <p>
-                Reliable human and robot trajectories are mapped into a shared
-                130-D action space while the frozen LAC-WM supplies dynamics features.
+                Cross-embodiment VLWA pretraining maps reliable human and robot
+                trajectories into a shared 130-D action space while the frozen
+                LAC-WM supplies dynamics features.
               </p>
             </article>
             <article data-reveal>
               <span>Physical grounding</span>
-              <h3>Target-robot post-training</h3>
               <p>
-                High-quality demonstrations adapt the VLM and action expert to the
-                target robot, its observations, kinematics, and control interface.
+                Target-robot post-training uses high-quality demonstrations to
+                adapt the VLM and action expert to the robot's observations,
+                kinematics, and control interface.
               </p>
             </article>
             <article data-reveal>
               <span>Continual improvement</span>
-              <h3>Inner–outer loop RL</h3>
               <p>
-                Fast residual adaptation at the edge and periodic foundation-policy
-                updates at the center improve task performance at two timescales.
+                Inner-outer loop RL combines fast residual adaptation at the edge
+                with periodic foundation-policy updates at the center.
               </p>
             </article>
           </div>
@@ -233,14 +228,12 @@
             <h2>Real-World AgiBot Benchmark</h2>
           </div>
           <div class="section-body" data-reveal>
-            <p class="section-index">Real-World Results</p>
-            <p class="section-lead">Strong execution. Robust generalization.</p>
             <p>
-              The report evaluates six real-world scenarios across office, tea
-              room, kitchen, dining table, pharmacy, and dressing table environments
-              on the AgiBot G1 platform. Task score is reported on a 100-point
-              scale from constituent subtask completion. JoyAI-RA 0.5 is compared
-              with π<sub>0.5</sub> under an identical protocol.
+              JoyAI-RA 0.5 is evaluated on six real-world AgiBot G1 scenarios
+              across office, tea room, kitchen, dining table, pharmacy, and
+              dressing table environments. Scores are reported on a 100-point
+              subtask-completion scale and compared with π<sub>0.5</sub> under
+              the same protocol.
             </p>
           </div>
         </div>
@@ -326,13 +319,11 @@
             <h2>Human Video Scaling</h2>
           </div>
           <div class="section-body" data-reveal>
-            <p class="section-lead">
-              Human video is not auxiliary. It is a scaling axis.
-            </p>
             <p>
-              Across controlled studies, more egocentric video expands action
-              diversity, improves learned dynamics, and yields a stronger policy
-              initialization—with no observed saturation at the largest scale.
+              Human video is not auxiliary; it is a scaling axis. Across
+              controlled studies, more egocentric video expands action diversity,
+              improves learned dynamics, and yields stronger policy
+              initialization with no observed saturation at the largest scale.
             </p>
           </div>
         </div>
@@ -354,17 +345,19 @@
           <div class="scaling-notes">
             <article data-reveal>
               <span>LAC-WM pretraining</span>
-              <h3>More video, stronger dynamics priors.</h3>
-              <p>Seen task score improves from 83.13 to 97.50.</p>
-              <p>Unseen task score improves from 56.88 to 72.40.</p>
-              <p>Robot data and downstream policy training are held fixed.</p>
+              <p>
+                Scaling EgoLive from 10% to 100% improves seen score from 83.13
+                to 97.50 and unseen score from 56.88 to 72.40, with robot data
+                and downstream policy training held fixed.
+              </p>
             </article>
             <article data-reveal>
               <span>Policy pretraining</span>
-              <h3>Scaling transfers all the way to robot control.</h3>
-              <p>Seen task score improves from 47.8 to 85.6.</p>
-              <p>Unseen task score improves from 37.6 to 60.2.</p>
-              <p>All models receive identical robot-action post-training.</p>
+              <p>
+                Scaling transfers to robot control: seen score improves from
+                47.8 to 85.6 and unseen score improves from 37.6 to 60.2, with
+                identical robot-action post-training.
+              </p>
             </article>
           </div>
         </div>
@@ -376,20 +369,12 @@
             <h2>Inner–Outer Loop Reinforcement Learning</h2>
           </div>
           <div class="section-body" data-reveal>
-            <p class="section-index">Self-improvement</p>
-            <p class="section-lead">
-              Two loops. Two timescales. One improving policy.
-            </p>
             <p>
-              The inner loop rapidly learns a lightweight residual policy for the
-              current task. The asynchronous outer loop incorporates accumulated
-              interaction data into the foundation VLWA and periodically sends an
-              improved model back to the edge.
+              The inner loop rapidly learns a lightweight residual policy for
+              task-level adaptation, while the asynchronous outer loop incorporates
+              accumulated interaction data into the foundation VLWA and
+              periodically sends an improved model back to the edge.
             </p>
-            <div class="loop-pills">
-              <span>INNER · Fast adaptation</span>
-              <span>OUTER · Foundation update</span>
-            </div>
           </div>
         </div>
 
@@ -410,13 +395,10 @@
             <h2>Demonstrations</h2>
           </div>
           <div class="section-body" data-reveal>
-            <p class="section-lead">
-              From precise contact to long-horizon execution.
-            </p>
             <p>
-              The supplied project video is used throughout this first website
-              build as a consistent demonstration placeholder for real-world
-              manipulation scenarios.
+              The demonstration videos show real-world manipulation behavior from
+              precise contact to long-horizon execution, using the supplied
+              project video assets as consistent examples across scenarios.
             </p>
           </div>
         </div>
@@ -433,13 +415,10 @@
               preload="metadata"
             ></video>
             <div>
-              <span>REAL-WORLD MANIPULATION</span>
-              <p class="demo-task">Correction fluid pick-up</p>
-              <span>FEATURED EXECUTION</span>
               <h3>Fine-grained object interaction in the real world</h3>
               <p>
-                The supplied project video is used throughout this first website
-                build as a consistent demonstration placeholder.
+                The featured example highlights precise contact, object approach,
+                and stable execution under real-world visual conditions.
               </p>
             </div>
           </article>
