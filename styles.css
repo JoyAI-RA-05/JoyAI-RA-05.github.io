@@ -794,6 +794,33 @@ main {
   height: auto;
 }
 
+.evidence-figure {
+  position: relative;
+  margin-top: 24px;
+  padding: 12px 12px 0;
+}
+
+.evidence-figure img {
+  border-radius: calc(var(--radius-lg) - 12px);
+}
+
+.evidence-figure .figure-zoom-button {
+  top: auto;
+  right: 18px;
+  bottom: 17px;
+  background: rgba(24, 8, 8, 0.84);
+}
+
+.evidence-figure figcaption {
+  padding-right: 190px;
+}
+
+.scaling-evidence-figure {
+  max-width: 1040px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .paper-figure figcaption,
 .experiment-figure figcaption {
   padding: 18px 24px;
@@ -2019,6 +2046,16 @@ main {
   .experiment-figure img {
     width: 100%;
     max-width: 100%;
+  }
+
+  .evidence-figure figcaption {
+    padding-right: 18px;
+  }
+
+  .evidence-figure .figure-zoom-button {
+    position: static;
+    width: fit-content;
+    margin: 0 18px 18px;
   }
 
   .figure-zoom-button {
