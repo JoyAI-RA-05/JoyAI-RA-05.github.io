@@ -476,76 +476,202 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              The demonstration videos show real-world manipulation behavior from
-              precise contact to long-horizon execution, using the supplied
-              project video assets as consistent examples across scenarios.
+              Eight real-world AgiBot G1 demonstrations span object organization,
+              precise placement, and multi-stage manipulation under a consistent
+              desk-side evaluation setting.
             </p>
           </div>
         </div>
 
         <div class="container">
-          <article class="featured-demo" data-reveal>
-            <video
-              src="assets/demo-placeholder.mp4"
-              poster="assets/demo-poster.png"
-              controls
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-            <div>
-              <h3>Fine-grained object interaction in the real world</h3>
-              <p>
-                The featured example highlights precise contact, object approach,
-                and stable execution under real-world visual conditions.
+          <article class="g1-showcase" data-reveal>
+            <div class="g1-player-shell">
+              <video
+                id="g1-featured-video"
+                src="assets/demos/g1/shelve-books.mp4"
+                poster="assets/demos/g1/shelve-books.jpg"
+                controls
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+              <span class="g1-player-label">AgiBot G1 · Real World</span>
+            </div>
+            <div class="g1-showcase-copy" aria-live="polite">
+              <div>
+                <span id="g1-featured-kicker">Multi-stage manipulation</span>
+                <h3 id="g1-featured-title">Shelve Books</h3>
+              </div>
+              <p id="g1-featured-description">
+                Push the books to the desk edge, grasp them with the right arm,
+                and place them on the bookshelf beside the storage box.
               </p>
+              <div class="g1-meta" id="g1-featured-meta">
+                <span>Right Arm</span>
+                <span>Push · Grasp · Place</span>
+                <span>Bookshelf</span>
+              </div>
             </div>
           </article>
 
-          <div class="video-grid">
-            <article data-reveal>
-              <video
-                src="assets/demo-placeholder.mp4"
-                poster="assets/demo-poster.png"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-              ></video>
-              <span>PnP Easy</span>
-              <h3>Everyday object manipulation</h3>
-              <p>Common-object pick-and-place and organization under familiar conditions.</p>
-            </article>
-            <article data-reveal>
-              <video
-                src="assets/demo-placeholder.mp4"
-                poster="assets/demo-poster.png"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-              ></video>
-              <span>PnP Hard</span>
-              <h3>Precision manipulation</h3>
-              <p>Fine contact, small objects, and actions that demand accurate execution.</p>
-            </article>
-            <article data-reveal>
-              <video
-                src="assets/demo-placeholder.mp4"
-                poster="assets/demo-poster.png"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-              ></video>
-              <span>Long-Horizon</span>
-              <h3>Multi-stage task execution</h3>
-              <p>Sequential manipulation that requires consistency across a longer horizon.</p>
-            </article>
+          <div class="g1-task-heading" data-reveal>
+            <div>
+              <span>8 real-world tasks</span>
+              <p>Select a task to inspect the complete execution.</p>
+            </div>
+            <div class="g1-task-controls" aria-label="Browse demonstration tasks">
+              <button type="button" data-g1-prev aria-label="Show previous tasks">←</button>
+              <button type="button" data-g1-next aria-label="Show next tasks">→</button>
+            </div>
+          </div>
+
+          <div class="g1-task-rail" role="tablist" aria-label="G1 demonstration tasks" data-reveal>
+            <button
+              class="g1-task-card"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-g1-task
+              data-video="assets/demos/g1/store-pen.mp4"
+              data-poster="assets/demos/g1/store-pen.jpg"
+              data-title="Store Pen"
+              data-kicker="Object organization"
+              data-description="Pick up the pen with the left arm and place it into the pen holder at the top of the storage box."
+              data-meta="Left Arm|Pick · Place|Pen Holder"
+            >
+              <img src="assets/demos/g1/store-pen.jpg" alt="G1 robot placing a pen into a pen holder" loading="lazy" />
+              <span>01</span>
+              <strong>Store Pen</strong>
+              <small>Left Arm · Pen Holder</small>
+            </button>
+            <button
+              class="g1-task-card"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-g1-task
+              data-video="assets/demos/g1/store-pencil-case.mp4"
+              data-poster="assets/demos/g1/store-pencil-case.jpg"
+              data-title="Store Pencil Case"
+              data-kicker="Object organization"
+              data-description="Pick up the pencil case with the left arm and place it on the second layer of the storage box."
+              data-meta="Left Arm|Pick · Place|Storage Box"
+            >
+              <img src="assets/demos/g1/store-pencil-case.jpg" alt="G1 robot storing a pencil case" loading="lazy" />
+              <span>02</span>
+              <strong>Store Pencil Case</strong>
+              <small>Left Arm · Storage Box</small>
+            </button>
+            <button
+              class="g1-task-card is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-g1-task
+              data-video="assets/demos/g1/shelve-books.mp4"
+              data-poster="assets/demos/g1/shelve-books.jpg"
+              data-title="Shelve Books"
+              data-kicker="Multi-stage manipulation"
+              data-description="Push the books to the desk edge, grasp them with the right arm, and place them on the bookshelf beside the storage box."
+              data-meta="Right Arm|Push · Grasp · Place|Bookshelf"
+            >
+              <img src="assets/demos/g1/shelve-books.jpg" alt="G1 robot moving books to a bookshelf" loading="lazy" />
+              <span>03</span>
+              <strong>Shelve Books</strong>
+              <small>Right Arm · Multi-stage</small>
+            </button>
+            <button
+              class="g1-task-card"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-g1-task
+              data-video="assets/demos/g1/discard-trash.mp4"
+              data-poster="assets/demos/g1/discard-trash.jpg"
+              data-title="Discard Trash"
+              data-kicker="Object disposal"
+              data-description="Pick up the trash with the right arm and place it into the trash can."
+              data-meta="Right Arm|Pick · Place|Trash Can"
+            >
+              <img src="assets/demos/g1/discard-trash.jpg" alt="G1 robot placing trash into a trash can" loading="lazy" />
+              <span>04</span>
+              <strong>Discard Trash</strong>
+              <small>Right Arm · Trash Can</small>
+            </button>
+            <button
+              class="g1-task-card"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-g1-task
+              data-video="assets/demos/g1/store-correction-fluid.mp4"
+              data-poster="assets/demos/g1/store-correction-fluid.jpg"
+              data-title="Store Correction Fluid"
+              data-kicker="Object organization"
+              data-description="Pick up the correction fluid with the left arm and place it on the third layer of the storage box."
+              data-meta="Left Arm|Pick · Place|Storage Box"
+            >
+              <img src="assets/demos/g1/store-correction-fluid.jpg" alt="G1 robot storing correction fluid" loading="lazy" />
+              <span>05</span>
+              <strong>Store Correction Fluid</strong>
+              <small>Left Arm · Storage Box</small>
+            </button>
+            <button
+              class="g1-task-card"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-g1-task
+              data-video="assets/demos/g1/store-eraser.mp4"
+              data-poster="assets/demos/g1/store-eraser.jpg"
+              data-title="Store Eraser"
+              data-kicker="Object organization"
+              data-description="Pick up the eraser with the right arm and place it on the third layer of the storage box."
+              data-meta="Right Arm|Pick · Place|Storage Box"
+            >
+              <img src="assets/demos/g1/store-eraser.jpg" alt="G1 robot storing an eraser" loading="lazy" />
+              <span>06</span>
+              <strong>Store Eraser</strong>
+              <small>Right Arm · Storage Box</small>
+            </button>
+            <button
+              class="g1-task-card"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-g1-task
+              data-video="assets/demos/g1/store-stapler.mp4"
+              data-poster="assets/demos/g1/store-stapler.jpg"
+              data-title="Store Stapler"
+              data-kicker="Object organization"
+              data-description="Pick up the stapler with the right arm and place it on the second layer of the storage box."
+              data-meta="Right Arm|Pick · Place|Storage Box"
+            >
+              <img src="assets/demos/g1/store-stapler.jpg" alt="G1 robot storing a stapler" loading="lazy" />
+              <span>07</span>
+              <strong>Store Stapler</strong>
+              <small>Right Arm · Storage Box</small>
+            </button>
+            <button
+              class="g1-task-card"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-g1-task
+              data-video="assets/demos/g1/store-charger.mp4"
+              data-poster="assets/demos/g1/store-charger.jpg"
+              data-title="Store Charger"
+              data-kicker="Object organization"
+              data-description="Pick up the charger with the right arm and place it on the third layer of the storage box."
+              data-meta="Right Arm|Pick · Place|Storage Box"
+            >
+              <img src="assets/demos/g1/store-charger.jpg" alt="G1 robot storing a charger" loading="lazy" />
+              <span>08</span>
+              <strong>Store Charger</strong>
+              <small>Right Arm · Storage Box</small>
+            </button>
           </div>
         </div>
       </section>

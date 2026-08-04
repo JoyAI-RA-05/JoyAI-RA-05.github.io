@@ -525,8 +525,8 @@ p {
 .method-grid article,
 .score-panel,
 .scaling-notes article,
-.featured-demo,
-.video-grid article,
+.g1-showcase,
+.g1-task-card,
 .citation-card {
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(18, 23, 38, 0.84), rgba(10, 13, 22, 0.9));
@@ -588,8 +588,8 @@ p {
 .method-grid article,
 .score-panel,
 .scaling-notes article,
-.featured-demo,
-.video-grid article,
+.g1-showcase,
+.g1-task-card,
 .citation-card {
   border-radius: 24px;
 }
@@ -599,7 +599,6 @@ p {
 }
 
 .report-note span,
-.video-grid span,
 .method-grid span,
 .scaling-notes span,
 .citation-card span {
@@ -803,69 +802,202 @@ p {
   font-size: clamp(1.188rem, 1.12vw, 1.367rem);
 }
 
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 22px;
-}
-
-.featured-demo,
-.video-grid article {
-  padding: 14px 14px 20px;
-}
-
-.featured-demo {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
-  gap: 24px;
-  align-items: center;
+.g1-showcase {
+  overflow: hidden;
   margin-top: 44px;
 }
 
-.featured-demo video,
-.video-grid video {
+.g1-player-shell {
+  position: relative;
+  background: #020306;
+}
+
+.g1-player-shell video {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: 16px;
-  background: #020306;
   object-fit: cover;
 }
 
-.featured-demo h3,
-.video-grid h3 {
+.g1-player-label {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 2;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(5, 8, 15, 0.7);
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.g1-showcase-copy {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: 18px 48px;
+  align-items: center;
+  padding: clamp(26px, 3.4vw, 44px);
+}
+
+.g1-showcase-copy > div:first-child > span,
+.g1-task-heading > div > span {
+  display: block;
+  color: var(--cyan);
+  font-size: 1.03rem;
+  font-weight: 820;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.g1-showcase-copy h3 {
+  margin: 10px 0 0;
   color: var(--text);
-  letter-spacing: -0.035em;
+  font-size: clamp(1.9rem, 3vw, 3.1rem);
+  line-height: 1.04;
 }
 
-.featured-demo h3 {
-  margin: 0 0 12px;
-  font-size: 1.62rem;
-  line-height: 1.12;
-}
-
-.featured-demo p,
-.video-grid p {
+.g1-showcase-copy > p {
+  margin: 0;
   color: var(--muted);
-  font-size: 1.248rem;
+  font-size: clamp(1.2rem, 1.45vw, 1.43rem);
   line-height: 1.72;
 }
 
-.featured-demo p {
-  margin: 0;
+.g1-meta {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.video-grid h3 {
-  margin: 8px 6px;
-  font-size: 1.387rem;
+.g1-meta span {
+  padding: 8px 12px;
+  border: 1px solid rgba(42, 210, 255, 0.25);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(42, 210, 255, 0.07);
+  font-size: 1rem;
+  font-weight: 720;
 }
 
-.video-grid span {
-  margin: 16px 6px 0;
+.g1-task-heading {
+  display: flex;
+  gap: 28px;
+  align-items: end;
+  justify-content: space-between;
+  margin-top: 38px;
 }
 
-.video-grid p {
-  margin: 0 6px;
+.g1-task-heading p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.g1-task-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.g1-task-controls button {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  background: rgba(18, 23, 38, 0.82);
+  font: inherit;
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.g1-task-controls button:hover {
+  border-color: rgba(42, 210, 255, 0.58);
+  color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.g1-task-rail {
+  display: grid;
+  grid-auto-columns: minmax(260px, calc((100% - 54px) / 3.35));
+  grid-auto-flow: column;
+  gap: 18px;
+  overflow-x: auto;
+  margin-top: 20px;
+  padding: 2px 2px 18px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: rgba(42, 210, 255, 0.42) rgba(255, 255, 255, 0.05);
+  scrollbar-width: thin;
+}
+
+.g1-task-card {
+  overflow: hidden;
+  padding: 0 0 22px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.g1-task-card:hover,
+.g1-task-card:focus-visible {
+  border-color: rgba(42, 210, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+.g1-task-card.is-active {
+  border-color: rgba(42, 210, 255, 0.72);
+  box-shadow:
+    0 18px 54px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(42, 210, 255, 0.2),
+    inset 0 3px 0 var(--red-bright);
+}
+
+.g1-task-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.g1-task-card > span,
+.g1-task-card > strong,
+.g1-task-card > small {
+  display: block;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.g1-task-card > span {
+  margin-top: 18px;
+  color: var(--cyan);
+  font-size: 0.94rem;
+  font-weight: 820;
+  letter-spacing: 0.08em;
+}
+
+.g1-task-card > strong {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 1.28rem;
+  line-height: 1.25;
+}
+
+.g1-task-card > small {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 1rem;
 }
 
 .report-section {
@@ -1018,10 +1150,16 @@ p {
   .method-grid,
   .result-grid,
   .scaling-layout,
-  .video-grid,
-  .featured-demo,
   .site-footer {
     grid-template-columns: 1fr;
+  }
+
+  .g1-showcase-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .g1-meta {
+    grid-column: auto;
   }
 
   .method-grid article {
@@ -1116,6 +1254,49 @@ p {
 
   .score-summary strong {
     font-size: 3rem;
+  }
+
+  .g1-player-label {
+    top: 12px;
+    left: 12px;
+    padding: 7px 10px;
+    font-size: 0.78rem;
+  }
+
+  .g1-showcase-copy {
+    gap: 18px;
+    padding: 24px 20px;
+  }
+
+  .g1-showcase-copy h3 {
+    font-size: 2rem;
+  }
+
+  .g1-meta {
+    gap: 8px;
+  }
+
+  .g1-meta span {
+    padding: 7px 10px;
+    font-size: 0.92rem;
+  }
+
+  .g1-task-heading {
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .g1-task-heading p {
+    max-width: 250px;
+  }
+
+  .g1-task-controls {
+    display: none;
+  }
+
+  .g1-task-rail {
+    grid-auto-columns: minmax(236px, 78vw);
+    gap: 14px;
   }
 
   .lightbox {
