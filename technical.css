@@ -163,19 +163,6 @@ button {
   color: var(--red);
 }
 
-.nav-cta {
-  display: inline-flex;
-  min-height: 42px;
-  align-items: center;
-  justify-content: center;
-  padding: 0 18px;
-  border-radius: 999px;
-  color: #fff;
-  background: var(--red);
-  font-size: 0.9rem;
-  font-weight: 800;
-}
-
 .hero {
   padding: 86px 0 50px;
 }
@@ -1045,10 +1032,6 @@ p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  .nav-cta {
-    display: none;
   }
 
   .site-nav nav {
