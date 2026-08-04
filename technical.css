@@ -285,7 +285,8 @@ body > :not(.site-backdrop):not(.skip-link):not(.top-link) {
 }
 
 .brand strong {
-  color: var(--red-bright);
+  color: inherit;
+  font-weight: inherit;
 }
 
 .site-nav nav {
@@ -659,21 +660,6 @@ p {
   line-height: 1.78;
 }
 
-.evidence-figure {
-  position: relative;
-  margin-top: 32px;
-}
-
-.evidence-figure-wide {
-  width: min(1120px, 100%);
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.scaling-evidence-figure {
-  width: min(1120px, calc(100% - 48px));
-}
-
 .result-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -775,6 +761,18 @@ p {
   align-self: stretch;
   margin: 0;
   background: rgba(247, 251, 255, 0.98);
+}
+
+.paper-figure.evidence-figure {
+  position: relative;
+  width: 100%;
+  margin: 44px 0 0;
+}
+
+.wide-figure.evidence-figure {
+  position: relative;
+  width: min(var(--max), calc(100% - 48px));
+  margin: 44px auto 0;
 }
 
 .scaling-notes {
@@ -1042,7 +1040,7 @@ p {
     width: min(var(--max), calc(100% - 28px));
   }
 
-  .scaling-evidence-figure {
+  .wide-figure.evidence-figure {
     width: min(var(--max), calc(100% - 28px));
   }
 
