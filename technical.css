@@ -752,35 +752,37 @@ p {
 }
 
 .paper-figure {
-  align-self: start;
+  align-self: stretch;
   margin: 0;
   background: rgba(247, 251, 255, 0.98);
 }
 
 .scaling-notes {
-  display: grid;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
-  height: 100%;
+  min-height: 100%;
 }
 
 .scaling-notes article {
   display: flex;
+  flex: 1 1 0;
   min-height: 0;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(30px, 3vw, 46px);
+  padding: clamp(36px, 3.4vw, 56px);
 }
 
 .scaling-notes p {
-  margin: 22px 0 0;
+  margin: 26px 0 0;
   color: var(--muted);
-  font-size: clamp(1.12rem, 1.45vw, 1.42rem);
-  line-height: 1.72;
+  font-size: clamp(1.22rem, 1.6vw, 1.56rem);
+  line-height: 1.76;
 }
 
 .scaling-notes span {
-  font-size: clamp(0.92rem, 1vw, 1.05rem);
+  font-size: clamp(1rem, 1.12vw, 1.18rem);
 }
 
 .video-grid {
