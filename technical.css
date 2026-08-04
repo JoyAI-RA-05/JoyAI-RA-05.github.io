@@ -295,7 +295,7 @@ body > :not(.site-backdrop):not(.skip-link):not(.top-link) {
   justify-self: center;
   gap: clamp(24px, 4vw, 54px);
   color: rgba(233, 239, 255, 0.56);
-  font-size: 0.98rem;
+  font-size: 1.167rem;
   font-weight: 470;
   letter-spacing: 0.01em;
 }
@@ -375,7 +375,7 @@ p {
   margin: 0;
   max-width: 56rem;
   color: var(--text);
-  font-size: clamp(1.18rem, 2vw, 1.72rem);
+  font-size: clamp(1.367rem, 2vw, 1.72rem);
   line-height: 1.28;
   font-weight: 650;
   letter-spacing: -0.02em;
@@ -385,7 +385,7 @@ p {
   max-width: 60rem;
   margin: 0;
   color: var(--muted);
-  font-size: 1.14rem;
+  font-size: 1.327rem;
   line-height: 1.85;
 }
 
@@ -451,7 +451,7 @@ p {
 .section-body {
   max-width: 72rem;
   color: var(--muted);
-  font-size: 1.14rem;
+  font-size: 1.327rem;
   line-height: 1.85;
 }
 
@@ -488,7 +488,7 @@ p {
   color: rgba(18, 22, 34, 0.72);
   background: rgba(255, 255, 255, 0.92);
   border-top: 1px solid rgba(112, 140, 210, 0.16);
-  font-size: 0.94rem;
+  font-size: 1.127rem;
   text-align: center;
 }
 
@@ -512,7 +512,7 @@ p {
   border-radius: 999px;
   color: var(--text);
   background: rgba(10, 13, 22, 0.72);
-  font-size: 0.86rem;
+  font-size: 1.047rem;
   font-weight: 700;
   cursor: pointer;
   backdrop-filter: blur(14px);
@@ -553,7 +553,7 @@ p {
   border-top: 0;
   color: var(--cyan);
   background: rgba(90, 72, 255, 0.08);
-  font-size: 0.84rem;
+  font-size: 1.027rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -572,7 +572,7 @@ p {
 .data-table p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.06rem;
+  font-size: 1.248rem;
 }
 
 .overview-cards {
@@ -605,7 +605,7 @@ p {
 .citation-card span {
   display: block;
   color: var(--cyan);
-  font-size: 0.8rem;
+  font-size: 0.9875rem;
   font-weight: 820;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -614,7 +614,7 @@ p {
 .report-note p {
   margin: 18px 0 0;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 1.268rem;
 }
 
 .compact-grid {
@@ -630,7 +630,7 @@ p {
 .compact-grid h3 {
   margin: 0 0 10px;
   color: var(--text);
-  font-size: 1.16rem;
+  font-size: 1.347rem;
   line-height: 1.18;
   letter-spacing: -0.025em;
 }
@@ -638,7 +638,7 @@ p {
 .compact-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 1.268rem;
 }
 
 .method-grid {
@@ -656,7 +656,7 @@ p {
 .method-grid p {
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 1.268rem;
   line-height: 1.78;
 }
 
@@ -682,7 +682,7 @@ p {
 
 .score-summary span {
   color: var(--cyan);
-  font-size: 0.84rem;
+  font-size: 1.027rem;
   font-weight: 820;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -707,7 +707,7 @@ p {
 .score-summary p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.04rem;
+  font-size: 1.228rem;
 }
 
 .score-list {
@@ -724,7 +724,7 @@ p {
 
 .score-list span {
   color: var(--text);
-  font-size: 1.04rem;
+  font-size: 1.228rem;
   font-weight: 760;
 }
 
@@ -783,12 +783,12 @@ p {
 .scaling-notes p {
   margin: 26px 0 0;
   color: var(--muted);
-  font-size: clamp(1.22rem, 1.6vw, 1.56rem);
+  font-size: clamp(1.407rem, 1.6vw, 1.56rem);
   line-height: 1.76;
 }
 
 .scaling-notes span {
-  font-size: clamp(1rem, 1.12vw, 1.18rem);
+  font-size: clamp(1.188rem, 1.12vw, 1.367rem);
 }
 
 .video-grid {
@@ -835,7 +835,7 @@ p {
 .featured-demo p,
 .video-grid p {
   color: var(--muted);
-  font-size: 1.06rem;
+  font-size: 1.248rem;
   line-height: 1.72;
 }
 
@@ -845,7 +845,7 @@ p {
 
 .video-grid h3 {
   margin: 8px 6px;
-  font-size: 1.2rem;
+  font-size: 1.387rem;
 }
 
 .video-grid span {
@@ -876,7 +876,7 @@ p {
 .citation-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.2rem;
+  font-size: 1.387rem;
 }
 
 .site-footer {
@@ -888,7 +888,7 @@ p {
   gap: 28px;
   align-items: center;
   color: var(--muted-soft);
-  font-size: 0.95rem;
+  font-size: 1.137rem;
 }
 
 .site-footer div {
@@ -1048,13 +1048,13 @@ p {
   }
 
   .subtitle {
-    font-size: 1.12rem;
+    font-size: 1.308rem;
     line-height: 1.38;
   }
 
   .abstract,
   .section-body {
-    font-size: 1.06rem;
+    font-size: 1.248rem;
   }
 
   .section {
