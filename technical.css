@@ -385,7 +385,7 @@ p {
   max-width: 60rem;
   margin: 0;
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 1.14rem;
   line-height: 1.85;
 }
 
@@ -451,7 +451,7 @@ p {
 .section-body {
   max-width: 72rem;
   color: var(--muted);
-  font-size: 1.04rem;
+  font-size: 1.14rem;
   line-height: 1.85;
 }
 
@@ -572,6 +572,7 @@ p {
 .data-table p {
   margin: 0;
   color: var(--muted);
+  font-size: 1.06rem;
 }
 
 .overview-cards {
@@ -613,6 +614,7 @@ p {
 .report-note p {
   margin: 18px 0 0;
   color: var(--muted);
+  font-size: 1.08rem;
 }
 
 .compact-grid {
@@ -636,7 +638,7 @@ p {
 .compact-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 1.08rem;
 }
 
 .method-grid {
@@ -654,6 +656,8 @@ p {
 .method-grid p {
   margin: 22px 0 0;
   color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.78;
 }
 
 .result-grid {
@@ -703,6 +707,7 @@ p {
 .score-summary p {
   margin: 0;
   color: var(--muted);
+  font-size: 1.04rem;
 }
 
 .score-list {
@@ -719,6 +724,7 @@ p {
 
 .score-list span {
   color: var(--text);
+  font-size: 1.04rem;
   font-weight: 760;
 }
 
@@ -829,6 +835,8 @@ p {
 .featured-demo p,
 .video-grid p {
   color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.72;
 }
 
 .featured-demo p {
@@ -868,7 +876,7 @@ p {
 .citation-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.12rem;
+  font-size: 1.2rem;
 }
 
 .site-footer {
@@ -1046,7 +1054,7 @@ p {
 
   .abstract,
   .section-body {
-    font-size: 1rem;
+    font-size: 1.06rem;
   }
 
   .section {
