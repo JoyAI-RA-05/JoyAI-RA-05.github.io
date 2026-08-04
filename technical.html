@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#090911" />
     <meta
       name="description"
       content="JoyAI-RA 0.5 technical report page for scaling robot manipulation learning via dual action alignment."
@@ -27,6 +27,15 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <a class="top-link" href="#top" aria-label="Back to top">↑</a>
+    <div class="site-backdrop" aria-hidden="true">
+      <div class="site-backdrop-base"></div>
+      <div class="site-backdrop-grid"></div>
+      <div class="site-backdrop-grid site-backdrop-grid-highlight"></div>
+      <div class="site-backdrop-glow"></div>
+      <div class="site-backdrop-cross site-backdrop-cross-x"></div>
+      <div class="site-backdrop-cross site-backdrop-cross-y"></div>
+      <div class="site-backdrop-vignette"></div>
+    </div>
 
     <header class="site-nav" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="JoyAI-RA 0.5 technical report">
@@ -57,6 +66,21 @@
               that turns action-free video and incompatible trajectories into
               complementary supervision for executable robot control.
             </p>
+            <div class="hero-actions" aria-label="Project links">
+              <a class="btn btn-pill" href="#report">Tech Report</a>
+              <a class="btn btn-pill" href="#framework">Technology</a>
+              <a class="btn btn-pill" href="#evaluation">Results</a>
+            </div>
+            <figure class="hero-media" data-reveal>
+              <div class="hero-media-shell">
+                <img
+                  src="assets/architecture.png"
+                  alt="JoyAI-RA architecture showing heterogeneous data, latent-action learning, unified action representation, LAC-WM, VLM, and action expert"
+                  width="2426"
+                  height="1100"
+                />
+              </div>
+            </figure>
           </div>
         </div>
       </section>
