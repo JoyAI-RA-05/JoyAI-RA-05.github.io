@@ -67,15 +67,15 @@
 
           <aside class="hero-facts" data-reveal>
             <div>
-              <span>Heterogeneous experience</span>
+              <span>hours of heterogeneous experience</span>
               <strong>72K+ h</strong>
             </div>
             <div>
-              <span>Canonical action representation</span>
+              <span>canonical action representation</span>
               <strong>130-D</strong>
             </div>
             <div>
-              <span>Progressive training stages</span>
+              <span>progressive training stages</span>
               <strong>4</strong>
             </div>
           </aside>
@@ -88,6 +88,7 @@
             <h2>JoyAI-RA Framework</h2>
           </div>
           <div class="section-body" data-reveal>
+            <p class="section-lead">Heterogeneous experience, aligned twice.</p>
             <p>
               JoyAI-RA 0.5 couples physical world-dynamics priors with visual
               semantics. Implicit alignment turns action-free video into dynamics
@@ -95,9 +96,9 @@
               trajectories in a shared physical action space.
             </p>
             <p>
-              The framework combines a VLM for task semantics, a frozen LAC-WM
-              for learned physical-dynamics priors, and a flow-matching action
-              expert that fuses both streams into continuous action chunks.
+              The VLM supplies instruction-grounded understanding. The frozen
+              LAC-WM supplies learned physical-dynamics features. A flow-matching
+              action expert fuses both streams into continuous action chunks.
             </p>
           </div>
         </div>
@@ -110,6 +111,10 @@
             height="1100"
             loading="eager"
           />
+          <figcaption>
+            Architecture overview · latent dynamics and canonical physical actions
+            provide complementary alignment.
+          </figcaption>
         </figure>
       </section>
 
@@ -137,6 +142,57 @@
               <p>Target-robot grounding for physical execution and post-training.</p>
             </div>
           </div>
+
+          <div class="overview-cards">
+            <aside class="report-note" data-reveal>
+              <span>WHY IT MATTERS</span>
+              <p>
+                Robot data is expensive. Human video scales, but it lacks executable
+                actions. Simulation and robot trajectories carry actions, but their
+                embodiments disagree.
+              </p>
+              <a href="#method">See how alignment connects them →</a>
+            </aside>
+
+            <div class="compact-grid">
+              <article data-reveal>
+                <span>A</span>
+                <h3>Dual action alignment</h3>
+                <p>
+                  Two complementary channels route each data source to the
+                  supervision it can reliably provide—latent dynamics or grounded
+                  physical actions.
+                </p>
+              </article>
+              <article data-reveal>
+                <span>B</span>
+                <h3>Vision–Language–World–Action</h3>
+                <p>
+                  A VLM contributes task semantics, a frozen LAC-WM contributes
+                  physical-dynamics priors, and an action expert converts both into
+                  control.
+                </p>
+              </article>
+              <article data-reveal>
+                <span>C</span>
+                <h3>Canonical action space</h3>
+                <p>
+                  A unified 130-D representation gives heterogeneous embodiments
+                  shared semantic slots without forcing incompatible controls to
+                  mean the same thing.
+                </p>
+              </article>
+              <article data-reveal>
+                <span>D</span>
+                <h3>Human video as a scaling axis</h3>
+                <p>
+                  More egocentric video consistently improves dynamics learning and
+                  policy initialization, with no observed saturation at the largest
+                  tested scale.
+                </p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -146,6 +202,9 @@
             <h2>Dual Action Alignment</h2>
           </div>
           <div class="section-body" data-reveal>
+            <p class="section-lead">
+              Semantics tell the robot <em>what</em>. Dynamics tell it <em>how</em>.
+            </p>
             <p>
               Robot data is expensive. Human video scales, but it lacks executable
               actions. Simulation and robot trajectories carry actions, but their
@@ -159,7 +218,7 @@
         <div class="container">
           <div class="method-grid">
             <article data-reveal>
-              <span>01</span>
+              <span>01 · Implicit alignment</span>
               <h3>LAC-WM pretraining</h3>
               <p>
                 Latent actions inferred from visual transitions turn action-free
@@ -167,7 +226,7 @@
               </p>
             </article>
             <article data-reveal>
-              <span>02</span>
+              <span>02 · Explicit alignment</span>
               <h3>Cross-embodiment VLWA pretraining</h3>
               <p>
                 Reliable human and robot trajectories are mapped into a shared
@@ -175,7 +234,7 @@
               </p>
             </article>
             <article data-reveal>
-              <span>03</span>
+              <span>03 · Physical grounding</span>
               <h3>Target-robot post-training</h3>
               <p>
                 High-quality demonstrations adapt the VLM and action expert to the
@@ -183,11 +242,11 @@
               </p>
             </article>
             <article data-reveal>
-              <span>04</span>
+              <span>04 · Continual improvement</span>
               <h3>Inner–outer loop RL</h3>
               <p>
-                Fast residual adaptation at the edge and asynchronous foundation
-                policy updates improve task performance at two timescales.
+                Fast residual adaptation at the edge and periodic foundation-policy
+                updates at the center improve task performance at two timescales.
               </p>
             </article>
           </div>
@@ -200,11 +259,14 @@
             <h2>Real-World AgiBot Benchmark</h2>
           </div>
           <div class="section-body" data-reveal>
+            <p class="section-index">04 / Real-World Results</p>
+            <p class="section-lead">Strong execution. Robust generalization.</p>
             <p>
               The report evaluates six real-world scenarios across office, tea
               room, kitchen, dining table, pharmacy, and dressing table environments
               on the AgiBot G1 platform. Task score is reported on a 100-point
-              scale from constituent subtask completion.
+              scale from constituent subtask completion. JoyAI-RA 0.5 is compared
+              with π<sub>0.5</sub> under an identical protocol.
             </p>
           </div>
         </div>
@@ -225,13 +287,18 @@
           >
             View full image
           </button>
+          <figcaption>
+            Real-World AgiBot Benchmark · three seen task categories and three
+            unseen generalization dimensions.
+          </figcaption>
         </figure>
 
         <div class="container">
           <div class="result-grid">
             <article class="score-panel" data-reveal>
               <div class="score-summary">
-                <span>Seen average</span>
+                <span>FAMILIAR CONDITIONS · Seen average</span>
+                <h3>Seen performance</h3>
                 <strong>92.0</strong>
                 <p>+23.8 points over π<sub>0.5</sub></p>
               </div>
@@ -250,23 +317,32 @@
 
             <article class="score-panel" data-reveal>
               <div class="score-summary">
-                <span>Unseen average</span>
+                <span>NOVEL CONDITIONS · Unseen average</span>
+                <h3>Unseen generalization</h3>
                 <strong>75.5</strong>
                 <p>Leading overall generalization score</p>
               </div>
               <div class="score-list">
                 <div style="--value: 77.6%">
-                  <span>Spatial &amp; topological</span><b>77.6</b><i></i>
+                  <span>Spatial & topological</span><b>77.6</b><i></i>
                 </div>
                 <div style="--value: 79.1%">
-                  <span>Object &amp; attribute</span><b>79.1</b><i></i>
+                  <span>Object & attribute</span><b>79.1</b><i></i>
                 </div>
                 <div style="--value: 69.8%">
-                  <span>Background &amp; illumination</span><b>69.8</b><i></i>
+                  <span>Background & illumination</span><b>69.8</b><i></i>
                 </div>
               </div>
             </article>
           </div>
+
+          <blockquote class="result-quote" data-reveal>
+            <p>
+              “The two alignment channels provide distinct yet complementary
+              supervision from heterogeneous data.”
+            </p>
+            <span>Dual-alignment ablation</span>
+          </blockquote>
         </div>
       </section>
 
@@ -276,10 +352,13 @@
             <h2>Human Video Scaling</h2>
           </div>
           <div class="section-body" data-reveal>
+            <p class="section-lead">
+              Human video is not auxiliary. It is a scaling axis.
+            </p>
             <p>
               Across controlled studies, more egocentric video expands action
               diversity, improves learned dynamics, and yields a stronger policy
-              initialization, with no observed saturation at the largest tested scale.
+              initialization—with no observed saturation at the largest scale.
             </p>
           </div>
         </div>
@@ -293,6 +372,10 @@
               height="2037"
               loading="lazy"
             />
+            <figcaption>
+              Action-centric representations cover broader and lower-density
+              regions as the EgoLive corpus grows.
+            </figcaption>
           </figure>
           <div class="scaling-notes">
             <article data-reveal>
@@ -300,12 +383,14 @@
               <h3>More video, stronger dynamics priors.</h3>
               <p>Seen task score improves from 83.13 to 97.50.</p>
               <p>Unseen task score improves from 56.88 to 72.40.</p>
+              <p>Robot data and downstream policy training are held fixed.</p>
             </article>
             <article data-reveal>
               <span>Policy pretraining</span>
-              <h3>Scaling transfers to robot control.</h3>
+              <h3>Scaling transfers all the way to robot control.</h3>
               <p>Seen task score improves from 47.8 to 85.6.</p>
               <p>Unseen task score improves from 37.6 to 60.2.</p>
+              <p>All models receive identical robot-action post-training.</p>
             </article>
           </div>
         </div>
@@ -317,12 +402,20 @@
             <h2>Inner–Outer Loop Reinforcement Learning</h2>
           </div>
           <div class="section-body" data-reveal>
+            <p class="section-index">06 / Self-improvement</p>
+            <p class="section-lead">
+              Two loops. Two timescales. One improving policy.
+            </p>
             <p>
               The inner loop rapidly learns a lightweight residual policy for the
               current task. The asynchronous outer loop incorporates accumulated
               interaction data into the foundation VLWA and periodically sends an
               improved model back to the edge.
             </p>
+            <div class="loop-pills">
+              <span>INNER · Fast adaptation</span>
+              <span>OUTER · Foundation update</span>
+            </div>
           </div>
         </div>
 
@@ -343,6 +436,9 @@
             <h2>Demonstrations</h2>
           </div>
           <div class="section-body" data-reveal>
+            <p class="section-lead">
+              From precise contact to long-horizon execution.
+            </p>
             <p>
               The supplied project video is used throughout this first website
               build as a consistent demonstration placeholder for real-world
@@ -352,6 +448,28 @@
         </div>
 
         <div class="container">
+          <article class="featured-demo" data-reveal>
+            <video
+              src="assets/demo-placeholder.mp4"
+              poster="assets/demo-poster.png"
+              controls
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+            <div>
+              <span>REAL-WORLD MANIPULATION</span>
+              <p class="demo-task">Correction fluid pick-up</p>
+              <span>FEATURED EXECUTION</span>
+              <h3>Fine-grained object interaction in the real world</h3>
+              <p>
+                The supplied project video is used throughout this first website
+                build as a consistent demonstration placeholder.
+              </p>
+            </div>
+          </article>
+
           <div class="video-grid">
             <article data-reveal>
               <video
@@ -363,8 +481,9 @@
                 playsinline
                 preload="metadata"
               ></video>
-              <h3>PnP Easy</h3>
-              <p>Common-object pick-and-place and organization.</p>
+              <span>PnP Easy</span>
+              <h3>Everyday object manipulation</h3>
+              <p>Common-object pick-and-place and organization under familiar conditions.</p>
             </article>
             <article data-reveal>
               <video
@@ -376,8 +495,9 @@
                 playsinline
                 preload="metadata"
               ></video>
-              <h3>PnP Hard</h3>
-              <p>Fine contact, small objects, and accurate execution.</p>
+              <span>PnP Hard</span>
+              <h3>Precision manipulation</h3>
+              <p>Fine contact, small objects, and actions that demand accurate execution.</p>
             </article>
             <article data-reveal>
               <video
@@ -389,8 +509,9 @@
                 playsinline
                 preload="metadata"
               ></video>
-              <h3>Long-Horizon</h3>
-              <p>Sequential manipulation across longer task horizons.</p>
+              <span>Long-Horizon</span>
+              <h3>Multi-stage task execution</h3>
+              <p>Sequential manipulation that requires consistency across a longer horizon.</p>
             </article>
           </div>
         </div>
@@ -402,9 +523,17 @@
             <span>Technical Report</span>
             <h2>JoyAI-RA 0.5</h2>
             <p>Scaling Robot Manipulation Learning via Dual Action Alignment</p>
-            <a href="#top">Back to top ↑</a>
+            <div class="report-actions">
+              <a href="#top">Back to top ↑</a>
+              <a
+                href="https://zhaopin.jd.com/home"
+                target="_blank"
+                rel="noreferrer"
+              >Join JoyAI ↗</a>
+            </div>
           </div>
           <div>
+            <span>AUTHORSHIP</span>
             <h3>Joy Future Academy, JD</h3>
             <p>
               <strong>Core contributors</strong><br />
@@ -433,10 +562,11 @@
         <img src="assets/jd-wordmark.png" alt="JINGDONG" width="4600" height="671" />
         <span>Joy Future Academy</span>
       </div>
-      <p>JoyAI-RA 0.5 · Technical Report</p>
+      <p>JoyAI-RA 0.5 · Vision-Language-World-Action research</p>
       <nav aria-label="Footer links">
         <a href="#framework">Framework</a>
         <a href="#evaluation">Evaluation</a>
+        <a href="https://jdai.jd.com/portal" target="_blank" rel="noreferrer">JoyAI ↗</a>
         <a href="index.html">Original Page</a>
       </nav>
     </footer>
