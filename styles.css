@@ -700,43 +700,14 @@ main {
 }
 
 .overview-layout {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.32fr) minmax(0, 0.68fr);
-  gap: clamp(46px, 6vw, 90px);
-}
-
-.overview-index {
-  position: sticky;
-  top: 118px;
-  align-self: start;
-  padding: 8px 0 0 22px;
-  border-left: 2px solid var(--red);
-}
-
-.overview-index > span {
-  color: var(--red);
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-}
-
-.overview-index p {
-  margin: 20px 0 24px;
-  color: var(--ink-soft);
-  font-size: 1.167rem;
-  line-height: 1.7;
-}
-
-.overview-index a {
-  color: var(--red-deep);
-  font-size: 0.9875rem;
-  font-weight: 750;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .contribution-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .contribution-card,
@@ -751,8 +722,8 @@ main {
 }
 
 .contribution-card {
-  min-height: 278px;
-  padding: 28px;
+  min-height: 260px;
+  padding: 32px;
   border-radius: var(--radius-md);
   transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
 }

@@ -182,51 +182,40 @@
           </div>
 
           <div class="overview-layout">
-            <aside class="overview-index" data-reveal>
-              <span>WHY IT MATTERS</span>
-              <p>
-                Robot data is expensive. Human video scales, but it lacks executable
-                actions. Simulation and robot trajectories carry actions, but their
-                embodiments disagree.
-              </p>
-              <a href="#method">See how alignment connects them →</a>
-            </aside>
-
             <div class="contribution-grid">
               <article class="contribution-card" data-reveal>
-                <span>A</span>
-                <h3>Dual action alignment</h3>
+                <h3>Human Video Scaling</h3>
                 <p>
-                  Two complementary channels route each data source to the
-                  supervision it can reliably provide—latent dynamics or grounded
-                  physical actions.
+                  Robot demonstrations are scarce, while human egocentric videos
+                  scale best but usually lack executable actions. JoyAI-RA 0.5 turns
+                  this abundant weak supervision into transferable dynamics learning
+                  and stronger robot-policy initialization.
                 </p>
               </article>
               <article class="contribution-card" data-reveal>
-                <span>B</span>
-                <h3>Vision–Language–World–Action</h3>
+                <h3>Dual Action Alignment</h3>
                 <p>
-                  A VLM contributes task semantics, a frozen LAC-WM contributes
-                  physical-dynamics priors, and an action expert converts both into
-                  control.
+                  Implicit alignment infers latent actions from visual transitions,
+                  allowing action-free human, simulation, and robot videos to train
+                  the LAC-WM. Explicit alignment grounds reliable trajectories in a
+                  shared physical action space.
                 </p>
               </article>
               <article class="contribution-card" data-reveal>
-                <span>C</span>
-                <h3>Canonical action space</h3>
+                <h3>Canonical Action Space</h3>
                 <p>
-                  A unified 130-D representation gives heterogeneous embodiments
-                  shared semantic slots without forcing incompatible controls to
-                  mean the same thing.
+                  Reliable human and robot trajectories are mapped into a 130-D
+                  canonical representation with fixed left-hand, right-hand, and body
+                  slots, plus camera-frame chunk-relative end-effector actions for
+                  cross-embodiment supervision.
                 </p>
               </article>
               <article class="contribution-card" data-reveal>
-                <span>D</span>
-                <h3>Human video as a scaling axis</h3>
+                <h3>Vision–Language–World–Action Model</h3>
                 <p>
-                  More egocentric video consistently improves dynamics learning and
-                  policy initialization, with no observed saturation at the largest
-                  tested scale.
+                  The VLM encodes task semantics, the frozen LAC-WM supplies learned
+                  physical-dynamics priors, and the flow-matching action expert fuses
+                  both streams into continuous executable robot actions.
                 </p>
               </article>
             </div>
