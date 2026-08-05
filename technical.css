@@ -1508,6 +1508,10 @@ body,
   text-align: center;
 }
 
+.technical-page .chapter-heading h2 {
+  font-size: calc(var(--type-heading) + 0.25rem);
+}
+
 .technical-page .container,
 .technical-page .wide-figure,
 .technical-page .wide-figure.evidence-figure {
@@ -1528,6 +1532,12 @@ body,
 .technical-page .container.report-layout,
 .technical-page .container.citation-card {
   width: min(var(--report-width), calc(100% - 48px));
+}
+
+.technical-page .container.citation-card {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
 }
 
 .technical-page .container > .wide-figure,
