@@ -36,6 +36,14 @@ RED = "#c0392b"
 SLATE = "#59657d"
 PANEL = "none"
 
+# Main-benchmark palette follows the paper: the pi_0.5 baseline is blue,
+# alignment ablations progress from light salmon to red, and the complete
+# JoyAI-RA 0.5 model is solid dark red.
+ABLATION_LIGHT = "#fcae91"
+ABLATION_MID = "#fb6a4a"
+ABLATION_DARK = "#ef3b2c"
+OURS_RED = "#cb181d"
+
 
 def configure() -> None:
     mpl.rcParams.update(
@@ -192,11 +200,11 @@ def main_alignment(data: dict[str, Any], preview_dir: Path | None) -> None:
     unseen = np.array([item["unseen"] + [item["unseen_average"]] for item in methods])
 
     styles = {
-        "pi_05": {"color": MUTED_STRONG, "hatch": "////", "edgecolor": MUTED_STRONG},
-        "without_both": {"color": SLATE, "hatch": "\\\\", "edgecolor": MUTED_STRONG},
-        "without_implicit": {"color": BLUE, "hatch": "////", "edgecolor": MUTED_STRONG},
-        "without_explicit": {"color": BLUE, "hatch": None, "edgecolor": "none"},
-        "joyai_ra_05": {"color": RED, "hatch": None, "edgecolor": "none"},
+        "pi_05": {"color": BLUE, "hatch": None, "edgecolor": "none"},
+        "without_both": {"color": ABLATION_LIGHT, "hatch": "////", "edgecolor": TEXT},
+        "without_implicit": {"color": ABLATION_MID, "hatch": "////", "edgecolor": TEXT},
+        "without_explicit": {"color": ABLATION_DARK, "hatch": "////", "edgecolor": TEXT},
+        "joyai_ra_05": {"color": OURS_RED, "hatch": None, "edgecolor": "none"},
     }
 
     fig, axes = plt.subplots(1, 2, figsize=(16, 5.55), gridspec_kw={"wspace": 0.13})
