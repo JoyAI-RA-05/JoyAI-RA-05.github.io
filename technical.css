@@ -1856,8 +1856,8 @@ body,
   --type-heading: 2rem;
   --type-body: 1rem;
   --body-leading: 1.7;
-  --bg: #f7f7f7;
-  --bg-deep: #f3f3f3;
+  --bg: #ffffff;
+  --bg-deep: #f7f7f7;
   --surface: rgba(255, 255, 255, 0.96);
   --surface-strong: #ffffff;
   --surface-soft: #f7f8fa;
@@ -1870,7 +1870,7 @@ body,
   --violet: #735d78;
   --shadow: 0 18px 48px rgba(25, 28, 35, 0.1);
   color-scheme: light;
-  background: #f7f7f7;
+  background: #ffffff;
   font-family:
     "Alibaba PuHuiTi 3.0",
     "PingFang SC",
@@ -1881,7 +1881,7 @@ body,
 
 .technical-page.technical-v2-page .site-backdrop,
 .technical-page.technical-v2-page .site-backdrop-base {
-  background: #f7f7f7;
+  background: #ffffff;
 }
 
 .technical-page.technical-v2-page .site-backdrop-glow,
@@ -1899,7 +1899,7 @@ body,
 
 .technical-page.technical-v2-page .site-nav {
   border-bottom-color: #e8e8e8;
-  background: rgba(247, 247, 247, 0.96);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .technical-page.technical-v2-page .site-nav nav {
@@ -1945,7 +1945,7 @@ body,
 .technical-page.technical-v2-page .hero-action {
   color: var(--text);
   border-color: rgba(25, 28, 35, 0.16);
-  background: #f7f7f7;
+  background: #ffffff;
   box-shadow: 0 7px 20px rgba(25, 28, 35, 0.08);
 }
 
