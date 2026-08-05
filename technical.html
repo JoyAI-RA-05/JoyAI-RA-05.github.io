@@ -429,6 +429,78 @@
             </figcaption>
           </figure>
 
+          <div class="component-ablation-grid" aria-label="Component ablation results">
+            <article class="ablation-card" data-reveal>
+              <h3>WM Module Ablation</h3>
+              <p>
+                With identical post-training data and settings, adding the frozen
+                world model consistently improves control on the controlled desk
+                benchmark.
+              </p>
+              <table class="ablation-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Module</th>
+                    <th scope="col">Seen</th>
+                    <th scope="col">Unseen</th>
+                    <th scope="col">AVG</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">w/o WM</th>
+                    <td>59.3</td>
+                    <td>37.5</td>
+                    <td>48.4</td>
+                  </tr>
+                  <tr class="best-row">
+                    <th scope="row">w/ WM</th>
+                    <td>62.3</td>
+                    <td>40.6</td>
+                    <td>51.5</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="ablation-takeaway">
+                The average score rises by 3.1 points, with gains under both seen
+                and unseen conditions.
+              </p>
+            </article>
+
+            <article class="ablation-card" data-reveal>
+              <h3>Latent-Action Conditioning Ablation</h3>
+              <p>
+                The comparison isolates latent-action conditioning during
+                world-model pretraining; neither model receives latent actions
+                during downstream policy training or evaluation.
+              </p>
+              <table class="ablation-table">
+                <thead>
+                  <tr>
+                    <th scope="col">World model</th>
+                    <th scope="col">Conditioning</th>
+                    <th scope="col">Seen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">WM</th>
+                    <td>No</td>
+                    <td>87.3</td>
+                  </tr>
+                  <tr class="best-row">
+                    <th scope="row">LAC-WM</th>
+                    <td>Yes</td>
+                    <td>92.1</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="ablation-takeaway">
+                Latent-action-conditioned pretraining improves the seen-task score
+                by 4.8 points.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -516,6 +588,11 @@
               accumulated interaction data into the foundation VLWA and
               periodically sends an improved model back to the edge.
             </p>
+            <p>
+              Under unseen object-position shifts, both loops improve over the
+              original policy, and their combination reaches a 70% success rate on
+              Mouse and 50% on Headphone pick-and-place tasks.
+            </p>
           </div>
         </div>
 
@@ -527,6 +604,29 @@
             height="1119"
             loading="lazy"
           />
+        </figure>
+
+        <figure class="wide-figure contained evidence-figure rl-results-figure" data-reveal>
+          <img
+            src="assets/rl-results.png"
+            alt="Success-rate comparison of the original VLWA policy, inner-loop RL, outer-loop RL, and inner-outer loop RL on Mouse and Headphone pick-and-place tasks"
+            width="2127"
+            height="862"
+            loading="lazy"
+          />
+          <button
+            class="image-action"
+            type="button"
+            data-lightbox-src="assets/rl-results.png"
+            data-lightbox-alt="Success-rate comparison of reinforcement-learning strategies on Mouse and Headphone pick-and-place tasks"
+          >
+            View full image
+          </button>
+          <figcaption>
+            Real-world RL under positional distribution shift · inner and outer
+            loops provide complementary gains, with their combination performing
+            best on both tasks.
+          </figcaption>
         </figure>
       </section>
 
