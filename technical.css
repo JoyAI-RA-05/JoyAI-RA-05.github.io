@@ -436,6 +436,23 @@ p {
   max-width: 1120px;
 }
 
+.chapter-heading {
+  margin-bottom: 44px;
+  text-align: center;
+}
+
+.chapter-heading h2 {
+  margin: 0;
+  color: var(--red-bright);
+  font-size: clamp(2.65rem, 5.4vw, 4.35rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.overview-section .chapter-heading {
+  margin-bottom: 38px;
+}
+
 .wide-figure.overview-figure {
   width: 100%;
   margin: 0;
@@ -472,13 +489,21 @@ p {
   text-align: center;
 }
 
-.section-title h2 {
+.section-title h2,
+.section-title h3 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(2rem, 4.8vw, 3.35rem);
   line-height: 0.98;
   letter-spacing: -0.055em;
   white-space: normal;
+}
+
+.section-title h2 {
+  font-size: clamp(2rem, 4.8vw, 3.35rem);
+}
+
+.section-title h3 {
+  font-size: clamp(1.9rem, 4vw, 2.85rem);
 }
 
 .section-body {
@@ -1249,6 +1274,20 @@ p {
   .section-title h2 {
     font-size: clamp(1.85rem, 9vw, 2.7rem);
     letter-spacing: -0.045em;
+  }
+
+  .chapter-heading {
+    margin-bottom: 30px;
+  }
+
+  .chapter-heading h2 {
+    font-size: clamp(2.2rem, 11vw, 3.15rem);
+    letter-spacing: -0.045em;
+  }
+
+  .section-title h3 {
+    font-size: clamp(1.75rem, 8.2vw, 2.45rem);
+    letter-spacing: -0.04em;
   }
 
   .wide-figure,

@@ -45,11 +45,10 @@
         <span>JoyAI-RA <strong>0.5</strong></span>
       </a>
       <nav aria-label="Report sections">
+        <a href="#abstract">Overview</a>
+        <a href="#data">Data</a>
         <a href="#framework">Framework</a>
-        <a href="#data-pipeline">Data</a>
-        <a href="#method">Method</a>
-        <a href="#evaluation">Evaluation</a>
-        <a href="#scaling">Scaling</a>
+        <a href="#experiments">Experiments</a>
         <a href="#report">Report</a>
       </nav>
     </header>
@@ -68,6 +67,10 @@
 
       <section class="overview-section" id="abstract">
         <div class="container overview-content">
+          <div class="chapter-heading" data-reveal>
+            <h2>Overview</h2>
+          </div>
+
           <figure class="wide-figure overview-figure" data-reveal>
             <img
               src="assets/joyra05-overview.png"
@@ -79,7 +82,7 @@
           </figure>
 
           <article class="abstract-copy" data-reveal aria-labelledby="abstract-heading">
-            <h2 class="visually-hidden" id="abstract-heading">Abstract</h2>
+            <h3 class="visually-hidden" id="abstract-heading">Abstract</h3>
             <p>
               Robot data is scarce, so generalist policies need to learn from
               heterogeneous sources, including human egocentric video, simulation,
@@ -110,41 +113,12 @@
         </div>
       </section>
 
-      <section class="section" id="framework">
-        <div class="container report-layout">
-          <div class="section-title" data-reveal>
-            <h2>JoyAI-RA Framework</h2>
-          </div>
-          <div class="section-body" data-reveal>
-            <p>
-              JoyAI-RA 0.5 aligns heterogeneous experience through two
-              complementary paths: implicit latent-dynamics alignment and explicit
-              physical-action alignment. It couples visual semantics from the VLM
-              with physical world-dynamics priors from LAC-WM. A flow-matching
-              action expert then fuses instruction-grounded
-              understanding and learned dynamics features into continuous action
-              chunks for executable robot control.
-            </p>
-          </div>
-        </div>
-
-        <figure class="wide-figure" data-reveal>
-          <img
-            src="assets/architecture.png"
-            alt="JoyAI-RA architecture showing heterogeneous data, latent-action learning, unified action representation, LAC-WM, VLM, and action expert"
-            width="3064"
-            height="1462"
-            loading="eager"
-          />
-          <figcaption>
-            Architecture overview · latent dynamics and canonical physical actions
-            provide complementary alignment.
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="section compact" id="overview">
+      <section class="section chapter-section" id="data">
         <div class="container">
+          <div class="chapter-heading" data-reveal>
+            <h2>Data</h2>
+          </div>
+
           <div class="data-table" data-reveal>
             <div class="table-head">
               <span>Data source</span>
@@ -190,52 +164,13 @@
             </figcaption>
           </figure>
 
-          <div class="overview-cards">
-            <div class="compact-grid">
-              <article data-reveal>
-                <h3>Human Video Scaling</h3>
-                <p>
-                  Robot demonstrations are scarce, while human egocentric videos
-                  scale best but usually lack executable actions. JoyAI-RA 0.5 turns
-                  this abundant weak supervision into transferable dynamics learning
-                  and stronger robot-policy initialization.
-                </p>
-              </article>
-              <article data-reveal>
-                <h3>Dual Action Alignment</h3>
-                <p>
-                  Implicit alignment infers latent actions from visual transitions,
-                  allowing action-free human, simulation, and robot videos to train
-                  the LAC-WM. Explicit alignment grounds reliable trajectories in a
-                  shared physical action space.
-                </p>
-              </article>
-              <article data-reveal>
-                <h3>Canonical Action Space</h3>
-                <p>
-                  Reliable human and robot trajectories are mapped into a 130-D
-                  canonical representation with fixed left-hand, right-hand, and body
-                  slots, plus camera-frame chunk-relative end-effector actions for
-                  cross-embodiment supervision.
-                </p>
-              </article>
-              <article data-reveal>
-                <h3>Vision–Language–World–Action Model</h3>
-                <p>
-                  The VLM encodes task semantics, the frozen LAC-WM supplies learned
-                  physical-dynamics priors, and the flow-matching action expert fuses
-                  both streams into continuous executable robot actions.
-                </p>
-              </article>
-            </div>
-          </div>
         </div>
       </section>
 
       <section class="section" id="data-pipeline">
         <div class="container report-layout">
           <div class="section-title" data-reveal>
-            <h2>Closed-Loop Data Pipeline</h2>
+            <h3>Closed-Loop Data Pipeline</h3>
           </div>
           <div class="section-body" data-reveal>
             <p>
@@ -277,10 +212,89 @@
         </div>
       </section>
 
+      <section class="section chapter-section" id="framework">
+        <div class="container">
+          <div class="chapter-heading" data-reveal>
+            <h2>Framework</h2>
+          </div>
+        </div>
+
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h3>Architecture</h3>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              JoyAI-RA 0.5 aligns heterogeneous experience through two
+              complementary paths: implicit latent-dynamics alignment and explicit
+              physical-action alignment. It couples visual semantics from the VLM
+              with physical world-dynamics priors from LAC-WM. A flow-matching
+              action expert then fuses instruction-grounded
+              understanding and learned dynamics features into continuous action
+              chunks for executable robot control.
+            </p>
+          </div>
+        </div>
+
+        <figure class="wide-figure" data-reveal>
+          <img
+            src="assets/architecture.png"
+            alt="JoyAI-RA architecture showing heterogeneous data, latent-action learning, unified action representation, LAC-WM, VLM, and action expert"
+            width="3064"
+            height="1462"
+            loading="eager"
+          />
+          <figcaption>
+            Architecture overview · latent dynamics and canonical physical actions
+            provide complementary alignment.
+          </figcaption>
+        </figure>
+
+        <div class="container overview-cards">
+          <div class="compact-grid">
+            <article data-reveal>
+              <h3>Human Video Scaling</h3>
+              <p>
+                Robot demonstrations are scarce, while human egocentric videos
+                scale best but usually lack executable actions. JoyAI-RA 0.5 turns
+                this abundant weak supervision into transferable dynamics learning
+                and stronger robot-policy initialization.
+              </p>
+            </article>
+            <article data-reveal>
+              <h3>Dual Action Alignment</h3>
+              <p>
+                Implicit alignment infers latent actions from visual transitions,
+                allowing action-free human, simulation, and robot videos to train
+                the LAC-WM. Explicit alignment grounds reliable trajectories in a
+                shared physical action space.
+              </p>
+            </article>
+            <article data-reveal>
+              <h3>Canonical Action Space</h3>
+              <p>
+                Reliable human and robot trajectories are mapped into a 130-D
+                canonical representation with fixed left-hand, right-hand, and body
+                slots, plus camera-frame chunk-relative end-effector actions for
+                cross-embodiment supervision.
+              </p>
+            </article>
+            <article data-reveal>
+              <h3>Vision–Language–World–Action Model</h3>
+              <p>
+                The VLM encodes task semantics, the frozen LAC-WM supplies learned
+                physical-dynamics priors, and the flow-matching action expert fuses
+                both streams into continuous executable robot actions.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="method">
         <div class="container report-layout">
           <div class="section-title" data-reveal>
-            <h2>Dual Action Alignment</h2>
+            <h3>Dual Action Alignment</h3>
           </div>
           <div class="section-body" data-reveal>
             <p>
@@ -330,10 +344,16 @@
         </div>
       </section>
 
-      <section class="section" id="evaluation">
-        <div class="container report-layout">
+      <section class="section chapter-section" id="experiments">
+        <div class="container">
+          <div class="chapter-heading" data-reveal>
+            <h2>Experiments</h2>
+          </div>
+        </div>
+
+        <div class="container report-layout" id="evaluation">
           <div class="section-title" data-reveal>
-            <h2>Real-World AgiBot Benchmark</h2>
+            <h3>Real-World AgiBot Benchmark</h3>
           </div>
           <div class="section-body" data-reveal>
             <p>
@@ -499,7 +519,7 @@
       <section class="section" id="scaling">
         <div class="container report-layout">
           <div class="section-title" data-reveal>
-            <h2>Human Video Scaling</h2>
+            <h3>Human Video Scaling</h3>
           </div>
           <div class="section-body" data-reveal>
             <p>
@@ -563,7 +583,7 @@
       <section class="section" id="rl">
         <div class="container report-layout">
           <div class="section-title" data-reveal>
-            <h2>Inner–Outer Loop Reinforcement Learning</h2>
+            <h3>Inner–Outer Loop Reinforcement Learning</h3>
           </div>
           <div class="section-body" data-reveal>
             <p>
@@ -609,7 +629,7 @@
       <section class="section" id="videos">
         <div class="container report-layout">
           <div class="section-title" data-reveal>
-            <h2>Demonstrations</h2>
+            <h3>Demonstrations</h3>
           </div>
           <div class="section-body" data-reveal>
             <p>
@@ -694,7 +714,7 @@
       <p>JoyAI-RA 0.5 · Vision-Language-World-Action research</p>
       <nav aria-label="Footer links">
         <a href="#framework">Framework</a>
-        <a href="#evaluation">Evaluation</a>
+        <a href="#experiments">Experiments</a>
         <a href="https://jdai.jd.com/portal" target="_blank" rel="noreferrer">JoyAI ↗</a>
       </nav>
     </footer>
