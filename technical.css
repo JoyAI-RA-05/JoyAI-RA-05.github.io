@@ -442,10 +442,13 @@ p {
 }
 
 .abstract-copy {
+  max-width: 56.25rem;
   margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
   color: var(--muted);
-  font-size: 1.327rem;
-  line-height: 1.85;
+  font-size: 1rem;
+  line-height: 1.88;
   text-align: left;
 }
 
@@ -479,10 +482,10 @@ p {
 }
 
 .section-body {
-  max-width: 72rem;
+  max-width: 56.25rem;
   color: var(--muted);
-  font-size: 1.327rem;
-  line-height: 1.85;
+  font-size: 1rem;
+  line-height: 1.88;
 }
 
 .section-body p {
@@ -602,7 +605,8 @@ p {
 .data-table p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.248rem;
+  font-size: 1rem;
+  line-height: 1.88;
 }
 
 .overview-cards {
@@ -642,7 +646,8 @@ p {
 .report-note p {
   margin: 18px 0 0;
   color: var(--muted);
-  font-size: 1.268rem;
+  font-size: 1rem;
+  line-height: 1.88;
 }
 
 .compact-grid {
@@ -666,7 +671,8 @@ p {
 .compact-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.268rem;
+  font-size: 1rem;
+  line-height: 1.88;
 }
 
 .method-grid {
@@ -684,8 +690,8 @@ p {
 .method-grid p {
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: 1.268rem;
-  line-height: 1.78;
+  font-size: 1rem;
+  line-height: 1.88;
 }
 
 .result-grid {
@@ -799,8 +805,8 @@ p {
 .ablation-card > p {
   margin: 16px 0 0;
   color: var(--muted);
-  font-size: 1.188rem;
-  line-height: 1.68;
+  font-size: 1rem;
+  line-height: 1.88;
 }
 
 .ablation-table {
@@ -897,8 +903,8 @@ p {
 .scaling-notes p {
   margin: 26px 0 0;
   color: var(--muted);
-  font-size: clamp(1.407rem, 1.6vw, 1.56rem);
-  line-height: 1.76;
+  font-size: 1rem;
+  line-height: 1.88;
 }
 
 .scaling-notes span {
@@ -1205,13 +1211,13 @@ p {
   }
 
   .section-body {
-    font-size: 1.248rem;
+    font-size: 1rem;
   }
 
   .abstract-copy {
     margin-top: 22px;
-    font-size: 1.248rem;
-    line-height: 1.72;
+    font-size: 1rem;
+    line-height: 1.88;
   }
 
   .section {
