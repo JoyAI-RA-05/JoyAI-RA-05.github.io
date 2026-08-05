@@ -82,9 +82,7 @@ body > :not(.site-backdrop):not(.skip-link):not(.top-link) {
 }
 
 .site-backdrop-base,
-.site-backdrop-grid,
 .site-backdrop-glow,
-.site-backdrop-cross,
 .site-backdrop-vignette {
   position: absolute;
   inset: 0;
@@ -96,30 +94,6 @@ body > :not(.site-backdrop):not(.skip-link):not(.top-link) {
     radial-gradient(circle at 82% 16%, rgba(8, 200, 247, 0.12), transparent 20%),
     radial-gradient(circle at 50% 100%, rgba(4, 12, 32, 0.5), transparent 44%),
     linear-gradient(180deg, #0b0a10 0%, #090911 44%, #06070d 100%);
-}
-
-.site-backdrop-grid {
-  inset: -8%;
-  background-image:
-    linear-gradient(rgba(31, 61, 122, 0.34) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(31, 61, 122, 0.34) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  opacity: 0.46;
-}
-
-.site-backdrop-grid-highlight {
-  background-image:
-    linear-gradient(rgba(5, 225, 253, 0.85) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(5, 225, 253, 0.85) 1px, transparent 1px);
-  opacity: 0.82;
-  mix-blend-mode: screen;
-  mask-image: radial-gradient(
-    circle at var(--pointer-x) var(--pointer-y),
-    rgba(0, 0, 0, 0.96) 0,
-    rgba(0, 0, 0, 0.8) 12%,
-    rgba(0, 0, 0, 0.3) 26%,
-    transparent 42%
-  );
 }
 
 .site-backdrop-glow {
@@ -138,38 +112,6 @@ body > :not(.site-backdrop):not(.skip-link):not(.top-link) {
     );
   filter: blur(18px);
   mix-blend-mode: screen;
-}
-
-.site-backdrop-cross-x {
-  left: var(--pointer-x-px);
-  right: auto;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    transparent 0,
-    rgba(8, 200, 247, 0.08) 12%,
-    rgba(8, 200, 247, 0.74) 34%,
-    rgba(8, 200, 247, 0.14) 62%,
-    transparent 100%
-  );
-  box-shadow: 0 0 38px rgba(8, 200, 247, 0.38);
-  opacity: 0.38;
-}
-
-.site-backdrop-cross-y {
-  top: var(--pointer-y-px);
-  bottom: auto;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0,
-    rgba(8, 200, 247, 0.06) 14%,
-    rgba(8, 200, 247, 0.68) 38%,
-    rgba(8, 200, 247, 0.14) 62%,
-    transparent 100%
-  );
-  box-shadow: 0 0 38px rgba(8, 200, 247, 0.3);
-  opacity: 0.3;
 }
 
 .site-backdrop-vignette {
