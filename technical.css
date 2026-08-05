@@ -416,6 +416,22 @@ p {
   height: auto;
 }
 
+.overview-section {
+  padding: 24px 0 86px;
+}
+
+.overview-figure {
+  margin-top: 0;
+}
+
+.abstract-layout {
+  margin-top: 58px;
+}
+
+.abstract-layout .section-body {
+  max-width: 70rem;
+}
+
 .section {
   padding: 86px 0;
 }

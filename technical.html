@@ -65,6 +65,52 @@
         </div>
       </section>
 
+      <section class="overview-section" id="abstract">
+        <figure class="wide-figure overview-figure" data-reveal>
+          <img
+            src="assets/joyra05-overview.png"
+            alt="JoyAI-RA 0.5 overview covering heterogeneous data, dual action alignment, the VLWA model, reinforcement learning, generalization, and scaling"
+            width="2667"
+            height="1120"
+            loading="eager"
+          />
+        </figure>
+
+        <div class="container report-layout abstract-layout">
+          <div class="section-title" data-reveal>
+            <h2>Abstract</h2>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              Robot data is scarce, so generalist policies need to learn from
+              heterogeneous sources, including human egocentric video, simulation,
+              and real robots, which differ in supervision and embodiment, with
+              action labels missing or mutually incompatible. Human egocentric data
+              scale best but sit farthest from robot data, and naive pooling causes
+              negative transfer rather than knowledge sharing. We present JoyAI-RA
+              0.5, a generalist Vision-Language-World-Action (VLWA) framework that
+              couples physical world-dynamics priors with visual semantics and
+              scales manipulation learning across such data via dual action
+              alignment. Implicit action alignment infers latent actions from visual
+              transitions, enabling action-free human, simulation, and robot data to
+              guide a latent-action-conditioned world model in learning physical
+              dynamics. Explicit alignment grounds reliable human and robot
+              trajectories in a unified physical action space through a canonical
+              action representation and camera-frame chunk-relative end-effector
+              actions. An inner-outer-loop reinforcement stage then pairs efficient
+              task adaptation with foundation-policy improvement. On a real-world
+              AgiBot benchmark, JoyAI-RA performs strongly on both seen tasks and
+              unseen variations. The task score improves consistently as the volume
+              of human egocentric pretraining data increases and shows no sign of
+              saturation at our largest scale. This suggests that abundant but
+              weakly labeled human experience can be converted into a transferable
+              training signal, making human video not merely a weak auxiliary source
+              but a primary axis along which manipulation capability can be scaled.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="framework">
         <div class="container report-layout">
           <div class="section-title" data-reveal>
