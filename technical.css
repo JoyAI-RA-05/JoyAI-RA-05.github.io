@@ -1856,21 +1856,21 @@ body,
   --type-heading: 2rem;
   --type-body: 1rem;
   --body-leading: 1.7;
-  --bg: #090911;
-  --bg-deep: #05060d;
-  --surface: rgba(13, 17, 29, 0.86);
-  --surface-strong: #0d111d;
-  --surface-soft: rgba(15, 20, 34, 0.82);
-  --text: #eef3ff;
-  --muted: #96a2bb;
-  --muted-soft: #7f8aa3;
-  --line: rgba(131, 160, 219, 0.18);
-  --line-strong: rgba(146, 181, 255, 0.26);
-  --cyan: #08c8f7;
-  --violet: #5a48ff;
-  --shadow: 0 22px 64px rgba(0, 0, 0, 0.38);
-  color-scheme: dark;
-  background: #090911;
+  --bg: #f7f7f7;
+  --bg-deep: #f3f3f3;
+  --surface: rgba(255, 255, 255, 0.96);
+  --surface-strong: #ffffff;
+  --surface-soft: #f7f8fa;
+  --text: #191c23;
+  --muted: rgba(0, 0, 0, 0.7);
+  --muted-soft: rgba(0, 0, 0, 0.55);
+  --line: #e8e8e8;
+  --line-strong: rgba(0, 0, 0, 0.16);
+  --cyan: #3f7396;
+  --violet: #735d78;
+  --shadow: 0 18px 48px rgba(25, 28, 35, 0.1);
+  color-scheme: light;
+  background: #f7f7f7;
   font-family:
     "Alibaba PuHuiTi 3.0",
     "PingFang SC",
@@ -1881,7 +1881,7 @@ body,
 
 .technical-page.technical-v2-page .site-backdrop,
 .technical-page.technical-v2-page .site-backdrop-base {
-  background: linear-gradient(180deg, #0b0a10 0%, #090911 44%, #06070d 100%);
+  background: #f7f7f7;
 }
 
 .technical-page.technical-v2-page .site-backdrop-glow,
@@ -1898,14 +1898,18 @@ body,
 }
 
 .technical-page.technical-v2-page .site-nav {
-  border-bottom-color: rgba(107, 138, 206, 0.14);
-  background: rgba(9, 9, 17, 0.94);
+  border-bottom-color: #e8e8e8;
+  background: rgba(247, 247, 247, 0.96);
 }
 
 .technical-page.technical-v2-page .site-nav nav {
-  color: rgba(201, 212, 235, 0.64);
+  color: #697386;
   font-size: 0.98rem;
   font-weight: 420;
+}
+
+.technical-page.technical-v2-page .brand {
+  transform: translateY(7px);
 }
 
 .technical-page.technical-v2-page .site-nav nav a.is-active,
@@ -1915,33 +1919,34 @@ body,
 }
 
 .technical-page.technical-v2-page .hero .subtitle {
-  color: #96a2bb;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .technical-page.technical-v2-page .top-link {
   color: var(--text);
-  background: rgba(13, 17, 29, 0.94);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+  border-color: rgba(25, 28, 35, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 26px rgba(25, 28, 35, 0.12);
 }
 
 .technical-page.technical-v2-page .data-table,
 .technical-page.technical-v2-page .ablation-card,
 .technical-page.technical-v2-page .score-panel,
 .technical-page.technical-v2-page .g1-task-card {
-  background: rgba(13, 17, 29, 0.88);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+  background: #ffffff;
+  box-shadow: 0 14px 38px rgba(25, 28, 35, 0.08);
   backdrop-filter: none;
 }
 
 .technical-page.technical-v2-page .score-list i {
-  background: rgba(131, 160, 219, 0.16);
+  background: rgba(25, 28, 35, 0.1);
 }
 
 .technical-page.technical-v2-page .hero-action {
   color: var(--text);
-  border-color: rgba(120, 155, 235, 0.24);
-  background: rgba(13, 17, 29, 0.82);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-color: rgba(25, 28, 35, 0.16);
+  background: #f7f7f7;
+  box-shadow: 0 7px 20px rgba(25, 28, 35, 0.08);
 }
 
 .technical-page.technical-v2-page a.hero-action:hover,
@@ -1950,15 +1955,15 @@ body,
 }
 
 .technical-page.technical-v2-page .hero-action.is-disabled {
-  color: rgba(150, 162, 187, 0.54);
+  color: #9aa2af;
 }
 
 .technical-page.technical-v2-page .result-chart-figure,
 .technical-page.technical-v2-page .paper-figure.result-chart-figure,
 .technical-page.technical-v2-page .wide-figure.result-chart-figure {
   background: #ffffff;
-  border-color: rgba(120, 155, 235, 0.2);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
+  border-color: rgba(25, 28, 35, 0.1);
+  box-shadow: 0 14px 38px rgba(25, 28, 35, 0.08);
 }
 
 .technical-page.technical-v2-page .paper-figure.transparent-result-figure,
@@ -1974,6 +1979,16 @@ body,
   filter: none;
 }
 
+.technical-page.technical-v2-page .g1-task-controls button {
+  color: var(--text);
+  border-color: rgba(25, 28, 35, 0.14);
+  background: #ffffff;
+}
+
+.technical-page.technical-v2-page .g1-task-rail {
+  scrollbar-color: rgba(63, 115, 150, 0.5) rgba(25, 28, 35, 0.06);
+}
+
 .technical-page.technical-v2-page .section-summary {
   margin-top: 16px;
 }
@@ -1986,26 +2001,21 @@ body,
   margin-top: 28px;
 }
 
-.technical-page.technical-v2-page #scaling .wide-figure,
-.technical-page.technical-v2-page #scaling .paper-figure,
-.technical-page.technical-v2-page #scaling .wide-figure img,
-.technical-page.technical-v2-page #scaling .paper-figure img {
-  border-radius: 0;
+.technical-page.technical-v2-page .wide-figure,
+.technical-page.technical-v2-page .paper-figure,
+.technical-page.technical-v2-page .wide-figure img,
+.technical-page.technical-v2-page .paper-figure img {
+  border-radius: 4px;
 }
 
-.technical-page.technical-v2-page #scaling .wide-figure,
-.technical-page.technical-v2-page #scaling .paper-figure {
+.technical-page.technical-v2-page .wide-figure,
+.technical-page.technical-v2-page .paper-figure {
   overflow: visible;
-}
-
-.technical-page.technical-v2-page #scaling .wide-figure::after,
-.technical-page.technical-v2-page #scaling .paper-figure::after {
-  display: none;
 }
 
 .technical-page.technical-v2-page .scaling-layout > .paper-figure {
   align-self: start;
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 @media (min-width: 981px) {
