@@ -1493,6 +1493,21 @@ body,
   --report-width: 1000px;
 }
 
+.technical-page .hero-copy {
+  align-items: center;
+  width: 100%;
+  max-width: var(--report-width);
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.technical-page .hero h1,
+.technical-page .subtitle {
+  width: 100%;
+  text-align: center;
+}
+
 .technical-page .container,
 .technical-page .wide-figure,
 .technical-page .wide-figure.evidence-figure {
