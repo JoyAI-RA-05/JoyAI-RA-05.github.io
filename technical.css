@@ -916,8 +916,7 @@ p {
   overflow-x: auto;
   margin-top: 20px;
   padding: 2px 2px 18px;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  scroll-behavior: auto;
   scrollbar-color: rgba(42, 210, 255, 0.42) rgba(255, 255, 255, 0.05);
   scrollbar-width: thin;
 }
@@ -929,7 +928,6 @@ p {
   font: inherit;
   text-align: left;
   cursor: pointer;
-  scroll-snap-align: start;
   transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -947,16 +945,17 @@ p {
     inset 0 3px 0 var(--red-bright);
 }
 
-.g1-task-card img {
+.g1-task-card video {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
+  background: #020306;
   object-fit: cover;
+  pointer-events: none;
 }
 
 .g1-task-card > span,
-.g1-task-card > strong,
-.g1-task-card > small {
+.g1-task-card > strong {
   display: block;
   margin-right: 20px;
   margin-left: 20px;
@@ -975,12 +974,6 @@ p {
   color: var(--text);
   font-size: 1.28rem;
   line-height: 1.25;
-}
-
-.g1-task-card > small {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 1rem;
 }
 
 .report-section {

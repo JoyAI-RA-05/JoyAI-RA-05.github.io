@@ -5,6 +5,7 @@ const topLink = document.querySelector(".top-link");
 const lightboxTriggers = [...document.querySelectorAll("[data-lightbox-src]")];
 const g1TaskButtons = [...document.querySelectorAll("[data-g1-task]")];
 const g1TaskRail = document.querySelector(".g1-task-rail");
+const g1PreviewVideos = [...document.querySelectorAll(".g1-task-card video")];
 const g1FeaturedVideo = document.querySelector("#g1-featured-video");
 const g1FeaturedKicker = document.querySelector("#g1-featured-kicker");
 const g1FeaturedTitle = document.querySelector("#g1-featured-title");
@@ -15,6 +16,10 @@ const finePointer = window.matchMedia("(pointer: fine)");
 let lightbox;
 let lightboxImage;
 let pointerAnimationFrame = 0;
+let g1AutoScrollTimer = 0;
+let g1AutoScrollDirection = 1;
+let g1AutoScrollPaused = false;
+let g1AutoScrollResumeAt = 0;
 let targetPointer = {
   x: window.innerWidth * 0.36,
   y: window.innerHeight * 0.24,
@@ -124,10 +129,36 @@ function selectG1Task(button) {
 
 function scrollG1Tasks(direction) {
   if (!g1TaskRail) return;
+  g1AutoScrollDirection = direction;
+  g1AutoScrollResumeAt = window.performance.now() + 2600;
   g1TaskRail.scrollBy({
     left: direction * Math.max(g1TaskRail.clientWidth * 0.72, 280),
     behavior: reducedMotion.matches ? "auto" : "smooth",
   });
+}
+
+function autoScrollG1Tasks() {
+  const timestamp = window.performance.now();
+  if (
+    !g1TaskRail ||
+    g1AutoScrollPaused ||
+    timestamp < g1AutoScrollResumeAt ||
+    document.visibilityState !== "visible"
+  ) {
+    return;
+  }
+
+  const maxScroll = g1TaskRail.scrollWidth - g1TaskRail.clientWidth;
+  if (maxScroll <= 1) return;
+
+  g1TaskRail.scrollLeft += g1AutoScrollDirection * 1.1;
+  if (g1TaskRail.scrollLeft >= maxScroll - 0.5) {
+    g1TaskRail.scrollLeft = maxScroll;
+    g1AutoScrollDirection = -1;
+  } else if (g1TaskRail.scrollLeft <= 0.5) {
+    g1TaskRail.scrollLeft = 0;
+    g1AutoScrollDirection = 1;
+  }
 }
 
 if (reducedMotion.matches || !("IntersectionObserver" in window)) {
@@ -171,6 +202,51 @@ for (const button of g1TaskButtons) {
 
 document.querySelector("[data-g1-prev]")?.addEventListener("click", () => scrollG1Tasks(-1));
 document.querySelector("[data-g1-next]")?.addEventListener("click", () => scrollG1Tasks(1));
+
+if (g1TaskRail && !reducedMotion.matches) {
+  g1TaskRail.addEventListener("mouseenter", () => {
+    g1AutoScrollPaused = true;
+  });
+  g1TaskRail.addEventListener("mouseleave", () => {
+    g1AutoScrollPaused = false;
+    g1AutoScrollResumeAt = window.performance.now() + 900;
+  });
+  g1TaskRail.addEventListener("focusin", () => {
+    g1AutoScrollPaused = true;
+  });
+  g1TaskRail.addEventListener("focusout", (event) => {
+    if (g1TaskRail.contains(event.relatedTarget)) return;
+    g1AutoScrollPaused = false;
+    g1AutoScrollResumeAt = window.performance.now() + 900;
+  });
+  g1TaskRail.addEventListener("pointerdown", () => {
+    g1AutoScrollPaused = true;
+  });
+  window.addEventListener("pointerup", () => {
+    g1AutoScrollPaused = false;
+    g1AutoScrollResumeAt = window.performance.now() + 2200;
+  });
+
+  g1AutoScrollTimer = window.setInterval(autoScrollG1Tasks, 30);
+}
+
+if ("IntersectionObserver" in window) {
+  const previewObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play()?.catch(() => {});
+        } else {
+          video.pause();
+        }
+      }
+    },
+    { threshold: 0.2 },
+  );
+
+  for (const video of g1PreviewVideos) previewObserver.observe(video);
+}
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeLightbox();
