@@ -209,6 +209,18 @@ body > :not(.site-backdrop):not(.skip-link):not(.top-link) {
   overflow: visible;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .top-link {
   position: fixed;
   right: 22px;
@@ -417,19 +429,28 @@ p {
 }
 
 .overview-section {
-  padding: 24px 0 86px;
+  padding: 24px 0 92px;
 }
 
-.overview-figure {
-  margin-top: 0;
+.overview-content {
+  max-width: 1120px;
 }
 
-.abstract-layout {
-  margin-top: 58px;
+.wide-figure.overview-figure {
+  width: 100%;
+  margin: 0;
 }
 
-.abstract-layout .section-body {
-  max-width: 70rem;
+.abstract-copy {
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 1.327rem;
+  line-height: 1.85;
+  text-align: left;
+}
+
+.abstract-copy p {
+  margin: 0;
 }
 
 .section {
@@ -1108,6 +1129,12 @@ p {
 
   .section-body {
     font-size: 1.248rem;
+  }
+
+  .abstract-copy {
+    margin-top: 22px;
+    font-size: 1.248rem;
+    line-height: 1.72;
   }
 
   .section {

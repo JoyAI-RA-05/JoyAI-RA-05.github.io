@@ -66,21 +66,19 @@
       </section>
 
       <section class="overview-section" id="abstract">
-        <figure class="wide-figure overview-figure" data-reveal>
-          <img
-            src="assets/joyra05-overview.png"
-            alt="JoyAI-RA 0.5 overview covering heterogeneous data, dual action alignment, the VLWA model, reinforcement learning, generalization, and scaling"
-            width="2667"
-            height="1120"
-            loading="eager"
-          />
-        </figure>
+        <div class="container overview-content">
+          <figure class="wide-figure overview-figure" data-reveal>
+            <img
+              src="assets/joyra05-overview.png"
+              alt="JoyAI-RA 0.5 overview covering heterogeneous data, dual action alignment, the VLWA model, reinforcement learning, generalization, and scaling"
+              width="2667"
+              height="1120"
+              loading="eager"
+            />
+          </figure>
 
-        <div class="container report-layout abstract-layout">
-          <div class="section-title" data-reveal>
-            <h2>Abstract</h2>
-          </div>
-          <div class="section-body" data-reveal>
+          <article class="abstract-copy" data-reveal aria-labelledby="abstract-heading">
+            <h2 class="visually-hidden" id="abstract-heading">Abstract</h2>
             <p>
               Robot data is scarce, so generalist policies need to learn from
               heterogeneous sources, including human egocentric video, simulation,
@@ -107,7 +105,7 @@
               training signal, making human video not merely a weak auxiliary source
               but a primary axis along which manipulation capability can be scaled.
             </p>
-          </div>
+          </article>
         </div>
       </section>
 
