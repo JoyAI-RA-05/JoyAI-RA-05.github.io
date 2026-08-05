@@ -1,5 +1,15 @@
 # Asset provenance
 
+## Brand asset
+
+- `joyai-wordmark.png` is the JoyAI wordmark used by the public JoyAI-RA 0.1
+  project page (`https://joyra.s3.cn-north-1.jdcloud-oss.com/assets/logo.f0f088d3.png`),
+  downloaded on 2026-08-05 and retained at its original dimensions.
+- `joyai-ra-reference-title.png` is the transparent title lockup from the same
+  public project page (`https://joyra.s3.cn-north-1.jdcloud-oss.com/assets/logo2.png`).
+  The 0.5 page uses only its mascot region as a CSS background crop; its 0.1
+  text is never displayed.
+
 ## Paper figures
 
 The paper-derived PNGs below were refreshed on 2026-08-05 from the latest

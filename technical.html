@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/architecture.png" />
-    <link rel="stylesheet" href="technical.css?v=20260805-clean-images" />
+    <link rel="stylesheet" href="technical.css?v=20260805-reference-hero" />
     <script src="technical.js?v=20260805-clean-images" defer></script>
   </head>
   <body class="technical-page">
@@ -38,18 +38,19 @@
     </div>
 
     <header class="site-nav" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="JoyAI-RA 0.5 technical report">
-        <span class="brand-icon">
-          <img src="assets/jd-mascot.png" alt="" width="1392" height="1152" />
-        </span>
-        <span>JoyAI-RA <strong>0.5</strong></span>
+      <a class="brand" href="#top" aria-label="JoyAI homepage">
+        <img
+          class="brand-wordmark"
+          src="assets/joyai-wordmark.png"
+          alt="JoyAI"
+          width="2696"
+          height="986"
+        />
       </a>
-      <nav aria-label="Report sections">
-        <a href="#abstract">Overview</a>
-        <a href="#data">Data</a>
-        <a href="#framework">Framework</a>
-        <a href="#experiments">Experiments</a>
-        <a href="#report">Report</a>
+      <nav aria-label="Site navigation">
+        <a href="https://jdai.jd.com/portal" target="_blank" rel="noreferrer">Homepage</a>
+        <a class="is-active" href="#abstract">Technology</a>
+        <a href="https://zhaopin.jd.com/home" target="_blank" rel="noreferrer">Join JoyAI</a>
       </nav>
     </header>
 
@@ -57,10 +58,26 @@
       <section class="hero" id="top">
         <div class="container hero-container">
           <div class="hero-copy" data-reveal>
-            <h1>JoyAI-RA 0.5</h1>
-            <p class="subtitle">
-              Scaling Robot Manipulation Learning via Dual Action Alignment
-            </p>
+            <h1 class="hero-project-mark" aria-label="JoyAI-RA 0.5">
+              <span class="hero-mascot" aria-hidden="true"></span>
+              <span class="hero-project-name">
+                JoyAI-RA
+                <span class="hero-rainbow" aria-hidden="true"></span>
+              </span>
+              <span class="hero-version">0.5</span>
+            </h1>
+            <p class="subtitle">A Foundation Model for Robotic Autonomy</p>
+            <div class="hero-actions" aria-label="Project resources">
+              <a class="hero-action" href="#report">Tech Report</a>
+              <span class="hero-action is-disabled" aria-disabled="true">Code</span>
+              <a
+                class="hero-action"
+                href="https://robotdata.jdcloud.com/"
+                target="_blank"
+                rel="noreferrer"
+              >Datasets</a>
+              <span class="hero-action is-disabled" aria-disabled="true">ModelScope</span>
+            </div>
           </div>
         </div>
       </section>
