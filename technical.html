@@ -388,7 +388,6 @@
           <div class="result-grid">
             <article class="score-panel" data-reveal>
               <div class="score-summary">
-                <span>FAMILIAR CONDITIONS · Seen average</span>
                 <h3>Seen performance</h3>
                 <strong>92.0</strong>
                 <p>+18.0 points over π<sub>0.5</sub></p>
@@ -408,7 +407,6 @@
 
             <article class="score-panel" data-reveal>
               <div class="score-summary">
-                <span>NOVEL CONDITIONS · Unseen average</span>
                 <h3>Unseen generalization</h3>
                 <strong>75.5</strong>
                 <p>Leading overall generalization score</p>
@@ -447,7 +445,8 @@
               <p>
                 With identical post-training data and settings, adding the frozen
                 world model consistently improves control on the controlled desk
-                benchmark.
+                benchmark. The average score rises by 3.1 points, with gains under
+                both seen and unseen conditions.
               </p>
               <table class="ablation-table">
                 <thead>
@@ -473,10 +472,6 @@
                   </tr>
                 </tbody>
               </table>
-              <p class="ablation-takeaway">
-                The average score rises by 3.1 points, with gains under both seen
-                and unseen conditions.
-              </p>
             </article>
 
             <article class="ablation-card" data-reveal>
@@ -484,7 +479,8 @@
               <p>
                 The comparison isolates latent-action conditioning during
                 world-model pretraining; neither model receives latent actions
-                during downstream policy training or evaluation.
+                during downstream policy training or evaluation. Conditioning
+                improves the seen-task score by 4.8 points.
               </p>
               <table class="ablation-table">
                 <thead>
@@ -507,10 +503,6 @@
                   </tr>
                 </tbody>
               </table>
-              <p class="ablation-takeaway">
-                Latent-action-conditioned pretraining improves the seen-task score
-                by 4.8 points.
-              </p>
             </article>
           </div>
         </div>
@@ -641,10 +633,6 @@
 
         <div class="container">
           <div class="g1-task-heading" data-reveal>
-            <div>
-              <span>8 real-world tasks</span>
-              <p>Real-world manipulation across object organization and multi-stage execution.</p>
-            </div>
             <div class="g1-task-controls" aria-label="Browse demonstration tasks">
               <button type="button" data-g1-prev aria-label="Show previous tasks">←</button>
               <button type="button" data-g1-next aria-label="Show next tasks">→</button>
@@ -654,42 +642,34 @@
           <div class="g1-task-rail" role="list" aria-label="G1 demonstration tasks" data-reveal>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-pen.mp4" poster="assets/demos/g1/store-pen.jpg" aria-label="G1 robot placing a pen into a pen holder" autoplay muted loop playsinline preload="metadata"></video>
-              <span>01</span>
               <strong>Store Pen</strong>
             </article>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-pencil-case.mp4" poster="assets/demos/g1/store-pencil-case.jpg" aria-label="G1 robot storing a pencil case" autoplay muted loop playsinline preload="metadata"></video>
-              <span>02</span>
               <strong>Store Pencil Case</strong>
             </article>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/shelve-books.mp4" poster="assets/demos/g1/shelve-books.jpg" aria-label="G1 robot moving books to a bookshelf" autoplay muted loop playsinline preload="metadata"></video>
-              <span>03</span>
               <strong>Shelve Books</strong>
             </article>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/discard-trash.mp4" poster="assets/demos/g1/discard-trash.jpg" aria-label="G1 robot placing trash into a trash can" autoplay muted loop playsinline preload="metadata"></video>
-              <span>04</span>
               <strong>Discard Trash</strong>
             </article>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-correction-fluid.mp4" poster="assets/demos/g1/store-correction-fluid.jpg" aria-label="G1 robot storing correction fluid" autoplay muted loop playsinline preload="metadata"></video>
-              <span>05</span>
               <strong>Store Correction Fluid</strong>
             </article>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-eraser.mp4" poster="assets/demos/g1/store-eraser.jpg" aria-label="G1 robot storing an eraser" autoplay muted loop playsinline preload="metadata"></video>
-              <span>06</span>
               <strong>Store Eraser</strong>
             </article>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-stapler.mp4" poster="assets/demos/g1/store-stapler.jpg" aria-label="G1 robot storing a stapler" autoplay muted loop playsinline preload="metadata"></video>
-              <span>07</span>
               <strong>Store Stapler</strong>
             </article>
             <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-charger.mp4" poster="assets/demos/g1/store-charger.jpg" aria-label="G1 robot storing a charger" autoplay muted loop playsinline preload="metadata"></video>
-              <span>08</span>
               <strong>Store Charger</strong>
             </article>
           </div>
@@ -698,8 +678,7 @@
 
       <section class="section report-section" id="report">
         <div class="container citation-card" data-reveal>
-          <span>Citation</span>
-          <h2>Citation placeholder</h2>
+          <h2>Citation</h2>
           <p>BibTeX and publication details will be added here.</p>
         </div>
       </section>
