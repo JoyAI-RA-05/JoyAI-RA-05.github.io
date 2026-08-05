@@ -1803,6 +1803,199 @@ body,
   font-size: 0.778em;
 }
 
+/* V2 uses the complete title lockup exported from the supplied PDF. */
+.technical-page.technical-v2-page .hero h1.hero-title-lockup {
+  display: block;
+  width: min(100%, clamp(280px, 56vw, 560px));
+  margin: 0 auto;
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: 0;
+  text-shadow: none;
+  white-space: normal;
+}
+
+.technical-page.technical-v2-page .hero-title-lockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.technical-page.technical-v2-page {
+  --type-display: 3rem;
+  --type-heading: 2rem;
+  --type-body: 1rem;
+  --body-leading: 1.7;
+  --bg: #090911;
+  --bg-deep: #05060d;
+  --surface: rgba(13, 17, 29, 0.86);
+  --surface-strong: #0d111d;
+  --surface-soft: rgba(15, 20, 34, 0.82);
+  --text: #eef3ff;
+  --muted: #96a2bb;
+  --muted-soft: #7f8aa3;
+  --line: rgba(131, 160, 219, 0.18);
+  --line-strong: rgba(146, 181, 255, 0.26);
+  --cyan: #08c8f7;
+  --violet: #5a48ff;
+  --shadow: 0 22px 64px rgba(0, 0, 0, 0.38);
+  color-scheme: dark;
+  background: #090911;
+  font-family:
+    "Alibaba PuHuiTi 3.0",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans SC",
+    sans-serif;
+}
+
+.technical-page.technical-v2-page .site-backdrop,
+.technical-page.technical-v2-page .site-backdrop-base {
+  background: linear-gradient(180deg, #0b0a10 0%, #090911 44%, #06070d 100%);
+}
+
+.technical-page.technical-v2-page .site-backdrop-glow,
+.technical-page.technical-v2-page .site-backdrop-vignette,
+.technical-page.technical-v2-page .site-backdrop-grid,
+.technical-page.technical-v2-page .site-backdrop-cross {
+  display: none;
+}
+
+.technical-page.technical-v2-page .hero-media-shell::after,
+.technical-page.technical-v2-page .wide-figure::after,
+.technical-page.technical-v2-page .paper-figure::after {
+  display: none;
+}
+
+.technical-page.technical-v2-page .site-nav {
+  border-bottom-color: rgba(107, 138, 206, 0.14);
+  background: rgba(9, 9, 17, 0.94);
+}
+
+.technical-page.technical-v2-page .site-nav nav {
+  color: rgba(201, 212, 235, 0.64);
+  font-size: 0.98rem;
+  font-weight: 420;
+}
+
+.technical-page.technical-v2-page .site-nav nav a.is-active,
+.technical-page.technical-v2-page .site-nav nav a:hover,
+.technical-page.technical-v2-page .site-nav nav a:focus-visible {
+  color: var(--text);
+}
+
+.technical-page.technical-v2-page .hero .subtitle {
+  color: #96a2bb;
+}
+
+.technical-page.technical-v2-page .top-link {
+  color: var(--text);
+  background: rgba(13, 17, 29, 0.94);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+}
+
+.technical-page.technical-v2-page .data-table,
+.technical-page.technical-v2-page .ablation-card,
+.technical-page.technical-v2-page .score-panel,
+.technical-page.technical-v2-page .g1-task-card {
+  background: rgba(13, 17, 29, 0.88);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+  backdrop-filter: none;
+}
+
+.technical-page.technical-v2-page .score-list i {
+  background: rgba(131, 160, 219, 0.16);
+}
+
+.technical-page.technical-v2-page .hero-action {
+  color: var(--text);
+  border-color: rgba(120, 155, 235, 0.24);
+  background: rgba(13, 17, 29, 0.82);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.technical-page.technical-v2-page a.hero-action:hover,
+.technical-page.technical-v2-page a.hero-action:focus-visible {
+  color: var(--text);
+}
+
+.technical-page.technical-v2-page .hero-action.is-disabled {
+  color: rgba(150, 162, 187, 0.54);
+}
+
+.technical-page.technical-v2-page .result-chart-figure,
+.technical-page.technical-v2-page .paper-figure.result-chart-figure,
+.technical-page.technical-v2-page .wide-figure.result-chart-figure {
+  background: #ffffff;
+  border-color: rgba(120, 155, 235, 0.2);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
+}
+
+.technical-page.technical-v2-page .paper-figure.transparent-result-figure,
+.technical-page.technical-v2-page .wide-figure.transparent-result-figure {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.technical-page.technical-v2-page .site-footer img {
+  filter: none;
+}
+
+.technical-page.technical-v2-page .section-summary {
+  margin-top: 16px;
+}
+
+.technical-page.technical-v2-page .scaling-layout > .paper-figure {
+  border-radius: 0;
+}
+
+.technical-page.technical-v2-page .data-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-radius: 8px;
+}
+
+.technical-page.technical-v2-page .data-metrics > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  padding: 22px 26px;
+  border-top: 0;
+  border-left: 1px solid var(--line);
+}
+
+.technical-page.technical-v2-page .data-metrics > div:first-child {
+  border-left: 0;
+}
+
+.technical-page.technical-v2-page .data-metrics strong {
+  color: var(--red-bright);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  line-height: 1;
+}
+
+.technical-page.technical-v2-page .data-metrics span {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 520;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .technical-page.technical-v2-page .data-metrics > div {
+    align-items: center;
+    padding: 18px 8px;
+    text-align: center;
+  }
+
+}
+
 .technical-page .hero .subtitle {
   width: auto;
   max-width: 48rem;
