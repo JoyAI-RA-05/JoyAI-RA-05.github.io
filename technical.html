@@ -276,44 +276,6 @@
         </div>
       </section>
 
-      <section class="section" id="method">
-        <div class="container report-layout">
-          <div class="section-title" data-reveal>
-            <h3>Dual Action Alignment</h3>
-          </div>
-          <div class="section-body" data-reveal>
-            <p>
-              Semantics tell the robot what, while dynamics tell it how. Because
-              human video scales without executable actions
-              and embodied trajectories carry incompatible action spaces, JoyAI-RA
-              0.5 routes each data source to the supervision it can reliably
-              provide: latent dynamics or grounded physical actions.
-            </p>
-          </div>
-        </div>
-
-        <div class="container">
-          <div class="method-grid">
-            <article data-reveal>
-              <span>Implicit alignment</span>
-              <p>
-                LAC-WM pretraining infers latent actions from visual transitions,
-                turning action-free video into supervision for transferable
-                physical dynamics.
-              </p>
-            </article>
-            <article data-reveal>
-              <span>Explicit alignment</span>
-              <p>
-                Cross-embodiment VLWA pretraining maps reliable human and robot
-                trajectories into a shared 130-D action space while the frozen
-                LAC-WM supplies dynamics features.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section chapter-section" id="experiments">
         <div class="container">
           <div class="chapter-heading" data-reveal>
