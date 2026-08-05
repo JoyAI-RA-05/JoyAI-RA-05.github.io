@@ -1777,13 +1777,17 @@ body,
 }
 
 .technical-page .hero-project-name {
+  display: inline-block;
+}
+
+.technical-page .hero-letter-o {
   position: relative;
   display: inline-block;
 }
 
 .technical-page .hero-rainbow {
   position: absolute;
-  left: 16.1%;
+  left: 50%;
   bottom: clamp(-17px, -1.15vw, -11px);
   width: clamp(36px, 3.5vw, 50px);
   aspect-ratio: 2.96 / 1;
@@ -1791,6 +1795,7 @@ body,
   background-repeat: no-repeat;
   background-position: 23.2% 100%;
   background-size: 506% auto;
+  transform: translateX(-50%);
 }
 
 .technical-page .hero-version {
