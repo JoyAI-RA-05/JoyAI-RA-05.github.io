@@ -46,6 +46,7 @@
       </a>
       <nav aria-label="Report sections">
         <a href="#framework">Framework</a>
+        <a href="#data-pipeline">Data</a>
         <a href="#method">Method</a>
         <a href="#evaluation">Evaluation</a>
         <a href="#scaling">Scaling</a>
@@ -231,6 +232,51 @@
         </div>
       </section>
 
+      <section class="section" id="data-pipeline">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>Closed-Loop Data Pipeline</h2>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              Before training, heterogeneous sources are unified through a
+              closed-loop annotation and curation pipeline. Raw egocentric videos
+              are calibrated and undistorted, reconstructed into hand motion,
+              mapped into a canonical hand representation, and segmented into
+              language-annotated subtasks. Human and robot episodes then undergo
+              shared validity checks and group-relative quality and diversity
+              filtering, while representation analysis identifies underrepresented
+              capabilities and guides the next round of data acquisition.
+            </p>
+          </div>
+        </div>
+
+        <div class="container">
+          <figure class="paper-figure evidence-figure evidence-figure-wide" data-reveal>
+            <img
+              src="assets/data-pipeline.png"
+              alt="Closed-loop JoyAI-RA data preprocessing and curation pipeline"
+              width="3600"
+              height="1326"
+              loading="lazy"
+            />
+            <button
+              class="image-action"
+              type="button"
+              data-lightbox-src="assets/data-pipeline.png"
+              data-lightbox-alt="Closed-loop JoyAI-RA data preprocessing and curation pipeline"
+            >
+              View full image
+            </button>
+            <figcaption>
+              Closed-loop data preprocessing and curation · automatic ego-video
+              annotation, unified quality and diversity filtering, and
+              representation-guided data acquisition.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="section" id="method">
         <div class="container report-layout">
           <div class="section-title" data-reveal>
@@ -281,28 +327,6 @@
               </p>
             </article>
           </div>
-
-          <figure class="paper-figure evidence-figure evidence-figure-wide" data-reveal>
-            <img
-              src="assets/data-pipeline.png"
-              alt="JoyAI-RA data preprocessing and dual alignment pipeline"
-              width="3600"
-              height="1326"
-              loading="lazy"
-            />
-            <button
-              class="image-action"
-              type="button"
-              data-lightbox-src="assets/data-pipeline.png"
-              data-lightbox-alt="JoyAI-RA data preprocessing and dual alignment pipeline"
-            >
-              View full image
-            </button>
-            <figcaption>
-              Data preprocessing and routing · implicit latent-action alignment
-              and explicit canonical-action alignment.
-            </figcaption>
-          </figure>
         </div>
       </section>
 
