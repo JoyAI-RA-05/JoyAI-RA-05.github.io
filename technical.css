@@ -857,6 +857,28 @@ p {
   margin-top: 28px;
 }
 
+.result-chart-figure,
+.paper-figure.result-chart-figure,
+.wide-figure.result-chart-figure {
+  background: #0d1220;
+  border-color: rgba(112, 140, 210, 0.24);
+}
+
+.result-chart-figure::after {
+  display: none;
+}
+
+.result-chart-figure img {
+  display: block;
+  background: #0d1220;
+}
+
+.result-chart-figure figcaption {
+  color: var(--muted);
+  background: rgba(13, 18, 32, 0.98);
+  border-top-color: rgba(112, 140, 210, 0.18);
+}
+
 .scaling-layout {
   display: grid;
   grid-template-columns: minmax(520px, 0.95fr) minmax(480px, 0.7fr);
