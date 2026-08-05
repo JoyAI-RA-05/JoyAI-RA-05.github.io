@@ -24,6 +24,12 @@ downloaded Overleaf archive, `JoyAI_RA_0_5 (2).zip` (SHA-256
 Each PDF was rasterized as a single-page PNG at 144 DPI without changing its
 content or aspect ratio.
 
+For the web presentation, two rasterized figures were cropped on 2026-08-05 to
+remove only their surrounding white page margins. `joyra05-overview.png` uses
+the source rectangle `x=1, y=113, width=1871, height=792`, and
+`experiment-setting.png` uses `x=81, y=86, width=1741, height=837`. Neither
+figure was resized, reconstructed, or otherwise altered.
+
 | Web asset | Overleaf source | Source SHA-256 |
 | --- | --- | --- |
 | `joyra05-overview.png` | `images/JoyRA05_teaser_final.pdf` | `509ea47c4bf8f67eaa346cc350c4651a6554f39e4f50a5bd12237289bb302043` |
