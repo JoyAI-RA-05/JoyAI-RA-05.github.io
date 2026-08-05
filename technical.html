@@ -484,37 +484,10 @@
         </div>
 
         <div class="container">
-          <article class="g1-showcase" data-reveal>
-            <div class="g1-player-shell">
-              <video
-                id="g1-featured-video"
-                src="assets/demos/g1/shelve-books.mp4"
-                poster="assets/demos/g1/shelve-books.jpg"
-                controls
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-              ></video>
-              <span class="g1-player-label">AgiBot G1 · Real World</span>
-            </div>
-            <div class="g1-showcase-copy" aria-live="polite">
-              <div>
-                <span id="g1-featured-kicker">Multi-stage manipulation</span>
-                <h3 id="g1-featured-title">Shelve Books</h3>
-              </div>
-              <p id="g1-featured-description">
-                Push the books to the desk edge, grasp them with the right arm,
-                and place them on the bookshelf beside the storage box.
-              </p>
-            </div>
-          </article>
-
           <div class="g1-task-heading" data-reveal>
             <div>
               <span>8 real-world tasks</span>
-              <p>Select a task to inspect the complete execution.</p>
+              <p>Real-world manipulation across object organization and multi-stage execution.</p>
             </div>
             <div class="g1-task-controls" aria-label="Browse demonstration tasks">
               <button type="button" data-g1-prev aria-label="Show previous tasks">←</button>
@@ -522,135 +495,47 @@
             </div>
           </div>
 
-          <div class="g1-task-rail" role="tablist" aria-label="G1 demonstration tasks" data-reveal>
-            <button
-              class="g1-task-card"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              data-g1-task
-              data-video="assets/demos/g1/store-pen.mp4"
-              data-poster="assets/demos/g1/store-pen.jpg"
-              data-title="Store Pen"
-              data-kicker="Object organization"
-              data-description="Pick up the pen with the left arm and place it into the pen holder at the top of the storage box."
-            >
+          <div class="g1-task-rail" role="list" aria-label="G1 demonstration tasks" data-reveal>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-pen.mp4" poster="assets/demos/g1/store-pen.jpg" aria-label="G1 robot placing a pen into a pen holder" autoplay muted loop playsinline preload="metadata"></video>
               <span>01</span>
               <strong>Store Pen</strong>
-            </button>
-            <button
-              class="g1-task-card"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              data-g1-task
-              data-video="assets/demos/g1/store-pencil-case.mp4"
-              data-poster="assets/demos/g1/store-pencil-case.jpg"
-              data-title="Store Pencil Case"
-              data-kicker="Object organization"
-              data-description="Pick up the pencil case with the left arm and place it on the second layer of the storage box."
-            >
+            </article>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-pencil-case.mp4" poster="assets/demos/g1/store-pencil-case.jpg" aria-label="G1 robot storing a pencil case" autoplay muted loop playsinline preload="metadata"></video>
               <span>02</span>
               <strong>Store Pencil Case</strong>
-            </button>
-            <button
-              class="g1-task-card is-active"
-              type="button"
-              role="tab"
-              aria-selected="true"
-              data-g1-task
-              data-video="assets/demos/g1/shelve-books.mp4"
-              data-poster="assets/demos/g1/shelve-books.jpg"
-              data-title="Shelve Books"
-              data-kicker="Multi-stage manipulation"
-              data-description="Push the books to the desk edge, grasp them with the right arm, and place them on the bookshelf beside the storage box."
-            >
+            </article>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/shelve-books.mp4" poster="assets/demos/g1/shelve-books.jpg" aria-label="G1 robot moving books to a bookshelf" autoplay muted loop playsinline preload="metadata"></video>
               <span>03</span>
               <strong>Shelve Books</strong>
-            </button>
-            <button
-              class="g1-task-card"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              data-g1-task
-              data-video="assets/demos/g1/discard-trash.mp4"
-              data-poster="assets/demos/g1/discard-trash.jpg"
-              data-title="Discard Trash"
-              data-kicker="Object disposal"
-              data-description="Pick up the trash with the right arm and place it into the trash can."
-            >
+            </article>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/discard-trash.mp4" poster="assets/demos/g1/discard-trash.jpg" aria-label="G1 robot placing trash into a trash can" autoplay muted loop playsinline preload="metadata"></video>
               <span>04</span>
               <strong>Discard Trash</strong>
-            </button>
-            <button
-              class="g1-task-card"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              data-g1-task
-              data-video="assets/demos/g1/store-correction-fluid.mp4"
-              data-poster="assets/demos/g1/store-correction-fluid.jpg"
-              data-title="Store Correction Fluid"
-              data-kicker="Object organization"
-              data-description="Pick up the correction fluid with the left arm and place it on the third layer of the storage box."
-            >
+            </article>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-correction-fluid.mp4" poster="assets/demos/g1/store-correction-fluid.jpg" aria-label="G1 robot storing correction fluid" autoplay muted loop playsinline preload="metadata"></video>
               <span>05</span>
               <strong>Store Correction Fluid</strong>
-            </button>
-            <button
-              class="g1-task-card"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              data-g1-task
-              data-video="assets/demos/g1/store-eraser.mp4"
-              data-poster="assets/demos/g1/store-eraser.jpg"
-              data-title="Store Eraser"
-              data-kicker="Object organization"
-              data-description="Pick up the eraser with the right arm and place it on the third layer of the storage box."
-            >
+            </article>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-eraser.mp4" poster="assets/demos/g1/store-eraser.jpg" aria-label="G1 robot storing an eraser" autoplay muted loop playsinline preload="metadata"></video>
               <span>06</span>
               <strong>Store Eraser</strong>
-            </button>
-            <button
-              class="g1-task-card"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              data-g1-task
-              data-video="assets/demos/g1/store-stapler.mp4"
-              data-poster="assets/demos/g1/store-stapler.jpg"
-              data-title="Store Stapler"
-              data-kicker="Object organization"
-              data-description="Pick up the stapler with the right arm and place it on the second layer of the storage box."
-            >
+            </article>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-stapler.mp4" poster="assets/demos/g1/store-stapler.jpg" aria-label="G1 robot storing a stapler" autoplay muted loop playsinline preload="metadata"></video>
               <span>07</span>
               <strong>Store Stapler</strong>
-            </button>
-            <button
-              class="g1-task-card"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              data-g1-task
-              data-video="assets/demos/g1/store-charger.mp4"
-              data-poster="assets/demos/g1/store-charger.jpg"
-              data-title="Store Charger"
-              data-kicker="Object organization"
-              data-description="Pick up the charger with the right arm and place it on the third layer of the storage box."
-            >
+            </article>
+            <article class="g1-task-card" role="listitem">
               <video src="assets/demos/g1/store-charger.mp4" poster="assets/demos/g1/store-charger.jpg" aria-label="G1 robot storing a charger" autoplay muted loop playsinline preload="metadata"></video>
               <span>08</span>
               <strong>Store Charger</strong>
-            </button>
+            </article>
           </div>
         </div>
       </section>

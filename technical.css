@@ -525,7 +525,6 @@ p {
 .method-grid article,
 .score-panel,
 .scaling-notes article,
-.g1-showcase,
 .g1-task-card,
 .citation-card {
   border: 1px solid var(--line);
@@ -588,7 +587,6 @@ p {
 .method-grid article,
 .score-panel,
 .scaling-notes article,
-.g1-showcase,
 .g1-task-card,
 .citation-card {
   border-radius: 24px;
@@ -802,49 +800,6 @@ p {
   font-size: clamp(1.188rem, 1.12vw, 1.367rem);
 }
 
-.g1-showcase {
-  overflow: hidden;
-  margin-top: 44px;
-}
-
-.g1-player-shell {
-  position: relative;
-  background: #020306;
-}
-
-.g1-player-shell video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-}
-
-.g1-player-label {
-  position: absolute;
-  top: 22px;
-  left: 22px;
-  z-index: 2;
-  padding: 9px 13px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  color: #fff;
-  background: rgba(5, 8, 15, 0.7);
-  font-size: 0.94rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  backdrop-filter: blur(12px);
-}
-
-.g1-showcase-copy {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  gap: 18px 48px;
-  align-items: center;
-  padding: clamp(26px, 3.4vw, 44px);
-}
-
-.g1-showcase-copy > div:first-child > span,
 .g1-task-heading > div > span {
   display: block;
   color: var(--cyan);
@@ -852,20 +807,6 @@ p {
   font-weight: 820;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.g1-showcase-copy h3 {
-  margin: 10px 0 0;
-  color: var(--text);
-  font-size: clamp(1.9rem, 3vw, 3.1rem);
-  line-height: 1.04;
-}
-
-.g1-showcase-copy > p {
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(1.2rem, 1.45vw, 1.43rem);
-  line-height: 1.72;
 }
 
 .g1-task-heading {
@@ -925,24 +866,7 @@ p {
   overflow: hidden;
   padding: 0 0 22px;
   color: inherit;
-  font: inherit;
   text-align: left;
-  cursor: pointer;
-  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-}
-
-.g1-task-card:hover,
-.g1-task-card:focus-visible {
-  border-color: rgba(42, 210, 255, 0.5);
-  transform: translateY(-3px);
-}
-
-.g1-task-card.is-active {
-  border-color: rgba(42, 210, 255, 0.72);
-  box-shadow:
-    0 18px 54px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(42, 210, 255, 0.2),
-    inset 0 3px 0 var(--red-bright);
 }
 
 .g1-task-card video {
@@ -1130,10 +1054,6 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .g1-showcase-copy {
-    grid-template-columns: 1fr;
-  }
-
   .method-grid article {
     min-height: 0;
   }
@@ -1226,22 +1146,6 @@ p {
 
   .score-summary strong {
     font-size: 3rem;
-  }
-
-  .g1-player-label {
-    top: 12px;
-    left: 12px;
-    padding: 7px 10px;
-    font-size: 0.78rem;
-  }
-
-  .g1-showcase-copy {
-    gap: 18px;
-    padding: 24px 20px;
-  }
-
-  .g1-showcase-copy h3 {
-    font-size: 2rem;
   }
 
   .g1-task-heading {
