@@ -199,11 +199,6 @@
             >
               View full image
             </button>
-            <figcaption>
-              Closed-loop data preprocessing and curation · automatic ego-video
-              annotation, unified quality and diversity filtering, and
-              representation-guided data acquisition.
-            </figcaption>
           </figure>
         </div>
       </section>
@@ -240,10 +235,6 @@
             height="1462"
             loading="eager"
           />
-          <figcaption>
-            Architecture overview · latent dynamics and canonical physical actions
-            provide complementary alignment.
-          </figcaption>
         </figure>
 
         <div class="container overview-cards">
@@ -357,7 +348,9 @@
               across office, tea room, kitchen, dining table, pharmacy, and
               dressing table environments. Scores are reported on a 100-point
               subtask-completion scale and compared with π<sub>0.5</sub> under
-              the same protocol.
+              the same protocol. The full model is also compared with variants
+              that remove either action-alignment channel under seen and unseen
+              conditions.
             </p>
           </div>
         </div>
@@ -422,10 +415,6 @@
           </div>
 
           <figure class="paper-figure evidence-figure evidence-figure-wide result-chart-figure" data-reveal>
-            <figcaption>
-              <strong>Real-World Performance and Dual-Alignment Ablation.</strong>
-              <span>Task scores on seen tasks and unseen generalization.</span>
-            </figcaption>
             <img
               src="assets/result-main-alignment.svg"
               alt="Redrawn real-world seen and unseen task scores comparing JoyAI-RA 0.5 with the baseline and dual-alignment ablations"
@@ -515,6 +504,8 @@
               controlled studies, more egocentric video expands action diversity,
               improves learned dynamics, and yields stronger policy
               initialization with no observed saturation at the largest scale.
+              As the EgoLive corpus grows, its action-centric representations
+              cover broader and lower-density regions of the embedding space.
             </p>
           </div>
         </div>
@@ -528,10 +519,6 @@
               height="2034"
               loading="lazy"
             />
-            <figcaption>
-              Action-centric representations cover broader and lower-density
-              regions as the EgoLive corpus grows.
-            </figcaption>
           </figure>
           <div class="scaling-notes">
             <article data-reveal>
@@ -554,10 +541,6 @@
         </div>
 
         <figure class="wide-figure evidence-figure scaling-evidence-figure result-chart-figure" data-reveal>
-          <figcaption>
-            <strong>Human Video Scaling.</strong>
-            <span>Seen- and unseen-task performance under increasing human-video fractions.</span>
-          </figcaption>
           <img
             src="assets/result-human-scaling.svg"
             alt="Redrawn LAC-WM and policy pretraining results across increasing EgoLive data scales"
@@ -599,10 +582,6 @@
         </figure>
 
         <figure class="wide-figure evidence-figure rl-results-figure result-chart-figure" data-reveal>
-          <figcaption>
-            <strong>Inner–Outer Loop Reinforcement Learning.</strong>
-            <span>Success rates under unseen object-position shifts.</span>
-          </figcaption>
           <img
             src="assets/result-rl.svg"
             alt="Redrawn success-rate comparison of the original VLWA policy, inner-loop RL, outer-loop RL, and inner-outer loop RL"
