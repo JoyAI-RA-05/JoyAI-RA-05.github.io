@@ -3,638 +3,724 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#160909" />
+    <meta name="theme-color" content="#090911" />
     <meta
       name="description"
-      content="A Vision-Language-World-Action framework from Joy Future Academy, JD, trained across 72K+ hours of heterogeneous human, simulation, and real-robot experience."
+      content="JoyAI-RA 0.5 technical report page for scaling robot manipulation learning via dual action alignment."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JoyAI-RA 0.5" />
     <meta
       property="og:title"
-      content="JoyAI-RA 0.5 — Scaling Robot Manipulation via Dual Action Alignment"
+      content="JoyAI-RA 0.5 — Technical Report"
     />
     <meta
       property="og:description"
-      content="Scaling robot manipulation learning across 72K+ hours of heterogeneous experience through dual action alignment."
+      content="A technical-report style page for JoyAI-RA 0.5: Vision-Language-World-Action robot manipulation learning via dual action alignment."
     />
-    <title>JoyAI-RA 0.5 — Scaling Robot Manipulation via Dual Action Alignment</title>
+    <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
-    <link rel="preload" as="image" href="assets/demo-poster.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+    <link rel="preload" as="image" href="assets/architecture.png" />
+    <link rel="stylesheet" href="technical.css" />
+    <script src="technical.js" defer></script>
   </head>
   <body>
-    <a class="top-button" href="#top" aria-label="Back to top">↑</a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="top-link" href="#top" aria-label="Back to top">↑</a>
+    <div class="site-backdrop" aria-hidden="true">
+      <div class="site-backdrop-base"></div>
+      <div class="site-backdrop-grid"></div>
+      <div class="site-backdrop-grid site-backdrop-grid-highlight"></div>
+      <div class="site-backdrop-glow"></div>
+      <div class="site-backdrop-cross site-backdrop-cross-x"></div>
+      <div class="site-backdrop-cross site-backdrop-cross-y"></div>
+      <div class="site-backdrop-vignette"></div>
+    </div>
 
-    <header class="site-header" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="JoyAI-RA 0.5 home">
-        <span class="brand-mark">
+    <header class="site-nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="JoyAI-RA 0.5 technical report">
+        <span class="brand-icon">
           <img src="assets/jd-mascot.png" alt="" width="1392" height="1152" />
         </span>
-        <span>JoyAI-RA <b>0.5</b></span>
+        <span>JoyAI-RA <strong>0.5</strong></span>
       </a>
-      <nav class="desktop-nav" aria-label="Project sections">
-        <a href="#overview">Overview</a>
+      <nav aria-label="Report sections">
+        <a href="#framework">Framework</a>
+        <a href="#data-pipeline">Data</a>
         <a href="#method">Method</a>
-        <a href="#results">Results</a>
-        <a href="#demos">Videos</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#scaling">Scaling</a>
         <a href="#report">Report</a>
       </nav>
-      <a
-        class="header-cta"
-        href="https://jdai.jd.com/portal"
-        target="_blank"
-        rel="noreferrer"
-      >
-        JoyAI <span aria-hidden="true">↗</span>
-      </a>
     </header>
 
-    <main>
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
-        <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
-
-        <div class="hero-gallery" aria-hidden="true">
-          <figure class="gallery-card gallery-card-one">
-            <img src="assets/architecture.png" alt="" width="3064" height="1462" />
-          </figure>
-          <figure class="gallery-card gallery-card-two">
-            <img
-              src="assets/embedding-visualization.png"
-              alt=""
-              width="2399"
-              height="2034"
-            />
-          </figure>
-          <figure class="gallery-card gallery-card-three">
-            <img
-              src="assets/experiment-setting.png"
-              alt=""
-              width="3254"
-              height="1830"
-            />
-          </figure>
-        </div>
-
-        <div class="hero-inner">
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="container hero-container">
           <div class="hero-copy" data-reveal>
-            <div class="hero-kicker">
-              <span class="pulse-dot"></span>
-              Vision · Language · World · Action
-            </div>
-            <h1 id="hero-title">JoyAI-RA <span>0.5</span></h1>
-            <p class="hero-subtitle">
-              Scaling Robot Manipulation Learning<br />
-              via <em>Dual Action Alignment</em>
+            <h1>JoyAI-RA 0.5</h1>
+            <p class="subtitle">
+              Scaling Robot Manipulation Learning via Dual Action Alignment
             </p>
-            <p class="hero-affiliation">Joy Future Academy, JD</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#method">
-                Explore the method <span aria-hidden="true">↓</span>
-              </a>
-              <a class="button button-ghost" href="#demos">Watch demonstrations</a>
-            </div>
-          </div>
-
-          <div class="hero-stage" data-reveal>
-            <video
-              class="hero-video"
-              src="assets/demo-placeholder.mp4"
-              poster="assets/demo-poster.png"
-              width="1280"
-              height="800"
-              muted
-              loop
-              autoplay
-              playsinline
-              preload="metadata"
-              data-auto-video
-              aria-label="JoyAI-RA robot manipulation demonstration placeholder"
-            ></video>
-            <div class="stage-vignette" aria-hidden="true"></div>
-            <div class="stage-label">
-              <span>REAL-WORLD MANIPULATION</span>
-              <strong>Correction fluid pick-up</strong>
-            </div>
-            <div class="stage-status">
-              <span class="status-dot"></span>
-              AgiBot G1
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-metrics" data-reveal>
-          <div>
-            <strong>72K+</strong>
-            <span>hours of heterogeneous experience</span>
-          </div>
-          <div>
-            <strong>130-D</strong>
-            <span>canonical action representation</span>
-          </div>
-          <div>
-            <strong>4</strong>
-            <span>progressive training stages</span>
-          </div>
-          <a href="#overview" aria-label="Continue to overview">
-            Scroll to explore <span aria-hidden="true">↓</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="section section-overview" id="overview">
-        <div class="container">
-          <div class="section-heading centered" data-reveal>
-            <span class="eyebrow">01 / Overview</span>
-            <h2>Heterogeneous experience, aligned twice.</h2>
-            <p>
-              JoyAI-RA 0.5 is a generalist Vision-Language-World-Action framework
-              that turns action-free video and incompatible trajectories into
-              complementary supervision for executable robot control.
-            </p>
-          </div>
-
-          <div class="data-ribbon" data-reveal>
-            <article>
-              <span class="data-icon">H</span>
-              <div>
-                <strong>53K+ hours</strong>
-                <p>Human egocentric video</p>
-              </div>
-            </article>
-            <article>
-              <span class="data-icon">S</span>
-              <div>
-                <strong>11K+ hours</strong>
-                <p>Simulation trajectories</p>
-              </div>
-            </article>
-            <article>
-              <span class="data-icon">R</span>
-              <div>
-                <strong>8K+ hours</strong>
-                <p>Real-robot demonstrations</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="overview-layout">
-            <aside class="overview-index" data-reveal>
-              <span>WHY IT MATTERS</span>
-              <p>
-                Robot data is expensive. Human video scales, but it lacks executable
-                actions. Simulation and robot trajectories carry actions, but their
-                embodiments disagree.
-              </p>
-              <a href="#method">See how alignment connects them →</a>
-            </aside>
-
-            <div class="contribution-grid">
-              <article class="contribution-card" data-reveal>
-                <span>A</span>
-                <h3>Dual action alignment</h3>
-                <p>
-                  Two complementary channels route each data source to the
-                  supervision it can reliably provide—latent dynamics or grounded
-                  physical actions.
-                </p>
-              </article>
-              <article class="contribution-card" data-reveal>
-                <span>B</span>
-                <h3>Vision–Language–World–Action</h3>
-                <p>
-                  A VLM contributes task semantics, a frozen LAC-WM contributes
-                  physical-dynamics priors, and an action expert converts both into
-                  control.
-                </p>
-              </article>
-              <article class="contribution-card" data-reveal>
-                <span>C</span>
-                <h3>Canonical action space</h3>
-                <p>
-                  A unified 130-D representation gives heterogeneous embodiments
-                  shared semantic slots without forcing incompatible controls to
-                  mean the same thing.
-                </p>
-              </article>
-              <article class="contribution-card" data-reveal>
-                <span>D</span>
-                <h3>Human video as a scaling axis</h3>
-                <p>
-                  More egocentric video consistently improves dynamics learning and
-                  policy initialization, with no observed saturation at the largest
-                  tested scale.
-                </p>
-              </article>
-            </div>
           </div>
         </div>
       </section>
 
-      <section class="section section-method" id="method">
-        <div class="container">
-          <div class="section-heading split" data-reveal>
-            <div>
-              <span class="eyebrow">02 / Method</span>
-              <h2>Semantics tell the robot <em>what</em>. Dynamics tell it <em>how</em>.</h2>
-            </div>
-            <p>
-              The VLM supplies instruction-grounded understanding. The frozen
-              LAC-WM supplies learned physical-dynamics features. A flow-matching
-              action expert fuses both streams into continuous action chunks.
-            </p>
-          </div>
-
-          <figure class="paper-figure architecture-figure" data-reveal>
+      <section class="overview-section" id="abstract">
+        <div class="container overview-content">
+          <figure class="wide-figure overview-figure" data-reveal>
             <img
-              src="assets/architecture.png"
-              alt="JoyAI-RA architecture showing heterogeneous data, latent-action learning, a unified 130-dimensional action representation, LAC-WM, VLM, and action expert"
-              width="3064"
-              height="1462"
-              loading="lazy"
+              src="assets/joyra05-overview.png"
+              alt="JoyAI-RA 0.5 overview covering heterogeneous data, dual action alignment, the VLWA model, reinforcement learning, generalization, and scaling"
+              width="2667"
+              height="1120"
+              loading="eager"
             />
-            <figcaption>
-              Architecture overview · latent dynamics and canonical physical actions
-              provide complementary alignment.
-            </figcaption>
           </figure>
 
-          <div class="stage-grid">
-            <article class="stage-card" data-reveal>
-              <div class="stage-card-top"><span>01</span><small>Implicit alignment</small></div>
-              <h3>LAC-WM pretraining</h3>
-              <p>
-                Latent actions inferred from visual transitions turn action-free
-                video into supervision for learning transferable physical dynamics.
-              </p>
-            </article>
-            <article class="stage-card" data-reveal>
-              <div class="stage-card-top"><span>02</span><small>Explicit alignment</small></div>
-              <h3>Cross-embodiment VLWA pretraining</h3>
-              <p>
-                Reliable human and robot trajectories are mapped into a shared
-                130-D action space while the frozen LAC-WM supplies dynamics features.
-              </p>
-            </article>
-            <article class="stage-card" data-reveal>
-              <div class="stage-card-top"><span>03</span><small>Physical grounding</small></div>
-              <h3>Target-robot post-training</h3>
-              <p>
-                High-quality demonstrations adapt the VLM and action expert to the
-                target robot, its observations, kinematics, and control interface.
-              </p>
-            </article>
-            <article class="stage-card" data-reveal>
-              <div class="stage-card-top"><span>04</span><small>Continual improvement</small></div>
-              <h3>Inner–outer loop RL</h3>
-              <p>
-                Fast residual adaptation at the edge and periodic foundation-policy
-                updates at the center improve task performance at two timescales.
-              </p>
-            </article>
-          </div>
+          <article class="abstract-copy" data-reveal aria-labelledby="abstract-heading">
+            <h2 class="visually-hidden" id="abstract-heading">Abstract</h2>
+            <p>
+              Robot data is scarce, so generalist policies need to learn from
+              heterogeneous sources, including human egocentric video, simulation,
+              and real robots, which differ in supervision and embodiment, with
+              action labels missing or mutually incompatible. Human egocentric data
+              scale best but sit farthest from robot data, and naive pooling causes
+              negative transfer rather than knowledge sharing. We present JoyAI-RA
+              0.5, a generalist Vision-Language-World-Action (VLWA) framework that
+              couples physical world-dynamics priors with visual semantics and
+              scales manipulation learning across such data via dual action
+              alignment. Implicit action alignment infers latent actions from visual
+              transitions, enabling action-free human, simulation, and robot data to
+              guide a latent-action-conditioned world model in learning physical
+              dynamics. Explicit alignment grounds reliable human and robot
+              trajectories in a unified physical action space through a canonical
+              action representation and camera-frame chunk-relative end-effector
+              actions. An inner-outer-loop reinforcement stage then pairs efficient
+              task adaptation with foundation-policy improvement. On a real-world
+              AgiBot benchmark, JoyAI-RA performs strongly on both seen tasks and
+              unseen variations. The task score improves consistently as the volume
+              of human egocentric pretraining data increases and shows no sign of
+              saturation at our largest scale. This suggests that abundant but
+              weakly labeled human experience can be converted into a transferable
+              training signal, making human video not merely a weak auxiliary source
+              but a primary axis along which manipulation capability can be scaled.
+            </p>
+          </article>
         </div>
       </section>
 
-      <section class="section section-demos" id="demos">
-        <div class="container">
-          <div class="section-heading split" data-reveal>
-            <div>
-              <span class="eyebrow">03 / Demonstrations</span>
-              <h2>From precise contact to long-horizon execution.</h2>
-            </div>
+      <section class="section" id="framework">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>JoyAI-RA Framework</h2>
+          </div>
+          <div class="section-body" data-reveal>
             <p>
-              The report evaluates six real-world scenarios across office, tea room,
-              kitchen, dining table, pharmacy, and dressing table environments on
-              the AgiBot G1 platform.
+              JoyAI-RA 0.5 aligns heterogeneous experience through two
+              complementary paths: implicit latent-dynamics alignment and explicit
+              physical-action alignment. It couples visual semantics from the VLM
+              with physical world-dynamics priors from LAC-WM. A flow-matching
+              action expert then fuses instruction-grounded
+              understanding and learned dynamics features into continuous action
+              chunks for executable robot control.
             </p>
-          </div>
-
-          <div class="featured-video" data-reveal>
-            <video
-              src="assets/demo-placeholder.mp4"
-              poster="assets/demo-poster.png"
-              width="1280"
-              height="800"
-              controls
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              aria-label="Featured real-world manipulation demonstration placeholder"
-            ></video>
-            <div class="featured-caption">
-              <div>
-                <span>FEATURED EXECUTION</span>
-                <h3>Fine-grained object interaction in the real world</h3>
-              </div>
-              <p>
-                The supplied project video is used throughout this first website
-                build as a consistent demonstration placeholder.
-              </p>
-            </div>
-          </div>
-
-          <div class="demo-grid">
-            <article class="demo-card" data-reveal>
-              <div class="demo-media">
-                <video
-                  src="assets/demo-placeholder.mp4"
-                  poster="assets/demo-poster.png"
-                  controls
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  aria-label="Everyday object manipulation demonstration placeholder"
-                ></video>
-                <span>PnP Easy</span>
-              </div>
-              <h3>Everyday object manipulation</h3>
-              <p>Common-object pick-and-place and organization under familiar conditions.</p>
-            </article>
-            <article class="demo-card" data-reveal>
-              <div class="demo-media">
-                <video
-                  src="assets/demo-placeholder.mp4"
-                  poster="assets/demo-poster.png"
-                  controls
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  aria-label="Precision manipulation demonstration placeholder"
-                ></video>
-                <span>PnP Hard</span>
-              </div>
-              <h3>Precision manipulation</h3>
-              <p>Fine contact, small objects, and actions that demand accurate execution.</p>
-            </article>
-            <article class="demo-card" data-reveal>
-              <div class="demo-media">
-                <video
-                  src="assets/demo-placeholder.mp4"
-                  poster="assets/demo-poster.png"
-                  controls
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  aria-label="Multi-stage task execution demonstration placeholder"
-                ></video>
-                <span>Long-Horizon</span>
-              </div>
-              <h3>Multi-stage task execution</h3>
-              <p>Sequential manipulation that requires consistency across a longer horizon.</p>
-            </article>
           </div>
         </div>
+
+        <figure class="wide-figure" data-reveal>
+          <img
+            src="assets/architecture.png"
+            alt="JoyAI-RA architecture showing heterogeneous data, latent-action learning, unified action representation, LAC-WM, VLM, and action expert"
+            width="3064"
+            height="1462"
+            loading="eager"
+          />
+          <figcaption>
+            Architecture overview · latent dynamics and canonical physical actions
+            provide complementary alignment.
+          </figcaption>
+        </figure>
       </section>
 
-      <section class="section section-results" id="results">
-        <div class="results-glow" aria-hidden="true"></div>
+      <section class="section compact" id="overview">
         <div class="container">
-          <div class="section-heading split light" data-reveal>
+          <div class="data-table" data-reveal>
+            <div class="table-head">
+              <span>Data source</span>
+              <span>Scale</span>
+              <span>Role in training</span>
+            </div>
             <div>
-              <span class="eyebrow">04 / Real-World Results</span>
-              <h2>Strong execution. Robust generalization.</h2>
+              <span>Human egocentric video</span>
+              <strong>53K+ hours</strong>
+              <p>Action-free visual experience for transferable physical dynamics.</p>
             </div>
-            <p>
-              Task score is reported on a 100-point scale from constituent subtask
-              completion. JoyAI-RA 0.5 is compared with π<sub>0.5</sub> under an
-              identical protocol.
-            </p>
-          </div>
-
-          <div class="result-hero" data-reveal>
-            <div class="result-number">
-              <span>SEEN AVG</span>
-              <strong>92.0</strong>
-              <p>+23.8 points over π<sub>0.5</sub></p>
+            <div>
+              <span>Simulation trajectories</span>
+              <strong>11K+ hours</strong>
+              <p>Action-bearing trajectories for controllable embodiment learning.</p>
             </div>
-            <div class="result-number secondary">
-              <span>UNSEEN AVG</span>
-              <strong>75.5</strong>
-              <p>Leading overall generalization score</p>
-            </div>
-            <div class="result-quote">
-              <p>
-                “The two alignment channels provide distinct yet complementary
-                supervision from heterogeneous data.”
-              </p>
-              <span>Dual-alignment ablation</span>
+            <div>
+              <span>Real-robot demonstrations</span>
+              <strong>8K+ hours</strong>
+              <p>Target-robot grounding for physical execution and post-training.</p>
             </div>
           </div>
 
-          <div class="result-grid">
-            <article class="score-card" data-reveal>
-              <div class="score-card-head">
-                <div><span>FAMILIAR CONDITIONS</span><h3>Seen performance</h3></div>
-                <b>AVG 92.0</b>
-              </div>
-              <div class="score-row">
-                <div class="score-label"><span>PnP Easy</span><strong>98.0</strong></div>
-                <div class="score-track" role="meter" aria-label="PnP Easy: 98.0 task score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="98"><span style="--score: 98%"></span></div>
-              </div>
-              <div class="score-row">
-                <div class="score-label"><span>PnP Hard</span><strong>94.2</strong></div>
-                <div class="score-track" role="meter" aria-label="PnP Hard: 94.2 task score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="94.2"><span style="--score: 94.2%"></span></div>
-              </div>
-              <div class="score-row">
-                <div class="score-label"><span>Long-Horizon</span><strong>83.8</strong></div>
-                <div class="score-track" role="meter" aria-label="Long-Horizon: 83.8 task score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="83.8"><span style="--score: 83.8%"></span></div>
-              </div>
-            </article>
-
-            <article class="score-card" data-reveal>
-              <div class="score-card-head">
-                <div><span>NOVEL CONDITIONS</span><h3>Unseen generalization</h3></div>
-                <b>AVG 75.5</b>
-              </div>
-              <div class="score-row">
-                <div class="score-label"><span>Spatial &amp; topological</span><strong>77.6</strong></div>
-                <div class="score-track" role="meter" aria-label="Spatial and topological: 77.6 task score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="77.6"><span style="--score: 77.6%"></span></div>
-              </div>
-              <div class="score-row">
-                <div class="score-label"><span>Object &amp; attribute</span><strong>79.1</strong></div>
-                <div class="score-track" role="meter" aria-label="Object and attribute: 79.1 task score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="79.1"><span style="--score: 79.1%"></span></div>
-              </div>
-              <div class="score-row">
-                <div class="score-label"><span>Background &amp; illumination</span><strong>69.8</strong></div>
-                <div class="score-track" role="meter" aria-label="Background and illumination: 69.8 task score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="69.8"><span style="--score: 69.8%"></span></div>
-              </div>
-            </article>
-          </div>
-
-          <figure class="experiment-figure zoomable-figure" data-reveal>
+          <figure class="paper-figure evidence-figure" data-reveal>
             <img
-              src="assets/experiment-setting.png"
-              alt="Real-World AgiBot Benchmark settings with seen pick-and-place and long-horizon tasks plus unseen object, spatial, background, and illumination variations"
-              width="3254"
-              height="1830"
+              src="assets/data-composition.png"
+              alt="JoyAI-RA heterogeneous data composition across human egocentric videos, simulation trajectories, and real-robot demonstrations"
+              width="2400"
+              height="1803"
               loading="lazy"
             />
             <button
-              class="figure-zoom-button"
+              class="image-action"
               type="button"
-              data-lightbox-src="assets/experiment-setting.png"
-              data-lightbox-alt="Real-World AgiBot Benchmark settings with seen pick-and-place and long-horizon tasks plus unseen object, spatial, background, and illumination variations"
+              data-lightbox-src="assets/data-composition.png"
+              data-lightbox-alt="JoyAI-RA heterogeneous data composition across human egocentric videos, simulation trajectories, and real-robot demonstrations"
             >
               View full image
             </button>
             <figcaption>
-              Real-World AgiBot Benchmark · three seen task categories and three
-              unseen generalization dimensions.
+              Heterogeneous pretraining corpus · human egocentric video,
+              simulation trajectories, and real-robot demonstrations.
+            </figcaption>
+          </figure>
+
+          <div class="overview-cards">
+            <div class="compact-grid">
+              <article data-reveal>
+                <h3>Human Video Scaling</h3>
+                <p>
+                  Robot demonstrations are scarce, while human egocentric videos
+                  scale best but usually lack executable actions. JoyAI-RA 0.5 turns
+                  this abundant weak supervision into transferable dynamics learning
+                  and stronger robot-policy initialization.
+                </p>
+              </article>
+              <article data-reveal>
+                <h3>Dual Action Alignment</h3>
+                <p>
+                  Implicit alignment infers latent actions from visual transitions,
+                  allowing action-free human, simulation, and robot videos to train
+                  the LAC-WM. Explicit alignment grounds reliable trajectories in a
+                  shared physical action space.
+                </p>
+              </article>
+              <article data-reveal>
+                <h3>Canonical Action Space</h3>
+                <p>
+                  Reliable human and robot trajectories are mapped into a 130-D
+                  canonical representation with fixed left-hand, right-hand, and body
+                  slots, plus camera-frame chunk-relative end-effector actions for
+                  cross-embodiment supervision.
+                </p>
+              </article>
+              <article data-reveal>
+                <h3>Vision–Language–World–Action Model</h3>
+                <p>
+                  The VLM encodes task semantics, the frozen LAC-WM supplies learned
+                  physical-dynamics priors, and the flow-matching action expert fuses
+                  both streams into continuous executable robot actions.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="data-pipeline">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>Closed-Loop Data Pipeline</h2>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              Before training, heterogeneous sources are unified through a
+              closed-loop annotation and curation pipeline. Raw egocentric videos
+              are calibrated and undistorted, reconstructed into hand motion,
+              mapped into a canonical hand representation, and segmented into
+              language-annotated subtasks. Human and robot episodes then undergo
+              shared validity checks and group-relative quality and diversity
+              filtering, while representation analysis identifies underrepresented
+              capabilities and guides the next round of data acquisition.
+            </p>
+          </div>
+        </div>
+
+        <div class="container">
+          <figure class="paper-figure evidence-figure evidence-figure-wide" data-reveal>
+            <img
+              src="assets/data-pipeline.png"
+              alt="Closed-loop JoyAI-RA data preprocessing and curation pipeline"
+              width="3600"
+              height="1326"
+              loading="lazy"
+            />
+            <button
+              class="image-action"
+              type="button"
+              data-lightbox-src="assets/data-pipeline.png"
+              data-lightbox-alt="Closed-loop JoyAI-RA data preprocessing and curation pipeline"
+            >
+              View full image
+            </button>
+            <figcaption>
+              Closed-loop data preprocessing and curation · automatic ego-video
+              annotation, unified quality and diversity filtering, and
+              representation-guided data acquisition.
             </figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="section section-scaling" id="scaling">
-        <div class="container">
-          <div class="section-heading centered narrow" data-reveal>
-            <span class="eyebrow">05 / Scaling</span>
-            <h2>Human video is not auxiliary. It is a scaling axis.</h2>
+      <section class="section" id="method">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>Dual Action Alignment</h2>
+          </div>
+          <div class="section-body" data-reveal>
             <p>
-              Across controlled studies, more egocentric video expands action
-              diversity, improves learned dynamics, and yields a stronger policy
-              initialization—with no observed saturation at the largest scale.
+              Semantics tell the robot what, while dynamics tell it how. Because
+              human video scales without executable actions
+              and embodied trajectories carry incompatible action spaces, JoyAI-RA
+              0.5 routes each data source to the supervision it can reliably
+              provide: latent dynamics or grounded physical actions.
             </p>
           </div>
+        </div>
 
-          <div class="scaling-layout">
-            <figure class="paper-figure embedding-figure" data-reveal>
-              <img
-                src="assets/embedding-visualization.png"
-                alt="Action-centric embedding distribution of EgoLive at 10, 25, 50, and 100 percent data scales"
-                width="2399"
-                height="2034"
-                loading="lazy"
-              />
-              <figcaption>
-                Action-centric representations cover broader and lower-density
-                regions as the EgoLive corpus grows.
-              </figcaption>
-            </figure>
-
-            <div class="scaling-studies">
-              <article class="scaling-card" data-reveal>
-                <div class="scaling-card-head"><span>LAC-WM PRETRAINING</span><b>10% → 100%</b></div>
-                <h3>More video, stronger dynamics priors.</h3>
-                <div class="delta-row">
-                  <div><small>Seen task score</small><strong>83.13 <i>→</i> 97.50</strong></div>
-                  <div><small>Unseen task score</small><strong>56.88 <i>→</i> 72.40</strong></div>
-                </div>
-                <p>Robot data and downstream policy training are held fixed.</p>
-              </article>
-
-              <article class="scaling-card accent" data-reveal>
-                <div class="scaling-card-head"><span>POLICY PRETRAINING</span><b>20K+ h EgoLive</b></div>
-                <h3>Scaling transfers all the way to robot control.</h3>
-                <div class="delta-row">
-                  <div><small>Seen task score</small><strong>47.8 <i>→</i> 85.6</strong></div>
-                  <div><small>Unseen task score</small><strong>37.6 <i>→</i> 60.2</strong></div>
-                </div>
-                <p>All models receive identical robot-action post-training.</p>
-              </article>
-            </div>
+        <div class="container">
+          <div class="method-grid">
+            <article data-reveal>
+              <span>Implicit alignment</span>
+              <p>
+                LAC-WM pretraining infers latent actions from visual transitions,
+                turning action-free video into supervision for transferable
+                physical dynamics.
+              </p>
+            </article>
+            <article data-reveal>
+              <span>Explicit alignment</span>
+              <p>
+                Cross-embodiment VLWA pretraining maps reliable human and robot
+                trajectories into a shared 130-D action space while the frozen
+                LAC-WM supplies dynamics features.
+              </p>
+            </article>
+            <article data-reveal>
+              <span>Physical grounding</span>
+              <p>
+                Target-robot post-training uses high-quality demonstrations to
+                adapt the VLM and action expert to the robot's observations,
+                kinematics, and control interface.
+              </p>
+            </article>
+            <article data-reveal>
+              <span>Continual improvement</span>
+              <p>
+                Inner-outer loop RL combines fast residual adaptation at the edge
+                with periodic foundation-policy updates at the center.
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-rl">
-        <div class="container rl-layout">
-          <div class="rl-copy" data-reveal>
-            <span class="eyebrow">06 / Self-improvement</span>
-            <h2>Two loops. Two timescales. One improving policy.</h2>
-            <p>
-              The inner loop rapidly learns a lightweight residual policy for the
-              current task. The asynchronous outer loop incorporates accumulated
-              interaction data into the foundation VLWA and periodically sends an
-              improved model back to the edge.
-            </p>
-            <div class="loop-pills">
-              <span>INNER · Fast adaptation</span>
-              <span>OUTER · Foundation update</span>
-            </div>
+      <section class="section" id="evaluation">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>Real-World AgiBot Benchmark</h2>
           </div>
-          <figure class="paper-figure rl-figure" data-reveal>
+          <div class="section-body" data-reveal>
+            <p>
+              JoyAI-RA 0.5 is evaluated on six real-world AgiBot G1 scenarios
+              across office, tea room, kitchen, dining table, pharmacy, and
+              dressing table environments. Scores are reported on a 100-point
+              subtask-completion scale and compared with π<sub>0.5</sub> under
+              the same protocol.
+            </p>
+          </div>
+        </div>
+
+        <figure class="wide-figure contained" data-reveal>
+          <img
+            src="assets/experiment-setting.png"
+            alt="Real-World AgiBot Benchmark settings with seen and unseen task settings"
+            width="3254"
+            height="1830"
+            loading="lazy"
+          />
+          <button
+            class="image-action"
+            type="button"
+            data-lightbox-src="assets/experiment-setting.png"
+            data-lightbox-alt="Real-World AgiBot Benchmark settings with seen and unseen task settings"
+          >
+            View full image
+          </button>
+        </figure>
+
+        <div class="container">
+          <div class="result-grid">
+            <article class="score-panel" data-reveal>
+              <div class="score-summary">
+                <span>FAMILIAR CONDITIONS · Seen average</span>
+                <h3>Seen performance</h3>
+                <strong>92.0</strong>
+                <p>+23.8 points over π<sub>0.5</sub></p>
+              </div>
+              <div class="score-list">
+                <div style="--value: 98%">
+                  <span>PnP Easy</span><b>98.0</b><i></i>
+                </div>
+                <div style="--value: 94.2%">
+                  <span>PnP Hard</span><b>94.2</b><i></i>
+                </div>
+                <div style="--value: 83.8%">
+                  <span>Long-Horizon</span><b>83.8</b><i></i>
+                </div>
+              </div>
+            </article>
+
+            <article class="score-panel" data-reveal>
+              <div class="score-summary">
+                <span>NOVEL CONDITIONS · Unseen average</span>
+                <h3>Unseen generalization</h3>
+                <strong>75.5</strong>
+                <p>Leading overall generalization score</p>
+              </div>
+              <div class="score-list">
+                <div style="--value: 77.6%">
+                  <span>Spatial & topological</span><b>77.6</b><i></i>
+                </div>
+                <div style="--value: 79.1%">
+                  <span>Object & attribute</span><b>79.1</b><i></i>
+                </div>
+                <div style="--value: 69.8%">
+                  <span>Background & illumination</span><b>69.8</b><i></i>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <figure class="paper-figure evidence-figure evidence-figure-wide" data-reveal>
             <img
-              src="assets/rl-inner-outer-loop.png"
-              alt="Inner-outer loop reinforcement learning with edge-server residual adaptation and central-server VLWA updates"
-              width="2606"
-              height="1119"
+              src="assets/ablation-seen-unseen.png"
+              alt="Real-world seen and unseen task scores comparing JoyAI-RA 0.5 with baselines and dual-alignment ablations"
+              width="2287"
+              height="1156"
               loading="lazy"
             />
+            <button
+              class="image-action"
+              type="button"
+              data-lightbox-src="assets/ablation-seen-unseen.png"
+              data-lightbox-alt="Real-world seen and unseen task scores comparing JoyAI-RA 0.5 with baselines and dual-alignment ablations"
+            >
+              View full image
+            </button>
+            <figcaption>
+              Seen and unseen task scores · method comparison and
+              dual-alignment ablations.
+            </figcaption>
           </figure>
+
+          <div class="component-ablation-grid" aria-label="Component ablation results">
+            <article class="ablation-card" data-reveal>
+              <h3>WM Module Ablation</h3>
+              <p>
+                With identical post-training data and settings, adding the frozen
+                world model consistently improves control on the controlled desk
+                benchmark.
+              </p>
+              <table class="ablation-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Module</th>
+                    <th scope="col">Seen</th>
+                    <th scope="col">Unseen</th>
+                    <th scope="col">AVG</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">w/o WM</th>
+                    <td>59.3</td>
+                    <td>37.5</td>
+                    <td>48.4</td>
+                  </tr>
+                  <tr class="best-row">
+                    <th scope="row">w/ WM</th>
+                    <td>62.3</td>
+                    <td>40.6</td>
+                    <td>51.5</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="ablation-takeaway">
+                The average score rises by 3.1 points, with gains under both seen
+                and unseen conditions.
+              </p>
+            </article>
+
+            <article class="ablation-card" data-reveal>
+              <h3>Latent-Action Conditioning Ablation</h3>
+              <p>
+                The comparison isolates latent-action conditioning during
+                world-model pretraining; neither model receives latent actions
+                during downstream policy training or evaluation.
+              </p>
+              <table class="ablation-table">
+                <thead>
+                  <tr>
+                    <th scope="col">World model</th>
+                    <th scope="col">Conditioning</th>
+                    <th scope="col">Seen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">WM</th>
+                    <td>No</td>
+                    <td>87.3</td>
+                  </tr>
+                  <tr class="best-row">
+                    <th scope="row">LAC-WM</th>
+                    <td>Yes</td>
+                    <td>92.1</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="ablation-takeaway">
+                Latent-action-conditioned pretraining improves the seen-task score
+                by 4.8 points.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="section section-report" id="report">
-        <div class="container">
-          <div class="report-card" data-reveal>
-            <div class="report-copy">
-              <span class="eyebrow">Technical report</span>
-              <h2>JoyAI-RA 0.5</h2>
-              <p class="report-title">
-                Scaling Robot Manipulation Learning via Dual Action Alignment
-              </p>
-              <p>
-                JoyAI-RA 0.5 couples physical world-dynamics priors with visual
-                semantics. Implicit alignment turns action-free video into dynamics
-                supervision; explicit alignment grounds reliable human and robot
-                trajectories in a shared physical action space.
-              </p>
-              <div class="report-actions">
-                <a class="button button-primary" href="#top">Back to top ↑</a>
-                <a
-                  class="button button-outline"
-                  href="https://zhaopin.jd.com/home"
-                  target="_blank"
-                  rel="noreferrer"
-                >Join JoyAI ↗</a>
-              </div>
-            </div>
+      <section class="section" id="scaling">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>Human Video Scaling</h2>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              Human video is not auxiliary; it is a scaling axis. Across
+              controlled studies, more egocentric video expands action diversity,
+              improves learned dynamics, and yields stronger policy
+              initialization with no observed saturation at the largest scale.
+            </p>
+          </div>
+        </div>
 
-            <div class="report-meta">
-              <span>AUTHORSHIP</span>
-              <h3>Joy Future Academy, JD</h3>
+        <div class="container scaling-layout">
+          <figure class="paper-figure" data-reveal>
+            <img
+              src="assets/embedding-visualization.png"
+              alt="Action-centric embedding distribution of EgoLive at different data scales"
+              width="2399"
+              height="2034"
+              loading="lazy"
+            />
+            <figcaption>
+              Action-centric representations cover broader and lower-density
+              regions as the EgoLive corpus grows.
+            </figcaption>
+          </figure>
+          <div class="scaling-notes">
+            <article data-reveal>
+              <span>LAC-WM pretraining</span>
               <p>
-                <strong>Core contributors <span class="author-note">* Co-first authors · † Corresponding authors</span></strong><br />
-                Dafeng Chi* · Peidong Liu* · Zhiyuan Xiang* · Sheng Xu* · Tianle
-                Zhang* · Yuzheng Zhuang† · Dongwei Li · Bin Wang · Zhihao Yuan ·
-                Bowen Yang · Bo Lin · Mingyang Li · Wenhao Li · Zengjue Chen · Ao Li
-                · Nan Duan · Liang Lin†
+                Scaling EgoLive from 10% to 100% improves seen score from 83.13
+                to 97.50 and unseen score from 56.88 to 72.40, with robot data
+                and downstream policy training held fixed.
               </p>
-              <details>
-                <summary>View all additional contributors</summary>
-                <p>
-                  Peng Cao · Kangliang Chen · Yicheng Gong · Chenguang Gui · Qingrong
-                  He · Shibo Jin · Jiawei Li · Ruodai Li · Yihang Li · Jiaming Liang
-                  · Junnan Nie · Xing Pan · Hui Shen · Daming Wang · Song Wang · Junwu
-                  Xiong · Hang Xu · Chubin Zhang · He Zhang · Likui Zhang
-                </p>
-              </details>
+            </article>
+            <article data-reveal>
+              <span>Policy pretraining</span>
+              <p>
+                Scaling transfers to robot control: seen score improves from
+                47.8 to 85.6 and unseen score improves from 37.6 to 60.2, with
+                identical robot-action post-training.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <figure class="wide-figure evidence-figure scaling-evidence-figure" data-reveal>
+          <img
+            src="assets/egolive-policy-scaling.png"
+            alt="EgoLive policy pretraining scaling curves and downstream seen and unseen task scores"
+            width="2233"
+            height="981"
+            loading="lazy"
+          />
+          <button
+            class="image-action"
+            type="button"
+            data-lightbox-src="assets/egolive-policy-scaling.png"
+            data-lightbox-alt="EgoLive policy pretraining scaling curves and downstream seen and unseen task scores"
+          >
+            View full image
+          </button>
+          <figcaption>
+            EgoLive policy pretraining · larger human-video subsets improve
+            validation behavior and downstream robot scores.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section" id="rl">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>Inner–Outer Loop Reinforcement Learning</h2>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              The inner loop rapidly learns a lightweight residual policy for
+              task-level adaptation, while the asynchronous outer loop incorporates
+              accumulated interaction data into the foundation VLWA and
+              periodically sends an improved model back to the edge.
+            </p>
+            <p>
+              Under unseen object-position shifts, both loops improve over the
+              original policy, and their combination reaches a 70% success rate on
+              Mouse and 50% on Headphone pick-and-place tasks.
+            </p>
+          </div>
+        </div>
+
+        <figure class="wide-figure" data-reveal>
+          <img
+            src="assets/rl-inner-outer-loop.png"
+            alt="Inner-outer loop reinforcement learning with edge-server residual adaptation and central-server VLWA updates"
+            width="2606"
+            height="1119"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure class="wide-figure contained evidence-figure rl-results-figure" data-reveal>
+          <img
+            src="assets/rl-results.png"
+            alt="Success-rate comparison of the original VLWA policy, inner-loop RL, outer-loop RL, and inner-outer loop RL on Mouse and Headphone pick-and-place tasks"
+            width="2127"
+            height="862"
+            loading="lazy"
+          />
+          <button
+            class="image-action"
+            type="button"
+            data-lightbox-src="assets/rl-results.png"
+            data-lightbox-alt="Success-rate comparison of reinforcement-learning strategies on Mouse and Headphone pick-and-place tasks"
+          >
+            View full image
+          </button>
+          <figcaption>
+            Real-world RL under positional distribution shift · inner and outer
+            loops provide complementary gains, with their combination performing
+            best on both tasks.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section" id="videos">
+        <div class="container report-layout">
+          <div class="section-title" data-reveal>
+            <h2>Demonstrations</h2>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              Eight real-world AgiBot G1 demonstrations span object organization,
+              precise placement, and multi-stage manipulation under a consistent
+              desk-side evaluation setting.
+            </p>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="g1-task-heading" data-reveal>
+            <div>
+              <span>8 real-world tasks</span>
+              <p>Real-world manipulation across object organization and multi-stage execution.</p>
+            </div>
+            <div class="g1-task-controls" aria-label="Browse demonstration tasks">
+              <button type="button" data-g1-prev aria-label="Show previous tasks">←</button>
+              <button type="button" data-g1-next aria-label="Show next tasks">→</button>
             </div>
           </div>
+
+          <div class="g1-task-rail" role="list" aria-label="G1 demonstration tasks" data-reveal>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/store-pen.mp4" poster="assets/demos/g1/store-pen.jpg" aria-label="G1 robot placing a pen into a pen holder" autoplay muted loop playsinline preload="metadata"></video>
+              <span>01</span>
+              <strong>Store Pen</strong>
+            </article>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/store-pencil-case.mp4" poster="assets/demos/g1/store-pencil-case.jpg" aria-label="G1 robot storing a pencil case" autoplay muted loop playsinline preload="metadata"></video>
+              <span>02</span>
+              <strong>Store Pencil Case</strong>
+            </article>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/shelve-books.mp4" poster="assets/demos/g1/shelve-books.jpg" aria-label="G1 robot moving books to a bookshelf" autoplay muted loop playsinline preload="metadata"></video>
+              <span>03</span>
+              <strong>Shelve Books</strong>
+            </article>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/discard-trash.mp4" poster="assets/demos/g1/discard-trash.jpg" aria-label="G1 robot placing trash into a trash can" autoplay muted loop playsinline preload="metadata"></video>
+              <span>04</span>
+              <strong>Discard Trash</strong>
+            </article>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/store-correction-fluid.mp4" poster="assets/demos/g1/store-correction-fluid.jpg" aria-label="G1 robot storing correction fluid" autoplay muted loop playsinline preload="metadata"></video>
+              <span>05</span>
+              <strong>Store Correction Fluid</strong>
+            </article>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/store-eraser.mp4" poster="assets/demos/g1/store-eraser.jpg" aria-label="G1 robot storing an eraser" autoplay muted loop playsinline preload="metadata"></video>
+              <span>06</span>
+              <strong>Store Eraser</strong>
+            </article>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/store-stapler.mp4" poster="assets/demos/g1/store-stapler.jpg" aria-label="G1 robot storing a stapler" autoplay muted loop playsinline preload="metadata"></video>
+              <span>07</span>
+              <strong>Store Stapler</strong>
+            </article>
+            <article class="g1-task-card" role="listitem">
+              <video src="assets/demos/g1/store-charger.mp4" poster="assets/demos/g1/store-charger.jpg" aria-label="G1 robot storing a charger" autoplay muted loop playsinline preload="metadata"></video>
+              <span>08</span>
+              <strong>Store Charger</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section report-section" id="report">
+        <div class="container citation-card" data-reveal>
+          <span>Citation</span>
+          <h2>Citation placeholder</h2>
+          <p>BibTeX and publication details will be added here.</p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-brand">
+      <div>
         <img src="assets/jd-wordmark.png" alt="JINGDONG" width="4600" height="671" />
         <span>Joy Future Academy</span>
       </div>
       <p>JoyAI-RA 0.5 · Vision-Language-World-Action research</p>
-      <div>
-        <a href="#overview">Overview</a>
-        <a href="#results">Results</a>
+      <nav aria-label="Footer links">
+        <a href="#framework">Framework</a>
+        <a href="#evaluation">Evaluation</a>
         <a href="https://jdai.jd.com/portal" target="_blank" rel="noreferrer">JoyAI ↗</a>
-      </div>
+      </nav>
     </footer>
   </body>
 </html>
