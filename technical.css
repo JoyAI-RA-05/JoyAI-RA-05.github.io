@@ -1757,6 +1757,7 @@ body,
   font-size: clamp(4rem, 7vw, 6.5rem);
   line-height: 0.9;
   font-weight: 790;
+  font-family: "Hiragino Kaku Gothic Std W8", "Hiragino Sans", sans-serif;
   letter-spacing: -0.055em;
   text-align: center;
   text-shadow: 0 0 26px rgba(208, 0, 0, 0.16);
@@ -1765,13 +1766,14 @@ body,
 
 .technical-page .hero-mascot {
   flex: 0 0 auto;
-  width: clamp(66px, 6.4vw, 92px);
-  height: clamp(70px, 7.5vw, 108px);
+  width: clamp(72px, 7vw, 100px);
+  height: clamp(63px, 6.1vw, 87px);
+  margin-right: -18px;
   overflow: hidden;
-  background-image: url("assets/joyai-ra-reference-title.png");
+  background-image: url("assets/joyra05-ppt-mascot-source.png");
   background-repeat: no-repeat;
-  background-position: left center;
-  background-size: clamp(470px, 45vw, 650px) auto;
+  background-position: 17.4% center;
+  background-size: 297.8% auto;
 }
 
 .technical-page .hero-project-name {
@@ -1779,8 +1781,21 @@ body,
   display: inline-block;
 }
 
+.technical-page .hero-rainbow {
+  position: absolute;
+  left: 16.1%;
+  bottom: clamp(-17px, -1.15vw, -11px);
+  width: clamp(36px, 3.5vw, 50px);
+  aspect-ratio: 2.96 / 1;
+  background-image: url("assets/joyai-wordmark.png");
+  background-repeat: no-repeat;
+  background-position: 23.2% 100%;
+  background-size: 506% auto;
+}
+
 .technical-page .hero-version {
   display: inline-block;
+  font-size: 0.778em;
 }
 
 .technical-page .hero .subtitle {
@@ -1890,7 +1905,12 @@ a.hero-action:focus-visible {
   .technical-page .hero-mascot {
     width: 42px;
     height: 44px;
-    background-size: 315px auto;
+    background-size: 297.8% auto;
+  }
+
+  .technical-page .hero-rainbow {
+    bottom: -9px;
+    width: 27px;
   }
 
   .technical-page .hero .subtitle {

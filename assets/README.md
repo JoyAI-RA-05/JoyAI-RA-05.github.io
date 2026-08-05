@@ -4,11 +4,17 @@
 
 - `joyai-wordmark.png` is the JoyAI wordmark used by the public JoyAI-RA 0.1
   project page (`https://joyra.s3.cn-north-1.jdcloud-oss.com/assets/logo.f0f088d3.png`),
-  downloaded on 2026-08-05 and retained at its original dimensions.
+  downloaded on 2026-08-05 and retained at its original dimensions. Its bytes
+  exactly match `ppt/media/image1.png` in the desktop source deck
+  `JoyRA05_teaser_final.pptx`; the hero crops its rainbow mark using the crop
+  recorded in that deck.
+- `joyra05-ppt-mascot-source.png` is `ppt/media/image2.png` from
+  `JoyRA05_teaser_final.pptx`. The hero uses the deck's original crop to show
+  only the mascot portion of the source lockup.
 - `joyai-ra-reference-title.png` is the transparent title lockup from the same
   public project page (`https://joyra.s3.cn-north-1.jdcloud-oss.com/assets/logo2.png`).
-  The 0.5 page uses only its mascot region as a CSS background crop; its 0.1
-  text is never displayed.
+  It is retained as a legacy source asset but is no longer used by the 0.5
+  page after switching the hero to the supplied PowerPoint assets.
 
 ## Paper figures
 
