@@ -2,14 +2,11 @@ document.documentElement.classList.add("js");
 
 const revealTargets = [...document.querySelectorAll("[data-reveal]")];
 const topLink = document.querySelector(".top-link");
-const lightboxTriggers = [...document.querySelectorAll("[data-lightbox-src]")];
 const g1TaskRail = document.querySelector(".g1-task-rail");
 const g1PreviewVideos = [...document.querySelectorAll(".g1-task-card video")];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const finePointer = window.matchMedia("(pointer: fine)");
 
-let lightbox;
-let lightboxImage;
 let pointerAnimationFrame = 0;
 let g1AutoScrollTimer = 0;
 let g1AutoScrollDirection = 1;
@@ -56,46 +53,6 @@ function queuePointerUpdate(x, y) {
   if (!pointerAnimationFrame) {
     pointerAnimationFrame = window.requestAnimationFrame(applyPointer);
   }
-}
-
-function closeLightbox() {
-  lightbox?.classList.remove("is-open");
-  lightboxImage?.removeAttribute("src");
-  document.body.style.removeProperty("overflow");
-}
-
-function ensureLightbox() {
-  if (lightbox) return;
-
-  lightbox = document.createElement("div");
-  lightbox.className = "lightbox";
-  lightbox.setAttribute("role", "dialog");
-  lightbox.setAttribute("aria-modal", "true");
-  lightbox.setAttribute("aria-label", "Expanded image preview");
-
-  lightboxImage = document.createElement("img");
-  lightboxImage.alt = "";
-
-  const closeButton = document.createElement("button");
-  closeButton.type = "button";
-  closeButton.setAttribute("aria-label", "Close expanded image preview");
-  closeButton.textContent = "×";
-
-  lightbox.append(lightboxImage, closeButton);
-  document.body.append(lightbox);
-
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) closeLightbox();
-  });
-  closeButton.addEventListener("click", closeLightbox);
-}
-
-function openLightbox(src, alt) {
-  ensureLightbox();
-  lightboxImage.src = src;
-  lightboxImage.alt = alt || "";
-  lightbox.classList.add("is-open");
-  document.body.style.overflow = "hidden";
 }
 
 function scrollG1Tasks(direction) {
@@ -149,12 +106,6 @@ if (reducedMotion.matches || !("IntersectionObserver" in window)) {
   for (const target of revealTargets) {
     revealObserver.observe(target);
   }
-}
-
-for (const trigger of lightboxTriggers) {
-  trigger.addEventListener("click", () => {
-    openLightbox(trigger.dataset.lightboxSrc, trigger.dataset.lightboxAlt);
-  });
 }
 
 document.querySelector("[data-g1-prev]")?.addEventListener("click", () => scrollG1Tasks(-1));
