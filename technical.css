@@ -1473,6 +1473,60 @@ body,
   text-align: left;
 }
 
+.technical-page .chapter-heading,
+.technical-page .section-title,
+.technical-page .section-body,
+.technical-page .abstract-copy,
+.technical-page .citation-card,
+.technical-page .wide-figure figcaption,
+.technical-page .paper-figure figcaption,
+.technical-page .result-chart-figure figcaption {
+  justify-items: start;
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left !important;
+}
+
+/* Match the reference page's single-column report grid. */
+.technical-page {
+  --report-width: 1000px;
+}
+
+.technical-page .container,
+.technical-page .wide-figure,
+.technical-page .wide-figure.evidence-figure {
+  width: min(var(--report-width), calc(100% - 48px));
+}
+
+.technical-page .overview-content {
+  max-width: none;
+}
+
+.technical-page .section-title,
+.technical-page .section-body,
+.technical-page .abstract-copy {
+  width: 100%;
+  max-width: none;
+}
+
+.technical-page .container.report-layout,
+.technical-page .container.citation-card {
+  width: min(var(--report-width), calc(100% - 48px));
+}
+
+.technical-page .container > .wide-figure,
+.technical-page .container > .wide-figure.evidence-figure {
+  width: 100%;
+}
+
+.technical-page .paper-figure,
+.technical-page .paper-figure.evidence-figure,
+.technical-page .result-chart-figure {
+  width: 100%;
+  max-width: none;
+}
+
 .chapter-heading {
   margin-bottom: 36px;
 }
@@ -1707,6 +1761,14 @@ body,
     --type-display: 3rem;
     --type-heading: 2rem;
     --type-body: 1.125rem;
+  }
+
+  .technical-page .container,
+  .technical-page .container.report-layout,
+  .technical-page .container.citation-card,
+  .technical-page .wide-figure,
+  .technical-page .wide-figure.evidence-figure {
+    width: calc(100% - 28px);
   }
 
   .hero {
