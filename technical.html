@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/architecture.png" />
-    <link rel="stylesheet" href="technical.css?v=20260805-typography-2" />
+    <link rel="stylesheet" href="technical.css?v=20260805-paper-audit" />
     <script src="technical.js" defer></script>
   </head>
   <body class="technical-page">
@@ -74,9 +74,9 @@
           <figure class="wide-figure overview-figure" data-reveal>
             <img
               src="assets/joyra05-overview.png"
-              alt="JoyAI-RA 0.5 overview covering heterogeneous data, dual action alignment, the VLWA model, reinforcement learning, generalization, and scaling"
-              width="2667"
-              height="1120"
+              alt="JoyAI-RA 0.5 overview covering heterogeneous data, dual action alignment, VLWA training, reinforcement learning, real-world generalization, and human-video scaling"
+              width="1920"
+              height="1080"
               loading="eager"
             />
           </figure>
@@ -146,8 +146,8 @@
             <img
               src="assets/data-composition.png"
               alt="JoyAI-RA heterogeneous data composition across human egocentric videos, simulation trajectories, and real-robot demonstrations"
-              width="2400"
-              height="1803"
+              width="1920"
+              height="1442"
               loading="lazy"
             />
             <button
@@ -187,8 +187,8 @@
             <img
               src="assets/data-pipeline.png"
               alt="Closed-loop JoyAI-RA data preprocessing and curation pipeline"
-              width="3600"
-              height="1326"
+              width="6754"
+              height="2488"
               loading="lazy"
             />
             <button
@@ -220,9 +220,11 @@
               complementary paths: implicit latent-dynamics alignment and explicit
               physical-action alignment. It couples visual semantics from the VLM
               with physical world-dynamics priors from LAC-WM. A flow-matching
-              action expert then fuses instruction-grounded
-              understanding and learned dynamics features into continuous action
-              chunks for executable robot control.
+              action expert then fuses instruction-grounded understanding and
+              learned dynamics features into continuous action chunks for executable
+              robot control. Training progresses from LAC-WM pretraining and
+              cross-embodiment VLWA pretraining to target-robot post-training and
+              inner-outer-loop reinforcement learning.
             </p>
           </div>
         </div>
@@ -231,8 +233,8 @@
           <img
             src="assets/architecture.png"
             alt="JoyAI-RA architecture showing heterogeneous data, latent-action learning, unified action representation, LAC-WM, VLM, and action expert"
-            width="3064"
-            height="1462"
+            width="4596"
+            height="2192"
             loading="eager"
           />
         </figure>
@@ -312,21 +314,6 @@
                 LAC-WM supplies dynamics features.
               </p>
             </article>
-            <article data-reveal>
-              <span>Physical grounding</span>
-              <p>
-                Target-robot post-training uses high-quality demonstrations to
-                adapt the VLM and action expert to the robot's observations,
-                kinematics, and control interface.
-              </p>
-            </article>
-            <article data-reveal>
-              <span>Continual improvement</span>
-              <p>
-                Inner-outer loop RL combines fast residual adaptation at the edge
-                with periodic foundation-policy updates at the center.
-              </p>
-            </article>
           </div>
         </div>
       </section>
@@ -347,10 +334,12 @@
               JoyAI-RA 0.5 is evaluated on six real-world AgiBot G1 scenarios
               across office, tea room, kitchen, dining table, pharmacy, and
               dressing table environments. Scores are reported on a 100-point
-              subtask-completion scale and compared with π<sub>0.5</sub> under
-              the same protocol. The full model is also compared with variants
-              that remove either action-alignment channel under seen and unseen
-              conditions.
+              subtask-completion scale over 20 seen and 10 unseen trials per task.
+              The full model is compared with π<sub>0.5</sub> and variants that
+              remove either alignment channel. JoyAI-RA 0.5 leads overall and on
+              object-and-attribute and background-and-illumination generalization;
+              π<sub>0.5</sub> remains slightly higher on spatial-and-topological
+              generalization (79.6 versus 77.6).
             </p>
           </div>
         </div>
@@ -359,8 +348,8 @@
           <img
             src="assets/experiment-setting.png"
             alt="Real-World AgiBot Benchmark settings with seen and unseen task settings"
-            width="3254"
-            height="1830"
+            width="1920"
+            height="1080"
             loading="lazy"
           />
           <button
@@ -515,8 +504,8 @@
             <img
               src="assets/embedding-visualization.png"
               alt="Action-centric embedding distribution of EgoLive at different data scales"
-              width="2399"
-              height="2034"
+              width="1629"
+              height="1382"
               loading="lazy"
             />
           </figure>
@@ -575,8 +564,8 @@
           <img
             src="assets/rl-inner-outer-loop.png"
             alt="Inner-outer loop reinforcement learning with edge-server residual adaptation and central-server VLWA updates"
-            width="2606"
-            height="1119"
+            width="1830"
+            height="786"
             loading="lazy"
           />
         </figure>

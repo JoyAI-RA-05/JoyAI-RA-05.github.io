@@ -1,18 +1,18 @@
 {
   "provenance": {
     "overleaf_archive": {
-      "path": "/Users/liwenhao.109/Downloads/JoyAI_RA_0_5 (1).zip",
-      "sha256": "5508f8e667f96c7ffec4021e8482b88f3efc1be713ad1ff35b93ffeaef5ae26c"
+      "path": "/Users/liwenhao.109/Downloads/JoyAI_RA_0_5 (2).zip",
+      "sha256": "acafb9d8a11a6e59b734554960d133066b70285a2054422f868924418d074a14"
     },
     "final_paper": {
-      "path": "/Users/liwenhao.109/Downloads/JoyAI_RA_0_5 (3).pdf",
-      "sha256": "186ec2df9abdce082c9947e64ad4f6ae96fb9557df49983b12cf154d71d8bd7b"
+      "path": "/Users/liwenhao.109/Downloads/JoyAI_RA_0_5 (4).pdf",
+      "sha256": "ae56e148691a3d0306e3d896f9cc95d955075b7f8d0c8e9118aa7e285056563b"
     },
     "verified_on": "2026-08-05",
     "verification": "Values were cross-checked between sections/experiments.tex, the source result PDFs, and the final compiled paper PDF."
   },
   "main_benchmark": {
-    "source": "images/ablation_seen_unseen.pdf and sections/experiments.tex lines 76-186",
+    "source": "images/ablation_seen_unseen.pdf and sections/experiments.tex",
     "seen_categories": ["PnP Easy", "PnP Hard", "Long-Horizon"],
     "unseen_categories": ["Spatial & topological", "Object & attribute", "Background & illumination"],
     "methods": [
@@ -76,7 +76,7 @@
   },
   "human_video_scaling": {
     "lac_wm": {
-      "source": "images/scaling_chart.pdf and sections/experiments.tex lines 313-356",
+      "source": "images/scaling_chart.pdf and sections/experiments.tex",
       "fractions": [10, 25, 100],
       "seen": [83.13, 89.38, 97.50],
       "unseen": [56.88, 67.68, 72.40],
@@ -91,7 +91,7 @@
     }
   },
   "reinforcement_learning": {
-    "source": "images/rl_results_v3.pdf and sections/experiments.tex lines 116-149",
+    "source": "images/rl_results_v3.pdf and sections/experiments.tex",
     "strategies": ["Original VLWA Policy", "Inner-loop RL Only", "Outer-loop RL Only", "Inner-outer Loop RL"],
     "mouse": [25.0, 45.0, 60.0, 70.0],
     "headphone": [25.0, 35.0, 40.0, 50.0]
