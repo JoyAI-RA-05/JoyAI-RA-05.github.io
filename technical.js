@@ -9,7 +9,6 @@ const g1FeaturedVideo = document.querySelector("#g1-featured-video");
 const g1FeaturedKicker = document.querySelector("#g1-featured-kicker");
 const g1FeaturedTitle = document.querySelector("#g1-featured-title");
 const g1FeaturedDescription = document.querySelector("#g1-featured-description");
-const g1FeaturedMeta = document.querySelector("#g1-featured-meta");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const finePointer = window.matchMedia("(pointer: fine)");
 
@@ -117,19 +116,6 @@ function selectG1Task(button) {
   if (g1FeaturedTitle) g1FeaturedTitle.textContent = button.dataset.title || "";
   if (g1FeaturedDescription) {
     g1FeaturedDescription.textContent = button.dataset.description || "";
-  }
-
-  if (g1FeaturedMeta) {
-    g1FeaturedMeta.replaceChildren(
-      ...(button.dataset.meta || "")
-        .split("|")
-        .filter(Boolean)
-        .map((label) => {
-          const item = document.createElement("span");
-          item.textContent = label;
-          return item;
-        }),
-    );
   }
 
   const playAttempt = g1FeaturedVideo.play();
