@@ -5,7 +5,9 @@ Role: Audit and render JoyAI-RA 0.5 quantitative results.
 Status: Active source-of-truth generator for result SVG assets.
 Inputs: data/experiment-results.json.
 Outputs: assets/result-main-alignment.svg, assets/result-human-scaling.svg,
-         assets/result-rl.svg, plus optional PNG previews.
+         assets/result-human-scaling-lacwm.svg,
+         assets/result-human-scaling-policy.svg, assets/result-rl.svg, plus
+         optional PNG previews.
 Owner/module: JoyAI-RA 0.5 project page / results visualization.
 Safe-to-delete/move: Do not delete while generated assets are used by the site.
 """
@@ -20,6 +22,7 @@ from typing import Any
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.lines import Line2D
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,6 +46,7 @@ ABLATION_LIGHT = "#fcae91"
 ABLATION_MID = "#fb6a4a"
 ABLATION_DARK = "#ef3b2c"
 OURS_RED = "#cb181d"
+SCALING_COLORS = ["#f3c5a4", "#e9a064", "#e99087", "#d96a66"]
 
 
 def configure() -> None:
@@ -283,6 +287,104 @@ def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
     for label in legend.get_texts():
         label.set_color(MUTED_STRONG)
     save(fig, "result-human-scaling.svg", preview_dir)
+
+    for filename, title, result in [
+        ("result-human-scaling-lacwm.svg", "LAC-WM Performance vs Data Amount", scaling["lac_wm"]),
+        ("result-human-scaling-policy.svg", "Policy Performance vs Data Amount", scaling["policy_pretraining"]),
+    ]:
+        fractions = result["fractions"]
+        x = np.arange(len(fractions))
+        colors = SCALING_COLORS if len(fractions) == 4 else [SCALING_COLORS[0], SCALING_COLORS[1], SCALING_COLORS[3]]
+
+        is_policy_panel = filename.endswith("policy.svg")
+        fig, ax = plt.subplots(figsize=(7.2, 6.2) if is_policy_panel else (10.8, 5.5))
+        if is_policy_panel:
+            fig.subplots_adjust(top=0.85, bottom=0.17, left=0.14, right=0.97)
+        else:
+            fig.subplots_adjust(top=0.84, bottom=0.19, left=0.09, right=0.98)
+        style_axis(ax, title)
+        width = 0.48
+
+        # Match the paper: the saturated unseen bar overlays the lighter seen bar,
+        # while marker lines make both trends explicit across data fractions.
+        ax.bar(
+            x,
+            result["seen"],
+            width,
+            color=[mpl.colors.to_rgba(color, 0.38) for color in colors],
+            edgecolor=MUTED_STRONG,
+            linewidth=1.0,
+            zorder=2,
+        )
+        ax.bar(
+            x,
+            result["unseen"],
+            width,
+            color=colors,
+            edgecolor=MUTED_STRONG,
+            linewidth=1.0,
+            zorder=3,
+        )
+        ax.plot(
+            x,
+            result["seen"],
+            color=TEXT,
+            linewidth=2.0,
+            marker="o",
+            markersize=7,
+            markerfacecolor=PANEL,
+            markeredgecolor=TEXT,
+            markeredgewidth=1.5,
+            zorder=4,
+        )
+        ax.plot(
+            x,
+            result["unseen"],
+            color=MUTED_STRONG,
+            linewidth=2.0,
+            marker="s",
+            markersize=6.5,
+            markerfacecolor=PANEL,
+            markeredgecolor=MUTED_STRONG,
+            markeredgewidth=1.5,
+            zorder=4,
+        )
+        for index, (seen, unseen) in enumerate(zip(result["seen"], result["unseen"])):
+            ax.text(
+                index,
+                seen + 2.2,
+                f"{seen:.1f}",
+                ha="center",
+                va="bottom",
+                color=TEXT,
+                fontsize=10.5,
+                fontweight="bold",
+            )
+            ax.text(
+                index,
+                unseen - 2.7,
+                f"{unseen:.1f}",
+                ha="center",
+                va="top",
+                color=TEXT,
+                fontsize=10.5,
+                fontweight="bold",
+            )
+
+        ax.set_xticks(x, [f"{fraction}%" for fraction in fractions])
+        ax.set_xlabel("Human Video Fraction", fontsize=12, fontweight="bold", labelpad=14)
+        legend = ax.legend(
+            handles=[
+                Line2D([0], [0], color=TEXT, marker="o", markerfacecolor=PANEL, label="Seen"),
+                Line2D([0], [0], color=MUTED_STRONG, marker="s", markerfacecolor=PANEL, label="Unseen"),
+            ],
+            loc="upper left",
+            frameon=False,
+            fontsize=11.5,
+        )
+        for label in legend.get_texts():
+            label.set_color(MUTED_STRONG)
+        save(fig, filename, preview_dir)
 
 
 def rl_results(data: dict[str, Any], preview_dir: Path | None) -> None:

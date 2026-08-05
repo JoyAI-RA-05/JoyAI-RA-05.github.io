@@ -42,12 +42,19 @@ figure was resized, reconstructed, or otherwise altered.
 | `human-scaling-lacwm.png` | `images/scaling_chart.pdf` | `cc699f960ad3d3c656f49f7427a10e210a1be86d3277f5a6f34c2fe632fd5ac8` |
 | `human-scaling-policy.png` | `images/retarget5_pct_val_loss_success_combined_arial_shifted_desk_new.pdf` | `9bb90e895f4d142635857e5ad98d0d3c29a811ea8a35d8618c6499765c303eaf` |
 
+`human-scaling-validation-loss.png` is a 288-DPI crop of the validation-loss
+panel and its original legend from
+`images/retarget5_pct_val_loss_success_combined_arial_shifted_desk_new.pdf`.
+The curve geometry, markers, labels, and legend are unchanged; only the other
+panel and surrounding page area were removed.
+
 The matching final paper is `JoyAI_RA_0_5 (4).pdf` (SHA-256
 `ae56e148691a3d0306e3d896f9cc95d955075b7f8d0c8e9118aa7e285056563b`).
 
 ## Generated result charts
 
-- Files: `result-main-alignment.svg`, `result-human-scaling.svg`, and
+- Files: `result-main-alignment.svg`, `result-human-scaling.svg`,
+  `result-human-scaling-lacwm.svg`, `result-human-scaling-policy.svg`, and
   `result-rl.svg`
 - Source values: the latest Overleaf archive and final paper listed above
 - Generator: `scripts/generate_result_charts.py`

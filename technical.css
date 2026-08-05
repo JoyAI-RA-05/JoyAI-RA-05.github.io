@@ -2211,6 +2211,91 @@ a.hero-action:focus-visible {
   height: auto;
 }
 
+.scaling-study {
+  width: min(var(--report-width), calc(100% - 48px));
+  margin-top: 52px;
+}
+
+.scaling-study + .scaling-study {
+  margin-top: 68px;
+}
+
+.scaling-study-copy {
+  max-width: var(--reading-width);
+  text-align: left;
+}
+
+.scaling-study-copy h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--type-heading);
+  font-weight: 760;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.scaling-study-copy p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: var(--type-body);
+  line-height: var(--body-leading);
+}
+
+.scaling-source-figure,
+.scaling-result-figure {
+  margin: 28px 0 0;
+}
+
+.scaling-source-figure {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.scaling-source-figure img,
+.scaling-result-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scaling-tsne-figure {
+  width: 100%;
+}
+
+.policy-scaling-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 28px;
+}
+
+.policy-scaling-grid .scaling-source-figure,
+.policy-scaling-grid .scaling-result-figure {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+}
+
+.policy-scaling-grid .scaling-result-figure {
+  padding: 18px;
+}
+
+.scaling-result-figure-wide {
+  width: 100%;
+}
+
+@media (max-width: 980px) {
+  .scaling-study {
+    width: calc(100% - 28px);
+  }
+
+  .policy-scaling-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 980px) {
   .technical-page .site-nav {
     grid-template-columns: 1fr;

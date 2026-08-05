@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/architecture.png" />
-    <link rel="stylesheet" href="technical.css?v=20260805-paper-scaling" />
+    <link rel="stylesheet" href="technical.css?v=20260806-human-scaling" />
     <script src="technical.js?v=20260805-clean-images" defer></script>
   </head>
   <body class="technical-page">
@@ -439,62 +439,86 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              Human video is not auxiliary; it is a scaling axis. Across
-              controlled studies, more egocentric video expands action diversity,
-              improves learned dynamics, and yields stronger policy
-              initialization with no observed saturation at the largest scale.
-              As the EgoLive corpus grows, its action-centric representations
-              cover broader and lower-density regions of the embedding space.
+              We evaluate human video as a scaling axis at three levels: whether
+              more EgoLive data expands behavioral coverage, whether that scale
+              improves transferable policy initialization, and whether a larger
+              human-video corpus strengthens the LAC-WM dynamics prior.
             </p>
           </div>
         </div>
 
-        <div class="container scaling-layout">
-          <figure class="paper-figure" data-reveal>
+        <div class="container scaling-study">
+          <div class="scaling-study-copy" data-reveal>
+            <h4>Scale and Diversity of EgoLive</h4>
+            <p>
+              An action-centric encoder projects nested 10%, 25%, 50%, and 100%
+              subsets of EgoLive into a shared embedding space. As the corpus
+              grows, samples spread into peripheral and low-density regions rather
+              than only becoming denser, indicating broader coverage of action
+              types, execution styles, and interaction modes.
+            </p>
+          </div>
+          <figure class="scaling-source-figure scaling-tsne-figure" data-reveal>
             <img
-              src="assets/embedding-visualization.png"
+              src="assets/embedding-visualization-cropped.png?v=20260805-cropped"
               alt="Action-centric embedding distribution of EgoLive at different data scales"
               width="1629"
-              height="1382"
+              height="1361"
               loading="lazy"
             />
           </figure>
-          <div class="scaling-notes">
-            <article data-reveal>
-              <span>LAC-WM pretraining</span>
-              <p>
-                Scaling EgoLive from 10% to 100% improves seen score from 83.13
-                to 97.50 and unseen score from 56.88 to 72.40, with robot data
-                and downstream policy training held fixed.
-              </p>
-            </article>
-            <article data-reveal>
-              <span>Policy pretraining</span>
-              <p>
-                Scaling transfers to robot control: seen score improves from
-                47.8 to 85.6 and unseen score improves from 37.6 to 60.2, with
-                identical robot-action post-training.
-              </p>
-            </article>
+        </div>
+
+        <div class="container scaling-study">
+          <div class="scaling-study-copy" data-reveal>
+            <h4>Scaling Policy Pretraining with EgoLive</h4>
+            <p>
+              Here the EgoLive fraction is the only variable: the world model is
+              frozen, the VLM and action expert are pretrained on nested subsets,
+              and every model receives identical robot-action post-training. The
+              10% setting overfits, while the 50% and 100% subsets sustain lower
+              validation loss. From 10% to 100%, seen-task score rises from 47.8
+              to 85.6 and unseen-task score from 37.6 to 60.2, showing that the
+              improved initialization transfers to physical robot control.
+            </p>
+          </div>
+          <div class="policy-scaling-grid" data-reveal>
+            <figure class="scaling-source-figure">
+              <img
+                src="assets/human-scaling-validation-loss.png?v=20260806-paper-crop"
+                alt="Original paper validation-loss curves for policy pretraining with increasing EgoLive fractions"
+                width="1800"
+                height="1564"
+                loading="lazy"
+              />
+            </figure>
+            <figure class="result-chart-figure scaling-result-figure">
+              <img
+                src="assets/result-human-scaling-policy.svg?v=20260806-dark-redraw"
+                alt="Seen and unseen robot task scores after policy pretraining with increasing EgoLive fractions"
+                loading="lazy"
+              />
+            </figure>
           </div>
         </div>
 
-        <div class="human-scaling-paper-results" data-reveal>
-          <figure>
+        <div class="container scaling-study">
+          <div class="scaling-study-copy" data-reveal>
+            <h4>Scaling the LAC-WM Dynamics Prior</h4>
+            <p>
+              This independent component-level study scales an approximately
+              53K-hour human-video corpus while holding robot trajectories and the
+              downstream training protocol fixed. The resulting LAC-WM is frozen
+              before policy training. Increasing human video from 10% to 100%
+              raises seen-task score from 83.13 to 97.50 and unseen-task score
+              from 56.88 to 72.40, demonstrating a stronger and more transferable
+              dynamics prior.
+            </p>
+          </div>
+          <figure class="result-chart-figure scaling-result-figure scaling-result-figure-wide" data-reveal>
             <img
-              src="assets/human-scaling-lacwm.png"
-              alt="Original paper result for LAC-WM performance across increasing human-video fractions"
-              width="1138"
-              height="849"
-              loading="lazy"
-            />
-          </figure>
-          <figure>
-            <img
-              src="assets/human-scaling-policy.png"
-              alt="Original paper validation-loss and policy-performance results across increasing human-video fractions"
-              width="1786"
-              height="785"
+              src="assets/result-human-scaling-lacwm.svg?v=20260806-dark-redraw"
+              alt="Seen and unseen robot task scores after LAC-WM pretraining with increasing human-video fractions"
               loading="lazy"
             />
           </figure>
