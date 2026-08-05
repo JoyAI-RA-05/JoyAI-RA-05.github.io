@@ -2189,6 +2189,28 @@ a.hero-action:focus-visible {
   line-height: var(--body-leading);
 }
 
+.human-scaling-paper-results {
+  display: grid;
+  grid-template-columns: 1.34fr 2.275fr;
+  gap: 24px;
+  align-items: start;
+  width: min(var(--max), calc(100% - 48px));
+  margin: 44px auto 0;
+}
+
+.human-scaling-paper-results figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.human-scaling-paper-results img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @media (max-width: 980px) {
   .technical-page .site-nav {
     grid-template-columns: 1fr;

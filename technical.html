@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/architecture.png" />
-    <link rel="stylesheet" href="technical.css?v=20260805-rainbow-spacing" />
+    <link rel="stylesheet" href="technical.css?v=20260805-paper-scaling" />
     <script src="technical.js?v=20260805-clean-images" defer></script>
   </head>
   <body class="technical-page">
@@ -479,15 +479,26 @@
           </div>
         </div>
 
-        <figure class="wide-figure evidence-figure scaling-evidence-figure result-chart-figure" data-reveal>
-          <img
-            src="assets/result-human-scaling.svg"
-            alt="Redrawn LAC-WM and policy pretraining results across increasing EgoLive data scales"
-            width="1120"
-            height="471"
-            loading="lazy"
-          />
-        </figure>
+        <div class="human-scaling-paper-results" data-reveal>
+          <figure>
+            <img
+              src="assets/human-scaling-lacwm.png"
+              alt="Original paper result for LAC-WM performance across increasing human-video fractions"
+              width="1138"
+              height="849"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="assets/human-scaling-policy.png"
+              alt="Original paper validation-loss and policy-performance results across increasing human-video fractions"
+              width="1786"
+              height="785"
+              loading="lazy"
+            />
+          </figure>
+        </div>
       </section>
 
       <section class="section" id="rl">

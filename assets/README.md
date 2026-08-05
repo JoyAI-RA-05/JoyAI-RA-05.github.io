@@ -39,6 +39,8 @@ figure was resized, reconstructed, or otherwise altered.
 | `experiment-setting.png` | `images/exp-setting.pdf` | `0c1559dadfb0762c28694f2044b266be6d9ab9a79cf062f2c64dbc46b22ae697` |
 | `embedding-visualization.png` | `images/emb_vis_overlay_with_frames.pdf` | `2963dd1da1b1536138d5a6ddb03f67b7df1b82464003a30b5a2903837fa22b04` |
 | `rl-inner-outer-loop.png` | `images/RL_inner_outer_loop5.pdf` | `972450d22b0098905910a94ab952d0e2ee68173335cbae1a2fe070156180fa5a` |
+| `human-scaling-lacwm.png` | `images/scaling_chart.pdf` | `cc699f960ad3d3c656f49f7427a10e210a1be86d3277f5a6f34c2fe632fd5ac8` |
+| `human-scaling-policy.png` | `images/retarget5_pct_val_loss_success_combined_arial_shifted_desk_new.pdf` | `9bb90e895f4d142635857e5ad98d0d3c29a811ea8a35d8618c6499765c303eaf` |
 
 The matching final paper is `JoyAI_RA_0_5 (4).pdf` (SHA-256
 `ae56e148691a3d0306e3d896f9cc95d955075b7f8d0c8e9118aa7e285056563b`).

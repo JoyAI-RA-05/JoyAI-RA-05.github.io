@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/joyai-ra-05-title-user.png" />
-    <link rel="stylesheet" href="technical.css?v=20260805-v2-pure-white" />
+    <link rel="stylesheet" href="technical.css?v=20260805-v2-paper-scaling" />
     <script src="technical.js?v=20260805-clean-images" defer></script>
   </head>
   <body class="technical-page technical-v2-page">
@@ -315,15 +315,26 @@
           </div>
         </div>
 
-        <figure class="wide-figure evidence-figure scaling-evidence-figure result-chart-figure transparent-result-figure" data-reveal>
-          <img
-            src="assets/result-human-scaling-light.svg?v=20260805-light-chart"
-            alt="Web-native chart of LAC-WM and policy pretraining results across increasing human-video data scales"
-            width="1400"
-            height="580"
-            loading="lazy"
-          />
-        </figure>
+        <div class="human-scaling-paper-results" data-reveal>
+          <figure>
+            <img
+              src="assets/human-scaling-lacwm.png"
+              alt="Original paper result for LAC-WM performance across increasing human-video fractions"
+              width="1138"
+              height="849"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="assets/human-scaling-policy.png"
+              alt="Original paper validation-loss and policy-performance results across increasing human-video fractions"
+              width="1786"
+              height="785"
+              loading="lazy"
+            />
+          </figure>
+        </div>
 
         <div class="container report-layout scaling-distribution-intro">
           <div class="section-body" data-reveal>
