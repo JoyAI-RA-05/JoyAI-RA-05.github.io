@@ -382,14 +382,6 @@ p {
   letter-spacing: -0.02em;
 }
 
-.abstract {
-  max-width: 60rem;
-  margin: 0;
-  color: var(--muted);
-  font-size: 1.327rem;
-  line-height: 1.85;
-}
-
 .hero-media {
   width: min(100%, var(--content));
   margin: 48px auto 0;
@@ -1098,7 +1090,6 @@ p {
     line-height: 1.38;
   }
 
-  .abstract,
   .section-body {
     font-size: 1.248rem;
   }
