@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/architecture.png" />
-    <link rel="stylesheet" href="technical.css?v=20260805-ppt-title" />
+    <link rel="stylesheet" href="technical.css?v=20260805-overview-accordion" />
     <script src="technical.js?v=20260805-clean-images" defer></script>
   </head>
   <body class="technical-page">
@@ -237,42 +237,42 @@
         </figure>
 
         <div class="container overview-cards">
-          <div class="compact-grid">
-            <article data-reveal>
-              <h3>Human Video Scaling</h3>
+          <div class="compact-grid overview-accordion">
+            <details data-reveal>
+              <summary>Human Video Scaling</summary>
               <p>
                 Robot demonstrations are scarce, while human egocentric videos
                 scale best but usually lack executable actions. JoyAI-RA 0.5 turns
                 this abundant weak supervision into transferable dynamics learning
                 and stronger robot-policy initialization.
               </p>
-            </article>
-            <article data-reveal>
-              <h3>Dual Action Alignment</h3>
+            </details>
+            <details data-reveal>
+              <summary>Dual Action Alignment</summary>
               <p>
                 Implicit alignment infers latent actions from visual transitions,
                 allowing action-free human, simulation, and robot videos to train
                 the LAC-WM. Explicit alignment grounds reliable trajectories in a
                 shared physical action space.
               </p>
-            </article>
-            <article data-reveal>
-              <h3>Canonical Action Space</h3>
+            </details>
+            <details data-reveal>
+              <summary>Canonical Action Space</summary>
               <p>
                 Reliable human and robot trajectories are mapped into a 130-D
                 canonical representation with fixed left-hand, right-hand, and body
                 slots, plus camera-frame chunk-relative end-effector actions for
                 cross-embodiment supervision.
               </p>
-            </article>
-            <article data-reveal>
-              <h3>Vision–Language–World–Action Model</h3>
+            </details>
+            <details data-reveal>
+              <summary>Vision–Language–World–Action Model</summary>
               <p>
                 The VLM encodes task semantics, the frozen LAC-WM supplies learned
                 physical-dynamics priors, and the flow-matching action expert fuses
                 both streams into continuous executable robot actions.
               </p>
-            </article>
+            </details>
           </div>
         </div>
       </section>
