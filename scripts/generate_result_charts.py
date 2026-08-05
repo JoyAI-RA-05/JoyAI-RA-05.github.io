@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Generate the project-page experiment charts from paper-reported values.
+"""Validate paper results and render project-page charts from one data file.
 
-Role: Render publication results in the JoyAI-RA 0.5 web visual system.
+Role: Audit and render JoyAI-RA 0.5 quantitative results.
 Status: Active source-of-truth generator for result SVG assets.
-Inputs: Experiment values transcribed from the latest Overleaf project.
+Inputs: data/experiment-results.json.
 Outputs: assets/result-main-alignment.svg, assets/result-human-scaling.svg,
          assets/result-rl.svg, plus optional PNG previews.
 Owner/module: JoyAI-RA 0.5 project page / results visualization.
@@ -13,7 +13,9 @@ Safe-to-delete/move: Do not delete while generated assets are used by the site.
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
+from typing import Any
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -22,49 +24,126 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
+DEFAULT_DATA = ROOT / "data" / "experiment-results.json"
 
-BG = "#0d1220"
-PANEL = "#111827"
-TEXT = "#eef3ff"
-MUTED = "#a7b0c4"
-GRID = "#2a3550"
-RED = "#f21b1b"
-CYAN = "#07c8f8"
-VIOLET = "#725cff"
-BASELINE = "#75819a"
-CORAL = "#ff7668"
-PURPLE = "#a077ff"
+# JoyAI-RA 0.1 project-page chart palette.
+TEXT = "#f7faff"
+MUTED = "#96a2bb"
+MUTED_STRONG = "#c9d4eb"
+GRID = "#d3dfff"
+BLUE = "#73acd1"
+RED = "#c0392b"
+SLATE = "#59657d"
+PANEL = "none"
 
 
 def configure() -> None:
     mpl.rcParams.update(
         {
             "font.family": "sans-serif",
-            "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
+            "font.sans-serif": [
+                "Alibaba PuHuiTi 3.0",
+                "PingFang SC",
+                "Microsoft YaHei",
+                "Arial",
+                "DejaVu Sans",
+            ],
             "font.size": 13,
             "text.color": TEXT,
-            "axes.labelcolor": MUTED,
-            "axes.edgecolor": GRID,
+            "axes.labelcolor": TEXT,
+            "axes.edgecolor": MUTED,
             "axes.facecolor": PANEL,
-            "figure.facecolor": BG,
-            "xtick.color": MUTED,
-            "ytick.color": MUTED,
+            "figure.facecolor": PANEL,
+            "xtick.color": MUTED_STRONG,
+            "ytick.color": MUTED_STRONG,
+            "hatch.linewidth": 0.8,
             "svg.fonttype": "none",
         }
     )
 
 
+def load_data(path: Path) -> dict[str, Any]:
+    with path.open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def rounded_mean(values: list[float], digits: int) -> float:
+    return round(sum(values) / len(values), digits)
+
+
+def assert_close(actual: float, expected: float, label: str, tolerance: float = 0.051) -> None:
+    if abs(actual - expected) > tolerance:
+        raise ValueError(f"{label}: computed {actual}, reported {expected}")
+
+
+def validate_data(data: dict[str, Any]) -> None:
+    benchmark = data["main_benchmark"]
+    for method in benchmark["methods"]:
+        if len(method["seen"]) != len(benchmark["seen_categories"]):
+            raise ValueError(f"{method['id']}: seen category/value length mismatch")
+        if len(method["unseen"]) != len(benchmark["unseen_categories"]):
+            raise ValueError(f"{method['id']}: unseen category/value length mismatch")
+        assert_close(
+            rounded_mean(method["seen"], 1),
+            method["seen_average"],
+            f"{method['id']} seen average",
+        )
+        assert_close(
+            rounded_mean(method["unseen"], 1),
+            method["unseen_average"],
+            f"{method['id']} unseen average",
+        )
+
+    wm_rows = data["component_ablations"]["world_model"]["rows"]
+    for row in wm_rows:
+        assert_close(
+            rounded_mean([row["seen"], row["unseen"]], 1),
+            row["average"],
+            f"{row['label']} average",
+        )
+
+    lac = data["human_video_scaling"]["lac_wm"]
+    if not (len(lac["fractions"]) == len(lac["seen"]) == len(lac["unseen"]) == len(lac["average"])):
+        raise ValueError("LAC-WM scaling series lengths do not match")
+    for index, fraction in enumerate(lac["fractions"]):
+        assert_close(
+            rounded_mean([lac["seen"][index], lac["unseen"][index]], 2),
+            lac["average"][index],
+            f"LAC-WM {fraction}% average",
+            tolerance=0.011,
+        )
+
+    policy = data["human_video_scaling"]["policy_pretraining"]
+    if not (len(policy["fractions"]) == len(policy["seen"]) == len(policy["unseen"])):
+        raise ValueError("Policy-scaling series lengths do not match")
+
+    rl = data["reinforcement_learning"]
+    if not (len(rl["strategies"]) == len(rl["mouse"]) == len(rl["headphone"])):
+        raise ValueError("RL series lengths do not match")
+
+    ours = next(item for item in benchmark["methods"] if item["id"] == "joyai_ra_05")
+    baseline = next(item for item in benchmark["methods"] if item["id"] == "pi_05")
+    assert_close(
+        ours["seen_average"] - baseline["seen_average"],
+        18.0,
+        "JoyAI-RA 0.5 seen-average gain over pi_0.5",
+        tolerance=0.001,
+    )
+
+
 def style_axis(ax: mpl.axes.Axes, title: str) -> None:
-    ax.set_title(title, loc="left", fontsize=21, fontweight="bold", pad=20, color=TEXT)
-    ax.set_ylim(0, 108)
-    ax.set_yticks([0, 25, 50, 75, 100])
-    ax.set_ylabel("Task score", fontsize=12, fontweight="bold")
-    ax.grid(axis="y", color=GRID, linewidth=0.9, alpha=0.72)
+    ax.set_title(title, loc="center", fontsize=21, fontweight="bold", pad=24, color=TEXT)
+    ax.set_ylim(0, 105)
+    ax.set_yticks([0, 20, 40, 60, 80, 100])
+    ax.set_ylabel("Task Score", fontsize=12.5, fontweight="bold", labelpad=10)
+    ax.grid(axis="y", color=GRID, linewidth=1.0, alpha=0.16, linestyle=(0, (4, 4)))
     ax.set_axisbelow(True)
-    ax.spines[["top", "right", "left"]].set_visible(False)
-    ax.spines["bottom"].set_color(GRID)
-    ax.tick_params(axis="x", length=0, pad=10)
-    ax.tick_params(axis="y", length=0)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.spines[["left", "bottom"]].set_color(MUTED)
+    ax.spines[["left", "bottom"]].set_alpha(0.52)
+    ax.spines[["left", "bottom"]].set_linewidth(1.15)
+    ax.tick_params(axis="x", length=0, pad=11)
+    ax.tick_params(axis="y", length=0, pad=8)
 
 
 def add_values(ax: mpl.axes.Axes, bars, *, fontsize: float = 8.5) -> None:
@@ -72,97 +151,76 @@ def add_values(ax: mpl.axes.Axes, bars, *, fontsize: float = 8.5) -> None:
         value = bar.get_height()
         ax.text(
             bar.get_x() + bar.get_width() / 2,
-            value + 1.4,
+            value + 1.35,
             f"{value:.1f}",
             ha="center",
             va="bottom",
             fontsize=fontsize,
-            color=TEXT,
+            color=MUTED_STRONG,
             fontweight="bold",
         )
 
 
 def save(fig: mpl.figure.Figure, filename: str, preview_dir: Path | None) -> None:
     ASSETS.mkdir(parents=True, exist_ok=True)
-    fig.savefig(ASSETS / filename, format="svg", bbox_inches="tight", facecolor=BG)
+    output_path = ASSETS / filename
+    fig.savefig(output_path, format="svg", bbox_inches="tight", transparent=True)
+    # Matplotlib emits trailing spaces in multiline SVG paths; normalize the
+    # generated asset so repository whitespace checks remain meaningful.
+    svg = output_path.read_text(encoding="utf-8")
+    output_path.write_text(
+        "\n".join(line.rstrip() for line in svg.splitlines()) + "\n",
+        encoding="utf-8",
+    )
     if preview_dir:
         preview_dir.mkdir(parents=True, exist_ok=True)
         fig.savefig(
             preview_dir / filename.replace(".svg", ".png"),
-            dpi=150,
+            dpi=170,
             bbox_inches="tight",
-            facecolor=BG,
+            transparent=True,
         )
     plt.close(fig)
 
 
-def main_alignment(preview_dir: Path | None) -> None:
-    methods = [
-        r"$\pi_{0.5}$",
-        "No alignment",
-        "No implicit",
-        "No explicit",
-        "JoyAI-RA 0.5",
-    ]
-    colors = [BASELINE, PURPLE, CORAL, CYAN, RED]
-    seen_labels = ["PnP Easy", "PnP Hard", "Long-Horizon", "Average"]
-    unseen_labels = ["Spatial &\ntopological", "Object &\nattribute", "Background &\nillumination", "Average"]
-    seen = np.array(
-        [
-            [83.0, 75.5, 63.5, 74.0],
-            [93.0, 67.5, 51.6, 70.7],
-            [96.0, 80.5, 83.0, 86.5],
-            [97.0, 80.3, 79.8, 85.7],
-            [98.0, 94.2, 83.8, 92.0],
-        ]
-    )
-    unseen = np.array(
-        [
-            [79.6, 76.0, 61.9, 72.5],
-            [36.4, 31.2, 21.8, 29.8],
-            [49.4, 63.5, 27.5, 46.8],
-            [66.6, 66.6, 69.2, 67.5],
-            [77.6, 79.1, 69.8, 75.5],
-        ]
-    )
+def main_alignment(data: dict[str, Any], preview_dir: Path | None) -> None:
+    benchmark = data["main_benchmark"]
+    methods = benchmark["methods"]
+    seen_labels = benchmark["seen_categories"] + ["Average"]
+    unseen_labels = [label.replace(" & ", " &\n") for label in benchmark["unseen_categories"]] + ["Average"]
+    seen = np.array([item["seen"] + [item["seen_average"]] for item in methods])
+    unseen = np.array([item["unseen"] + [item["unseen_average"]] for item in methods])
 
-    fig, axes = plt.subplots(1, 2, figsize=(16, 7.2), gridspec_kw={"wspace": 0.12})
-    fig.subplots_adjust(top=0.82, bottom=0.18, left=0.06, right=0.985)
-    fig.suptitle(
-        "Real-World Performance and Dual-Alignment Ablation",
-        x=0.06,
-        y=0.97,
-        ha="left",
-        fontsize=27,
-        fontweight="bold",
-        color=TEXT,
-    )
-    fig.text(
-        0.06,
-        0.905,
-        "JoyAI-RA 0.5 is strongest overall; removing either alignment channel reduces transfer, especially under novel conditions.",
-        color=MUTED,
-        fontsize=13.5,
-    )
+    styles = {
+        "pi_05": {"color": MUTED_STRONG, "hatch": "////", "edgecolor": MUTED_STRONG},
+        "without_both": {"color": SLATE, "hatch": "\\\\", "edgecolor": MUTED_STRONG},
+        "without_implicit": {"color": BLUE, "hatch": "////", "edgecolor": MUTED_STRONG},
+        "without_explicit": {"color": BLUE, "hatch": None, "edgecolor": "none"},
+        "joyai_ra_05": {"color": RED, "hatch": None, "edgecolor": "none"},
+    }
 
+    fig, axes = plt.subplots(1, 2, figsize=(16, 5.55), gridspec_kw={"wspace": 0.13})
+    fig.subplots_adjust(top=0.86, bottom=0.22, left=0.06, right=0.985)
     width = 0.155
     x = np.arange(4)
-    for ax, title, labels, data in zip(
+    for ax, title, labels, values in zip(
         axes,
-        ["Seen performance", "Unseen generalization"],
+        ["Seen Performance", "Unseen Generalization"],
         [seen_labels, unseen_labels],
         [seen, unseen],
     ):
         style_axis(ax, title)
-        for idx, (method, color) in enumerate(zip(methods, colors)):
+        for index, method in enumerate(methods):
+            style = styles[method["id"]]
             bars = ax.bar(
-                x + (idx - 2) * width,
-                data[idx],
+                x + (index - 2) * width,
+                values[index],
                 width=width * 0.9,
-                label=method,
-                color=color,
-                alpha=1 if idx == 4 else 0.82,
-                edgecolor="none",
+                label=method["label"],
+                color=style["color"],
+                hatch=style["hatch"],
+                edgecolor=style["edgecolor"],
+                linewidth=0.7 if style["hatch"] else 0,
             )
             add_values(ax, bars, fontsize=7.6)
         ax.set_xticks(x, labels)
@@ -174,49 +232,35 @@ def main_alignment(preview_dir: Path | None) -> None:
         loc="lower center",
         ncol=5,
         frameon=False,
-        bbox_to_anchor=(0.5, 0.02),
-        fontsize=11.5,
-        handlelength=1.4,
+        bbox_to_anchor=(0.5, 0.015),
+        fontsize=10.5,
+        handlelength=1.5,
     )
-    for text in legend.get_texts():
-        text.set_color(MUTED)
+    for label in legend.get_texts():
+        label.set_color(MUTED_STRONG)
     save(fig, "result-main-alignment.svg", preview_dir)
 
 
-def human_scaling(preview_dir: Path | None) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(16, 6.8), gridspec_kw={"wspace": 0.14})
-    fig.subplots_adjust(top=0.8, bottom=0.17, left=0.06, right=0.985)
-    fig.suptitle(
-        "Human Video Scaling",
-        x=0.06,
-        y=0.96,
-        ha="left",
-        fontsize=27,
-        fontweight="bold",
-        color=TEXT,
-    )
-    fig.text(
-        0.06,
-        0.89,
-        "Increasing egocentric video consistently strengthens learned dynamics and downstream robot control.",
-        color=MUTED,
-        fontsize=13.5,
-    )
-
+def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
+    scaling = data["human_video_scaling"]
     panels = [
-        ("LAC-WM pretraining", ["10%", "25%", "100%"], [83.1, 89.4, 97.5], [56.9, 67.7, 72.4]),
-        ("Policy pretraining", ["10%", "25%", "50%", "100%"], [47.8, 75.3, 80.5, 85.6], [37.6, 53.4, 58.6, 60.2]),
+        ("LAC-WM Pretraining", scaling["lac_wm"]),
+        ("Policy Pretraining", scaling["policy_pretraining"]),
     ]
-    for ax, (title, labels, seen, unseen) in zip(axes, panels):
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 5.25), gridspec_kw={"wspace": 0.14})
+    fig.subplots_adjust(top=0.85, bottom=0.2, left=0.06, right=0.985)
+    for ax, (title, result) in zip(axes, panels):
         style_axis(ax, title)
+        labels = [f"{fraction}%" for fraction in result["fractions"]]
         x = np.arange(len(labels))
         width = 0.32
-        seen_bars = ax.bar(x - width / 2, seen, width, color=RED, label="Seen")
-        unseen_bars = ax.bar(x + width / 2, unseen, width, color=CYAN, label="Unseen")
+        seen_bars = ax.bar(x - width / 2, result["seen"], width, color=BLUE, label="Seen")
+        unseen_bars = ax.bar(x + width / 2, result["unseen"], width, color=RED, label="Unseen")
         add_values(ax, seen_bars, fontsize=10)
         add_values(ax, unseen_bars, fontsize=10)
         ax.set_xticks(x, labels)
-        ax.set_xlabel("EgoLive data used", fontsize=12, fontweight="bold", labelpad=13)
+        ax.set_xlabel("Human Video Fraction", fontsize=12, fontweight="bold", labelpad=14)
 
     handles, labels = axes[0].get_legend_handles_labels()
     legend = fig.legend(
@@ -225,68 +269,64 @@ def human_scaling(preview_dir: Path | None) -> None:
         loc="lower center",
         ncol=2,
         frameon=False,
-        bbox_to_anchor=(0.5, 0.015),
-        fontsize=12,
+        bbox_to_anchor=(0.5, 0.01),
+        fontsize=11.5,
     )
-    for text in legend.get_texts():
-        text.set_color(MUTED)
+    for label in legend.get_texts():
+        label.set_color(MUTED_STRONG)
     save(fig, "result-human-scaling.svg", preview_dir)
 
 
-def rl_results(preview_dir: Path | None) -> None:
-    strategies = ["Original VLWA", "Inner loop", "Outer loop", "Inner–outer loop"]
-    mouse = [25.0, 45.0, 60.0, 70.0]
-    headphone = [25.0, 35.0, 40.0, 50.0]
+def rl_results(data: dict[str, Any], preview_dir: Path | None) -> None:
+    results = data["reinforcement_learning"]
+    labels = [
+        "Original VLWA\nPolicy",
+        "Inner-loop\nRL Only",
+        "Outer-loop\nRL Only",
+        "Inner-outer Loop\nRL",
+    ]
 
-    fig, ax = plt.subplots(figsize=(14, 6.4))
-    fig.subplots_adjust(top=0.76, bottom=0.2, left=0.075, right=0.975)
-    fig.suptitle(
-        "Inner–Outer Loop Reinforcement Learning",
-        x=0.075,
-        y=0.955,
-        ha="left",
-        fontsize=27,
-        fontweight="bold",
-        color=TEXT,
-    )
-    fig.text(
-        0.075,
-        0.875,
-        "Success rate under unseen object-position shifts",
-        color=MUTED,
-        fontsize=13.5,
-    )
-    style_axis(ax, "Real-world pick-and-place")
-    x = np.arange(len(strategies))
+    fig, ax = plt.subplots(figsize=(14, 5.05))
+    fig.subplots_adjust(top=0.9, bottom=0.22, left=0.075, right=0.975)
+    style_axis(ax, "Success Rate under Unseen Object-Position Shifts")
+    ax.set_ylabel("Task Success Rate (%)", fontsize=12.5, fontweight="bold", labelpad=10)
+    x = np.arange(len(labels))
     width = 0.31
-    mouse_bars = ax.bar(x - width / 2, mouse, width, color=RED, label="Mouse")
-    headphone_bars = ax.bar(x + width / 2, headphone, width, color=CYAN, label="Headphone")
-    add_values(ax, mouse_bars, fontsize=11)
-    add_values(ax, headphone_bars, fontsize=11)
-    ax.set_xticks(x, strategies)
-    legend = ax.legend(loc="upper left", frameon=False, ncol=2, fontsize=12)
-    for text in legend.get_texts():
-        text.set_color(MUTED)
+    mouse_bars = ax.bar(x - width / 2, results["mouse"], width, color=BLUE, label="Mouse")
+    headphone_bars = ax.bar(x + width / 2, results["headphone"], width, color=RED, label="Headphone")
+    add_values(ax, mouse_bars, fontsize=10.5)
+    add_values(ax, headphone_bars, fontsize=10.5)
+    ax.set_xticks(x, labels)
+    legend = ax.legend(loc="upper left", frameon=False, ncol=2, fontsize=11.5)
+    for label in legend.get_texts():
+        label.set_color(MUTED_STRONG)
     save(fig, "result-rl.svg", preview_dir)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data", type=Path, default=DEFAULT_DATA, help="Result data JSON.")
     parser.add_argument(
         "--preview-dir",
         type=Path,
         default=None,
-        help="Optionally write PNG previews to this directory.",
+        help="Optionally write transparent PNG previews to this directory.",
     )
+    parser.add_argument("--check-only", action="store_true", help="Validate data without rendering charts.")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    data = load_data(args.data)
+    validate_data(data)
+    print(f"Verified experiment results: {args.data}")
+    if args.check_only:
+        return
     configure()
-    main_alignment(args.preview_dir)
-    human_scaling(args.preview_dir)
-    rl_results(args.preview_dir)
+    main_alignment(data, args.preview_dir)
+    human_scaling(data, args.preview_dir)
+    rl_results(data, args.preview_dir)
 
 
 if __name__ == "__main__":

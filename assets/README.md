@@ -19,7 +19,9 @@
   `retarget5_pct_val_loss_success_combined_arial_shifted_desk_new.pdf`, and
   `rl_results_v3.pdf`
 - Generator: `scripts/generate_result_charts.py`
+- Machine-readable source: `data/experiment-results.json`
+- Audit notes: `data/README.md`
 - Role: Web-native redraws of the main, scaling, and reinforcement-learning
-  results using one project-page visual system
+  results using the JoyAI-RA 0.1 project-page chart palette and visual system
 - Output: editable vector SVG with text preserved as text
 - Generated: 2026-08-05

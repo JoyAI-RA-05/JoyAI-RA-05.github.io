@@ -391,7 +391,7 @@
                 <span>FAMILIAR CONDITIONS · Seen average</span>
                 <h3>Seen performance</h3>
                 <strong>92.0</strong>
-                <p>+23.8 points over π<sub>0.5</sub></p>
+                <p>+18.0 points over π<sub>0.5</sub></p>
               </div>
               <div class="score-list">
                 <div style="--value: 98%">
@@ -428,6 +428,10 @@
           </div>
 
           <figure class="paper-figure evidence-figure evidence-figure-wide result-chart-figure" data-reveal>
+            <figcaption>
+              <strong>Real-World Performance and Dual-Alignment Ablation.</strong>
+              <span>Task scores on seen tasks and unseen generalization.</span>
+            </figcaption>
             <img
               src="assets/result-main-alignment.svg"
               alt="Redrawn real-world seen and unseen task scores comparing JoyAI-RA 0.5 with the baseline and dual-alignment ablations"
@@ -435,10 +439,6 @@
               height="501"
               loading="lazy"
             />
-            <figcaption>
-              Real-world performance and dual-alignment ablation, redrawn from
-              the paper-reported results.
-            </figcaption>
           </figure>
 
           <div class="component-ablation-grid" aria-label="Component ablation results">
@@ -566,6 +566,10 @@
         </div>
 
         <figure class="wide-figure evidence-figure scaling-evidence-figure result-chart-figure" data-reveal>
+          <figcaption>
+            <strong>Human Video Scaling.</strong>
+            <span>Seen- and unseen-task performance under increasing human-video fractions.</span>
+          </figcaption>
           <img
             src="assets/result-human-scaling.svg"
             alt="Redrawn LAC-WM and policy pretraining results across increasing EgoLive data scales"
@@ -573,10 +577,6 @@
             height="471"
             loading="lazy"
           />
-          <figcaption>
-            Human-video scaling consistently improves both learned dynamics and
-            downstream robot-control performance.
-          </figcaption>
         </figure>
       </section>
 
@@ -611,6 +611,10 @@
         </figure>
 
         <figure class="wide-figure evidence-figure rl-results-figure result-chart-figure" data-reveal>
+          <figcaption>
+            <strong>Inner–Outer Loop Reinforcement Learning.</strong>
+            <span>Success rates under unseen object-position shifts.</span>
+          </figcaption>
           <img
             src="assets/result-rl.svg"
             alt="Redrawn success-rate comparison of the original VLWA policy, inner-loop RL, outer-loop RL, and inner-outer loop RL"
@@ -618,11 +622,6 @@
             height="385"
             loading="lazy"
           />
-          <figcaption>
-            Real-world RL under positional distribution shift · inner and outer
-            loops provide complementary gains, with their combination performing
-            best on both tasks.
-          </figcaption>
         </figure>
       </section>
 

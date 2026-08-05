@@ -885,8 +885,12 @@ p {
 .result-chart-figure,
 .paper-figure.result-chart-figure,
 .wide-figure.result-chart-figure {
-  background: #0d1220;
-  border-color: rgba(112, 140, 210, 0.24);
+  display: flex;
+  flex-direction: column;
+  padding: 26px 30px 22px;
+  background: linear-gradient(180deg, rgba(16, 20, 34, 0.88), rgba(10, 13, 22, 0.94));
+  border: 1px solid rgba(108, 137, 201, 0.18);
+  border-radius: 34px;
 }
 
 .result-chart-figure::after {
@@ -895,13 +899,32 @@ p {
 
 .result-chart-figure img {
   display: block;
-  background: #0d1220;
+  width: 100%;
+  height: auto;
+  background: transparent;
 }
 
 .result-chart-figure figcaption {
+  order: -1;
+  margin: 0 0 18px;
+  padding: 0;
   color: var(--muted);
-  background: rgba(13, 18, 32, 0.98);
-  border-top-color: rgba(112, 140, 210, 0.18);
+  background: transparent;
+  border: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.result-chart-figure figcaption strong {
+  display: block;
+  color: var(--text);
+  font-weight: 760;
+}
+
+.result-chart-figure figcaption span {
+  display: block;
+  margin-top: 4px;
 }
 
 .scaling-layout {
@@ -1231,6 +1254,19 @@ p {
 
   .wide-figure.evidence-figure {
     width: min(var(--max), calc(100% - 28px));
+  }
+
+  .result-chart-figure,
+  .paper-figure.result-chart-figure,
+  .wide-figure.result-chart-figure {
+    padding: 20px 16px 16px;
+    border-radius: 20px;
+  }
+
+  .result-chart-figure figcaption {
+    margin-bottom: 14px;
+    font-size: 0.94rem;
+    line-height: 1.5;
   }
 
   .site-nav {
