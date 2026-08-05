@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/joyai-ra-05-title-user.png" />
-    <link rel="stylesheet" href="technical.css?v=20260805-v2-all-web-charts" />
+    <link rel="stylesheet" href="technical.css?v=20260805-v2-scaling-layout" />
     <script src="technical.js?v=20260805-clean-images" defer></script>
   </head>
   <body class="technical-page technical-v2-page">
@@ -62,7 +62,7 @@
                 height="352"
               />
             </h1>
-            <p class="subtitle">A Foundation Model for Robotic Autonomy</p>
+            <p class="subtitle">Scaling Robot Manipulation Learning via Dual Action Alignment</p>
             <div class="hero-actions" aria-label="Project resources">
               <a class="hero-action" href="#report">Tech Report</a>
               <span class="hero-action is-disabled" aria-disabled="true">Code</span>
@@ -95,30 +95,19 @@
           <article class="abstract-copy" data-reveal aria-labelledby="abstract-heading">
             <h3 class="visually-hidden" id="abstract-heading">Abstract</h3>
             <p>
-              Robot data is scarce, so generalist policies need to learn from
-              heterogeneous sources, including human egocentric video, simulation,
-              and real robots, which differ in supervision and embodiment, with
-              action labels missing or mutually incompatible. Human egocentric data
-              scale best but sit farthest from robot data, and naive pooling causes
-              negative transfer rather than knowledge sharing. We present JoyAI-RA
-              0.5, a generalist Vision-Language-World-Action (VLWA) framework that
-              couples physical world-dynamics priors with visual semantics and
-              scales manipulation learning across such data via dual action
-              alignment. Implicit action alignment infers latent actions from visual
-              transitions, enabling action-free human, simulation, and robot data to
-              guide a latent-action-conditioned world model in learning physical
-              dynamics. Explicit alignment grounds reliable human and robot
-              trajectories in a unified physical action space through a canonical
-              action representation and camera-frame chunk-relative end-effector
-              actions. An inner-outer-loop reinforcement stage then pairs efficient
-              task adaptation with foundation-policy improvement. On a real-world
-              AgiBot benchmark, JoyAI-RA performs strongly on both seen tasks and
-              unseen variations. The task score improves consistently as the volume
-              of human egocentric pretraining data increases and shows no sign of
-              saturation at our largest scale. This suggests that abundant but
-              weakly labeled human experience can be converted into a transferable
-              training signal, making human video not merely a weak auxiliary source
-              but a primary axis along which manipulation capability can be scaled.
+              We propose JoyAI-RA 0.5, a generalist
+              Vision-Language-World-Action framework that scales robot manipulation
+              learning from heterogeneous human, simulation, and robot data through
+              dual action alignment. Implicit alignment learns transferable physical
+              dynamics from action-free video, while explicit alignment maps reliable
+              human and robot trajectories into a unified action space for executable
+              control. An inner-outer-loop reinforcement learning stage combines rapid
+              task adaptation with continued foundation-policy improvement. On the
+              Real-World AgiBot Benchmark, JoyAI-RA 0.5 achieves strong performance on
+              seen tasks and unseen variations. Performance improves consistently as
+              human egocentric pretraining data scales, with no saturation observed at
+              the largest tested scale, establishing human video as a primary scaling
+              axis for real-world manipulation.
             </p>
           </article>
         </div>
@@ -130,19 +119,18 @@
             <h2>Data</h2>
           </div>
 
-          <div class="data-table data-metrics" data-reveal aria-label="Training data scale">
-            <div>
-              <strong>53K+</strong>
-              <span>Human video hours</span>
-            </div>
-            <div>
-              <strong>11K+</strong>
-              <span>Simulation hours</span>
-            </div>
-            <div>
-              <strong>8K+</strong>
-              <span>Real-robot hours</span>
-            </div>
+          <div class="subsection-title" data-reveal>
+            <h3>Heterogeneous Training Data</h3>
+          </div>
+          <div class="section-body section-summary" data-reveal>
+            <p>
+              The pre-training corpus combines 53K+ hours of human egocentric video,
+              11K+ hours of simulation, and 8K+ hours of real-robot demonstrations
+              across bimanual and single-arm embodiments. Human video contributes broad
+              visual and behavioral diversity, while simulation and robot trajectories
+              provide structured and executable supervision across complementary
+              dynamics, semantics, and physical control signals.
+            </p>
           </div>
 
           <figure class="paper-figure evidence-figure" data-reveal>
@@ -165,8 +153,12 @@
           </div>
           <div class="section-body section-summary" data-reveal>
             <p>
-              A closed loop of annotation, quality filtering, and coverage analysis
-              turns heterogeneous human and robot data into reliable training supervision.
+              Raw human ego videos are annotated for visual, language, and hand-motion
+              signals, then processed with robot trajectories under shared validity,
+              quality, and diversity criteria. Representation-guided curation removes
+              low-quality and redundant episodes while preserving rare strategies and
+              scene configurations. Coverage analysis then identifies sparse
+              capabilities and directs subsequent data collection.
             </p>
           </div>
         </div>
@@ -197,9 +189,11 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              JoyAI-RA 0.5 combines implicit latent-dynamics alignment with explicit
-              physical-action alignment, coupling VLM semantics and LAC-WM dynamics
-              to generate executable robot actions.
+              JoyAI-RA combines a VLM, a Latent-Action-Conditioned World Model, and a
+              Flow-Matching Action Expert. The VLM encodes task goals and semantics,
+              the LAC-WM supplies physical-dynamics priors from visual transitions,
+              and late fusion exposes both to the action expert, which generates
+              continuous action chunks in a canonical 130-dimensional space.
             </p>
           </div>
         </div>
@@ -211,6 +205,32 @@
             width="4596"
             height="2166"
             loading="eager"
+          />
+        </figure>
+
+        <div class="container report-layout method-followup">
+          <div class="section-title" data-reveal>
+            <h3>Inner–Outer Loop Reinforcement Learning</h3>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              The fast inner loop runs on the edge server, learning a lightweight
+              residual policy for task-specific adaptation while the foundation model
+              remains frozen. The asynchronous outer loop aggregates successful
+              interactions, improves the foundation VLWA on the central server, and
+              periodically synchronizes updated parameters back to the edge, forming a
+              closed self-improving system.
+            </p>
+          </div>
+        </div>
+
+        <figure class="wide-figure" data-reveal>
+          <img
+            src="assets/rl-inner-outer-loop-cropped.png?v=20260805-cropped"
+            alt="Inner-outer loop reinforcement learning with edge-server residual adaptation and central-server VLWA updates"
+            width="1830"
+            height="777"
+            loading="lazy"
           />
         </figure>
 
@@ -229,10 +249,12 @@
           </div>
           <div class="section-body section-summary" data-reveal>
             <p>
-              We evaluate six real-world AgiBot G1 scenarios under seen tasks and
-              unseen variations in objects, spatial layouts, backgrounds, and
-              illumination, reporting subtask-completion scores over 20 seen and
-              10 unseen trials per task.
+              We evaluate the AgiBot G1 on six scenarios spanning easy pick-and-place,
+              precise manipulation, and long-horizon tasks. Seen trials test familiar
+              objects and layouts; unseen trials vary object categories, spatial
+              arrangements, backgrounds, and illumination. Each task is scored from
+              subtask completion across 20 seen and 10 unseen trials, measuring both
+              execution quality and generalization.
             </p>
           </div>
         </div>
@@ -249,6 +271,32 @@
           </figure>
 
         </div>
+
+        <div class="container report-layout experiment-followup">
+          <div class="section-title" data-reveal>
+            <h3>Inner–Outer Loop RL Results</h3>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              We compare the original policy, inner-loop-only adaptation,
+              outer-loop-only adaptation, and the combined method under identical
+              training budgets on Mouse and Headphone pick-and-place with unseen
+              position shifts. Both loops improve over the foundation policy, while
+              their combination performs best, reaching 70% and 50% success and
+              confirming their complementary benefits.
+            </p>
+          </div>
+        </div>
+
+        <figure class="wide-figure evidence-figure rl-results-figure result-chart-figure transparent-result-figure" data-reveal>
+          <img
+            src="assets/result-rl-redrawn.svg?v=20260805-muted-chart"
+            alt="Web-native success-rate comparison of the original VLWA policy, inner-loop RL, outer-loop RL, and inner-outer loop RL"
+            width="1200"
+            height="550"
+            loading="lazy"
+          />
+        </figure>
       </section>
 
       <section class="section" id="scaling">
@@ -258,12 +306,35 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              Human video is not auxiliary; it is a scaling axis. Across
-              controlled studies, more egocentric video expands action diversity,
-              improves learned dynamics, and yields stronger policy
-              initialization with no observed saturation at the largest scale.
-              As the EgoLive corpus grows, its action-centric representations
-              cover broader and lower-density regions of the embedding space.
+              Scaling human-video pretraining consistently improves robot control
+              without saturation. From 10% to 100% data, LAC-WM raises seen/unseen
+              scores from 83.13/56.88 to 97.50/72.40, while EgoLive policy pretraining
+              raises them from 47.8/37.6 to 85.6/60.2. These gains show that scale
+              strengthens both transferable dynamics priors and policy initialization.
+            </p>
+          </div>
+        </div>
+
+        <figure class="wide-figure evidence-figure scaling-evidence-figure result-chart-figure transparent-result-figure" data-reveal>
+          <img
+            src="assets/result-human-scaling-redrawn.svg?v=20260805-muted-chart"
+            alt="Web-native chart of LAC-WM and policy pretraining results across increasing human-video data scales"
+            width="1400"
+            height="580"
+            loading="lazy"
+          />
+        </figure>
+
+        <div class="container report-layout scaling-distribution-intro">
+          <div class="section-title" data-reveal>
+            <h3>Action-Space Distribution</h3>
+          </div>
+          <div class="section-body" data-reveal>
+            <p>
+              Beyond benchmark gains, we examine whether scaling EgoLive expands the
+              behaviors represented in pretraining. An action-centric embedding view
+              distinguishes genuinely broader interaction patterns from simply adding
+              more samples around already familiar actions.
             </p>
           </div>
         </div>
@@ -280,74 +351,18 @@
           </figure>
           <div class="scaling-notes">
             <article data-reveal>
-              <span>LAC-WM pretraining</span>
+              <span>Broader action coverage</span>
               <p>
-                Scaling the full human-video corpus from 10% to 100% improves
-                seen score from 83.13 to 97.50 and unseen score from 56.88 to
-                72.40, with robot data and downstream policy training held fixed.
-              </p>
-            </article>
-            <article data-reveal>
-              <span>Policy pretraining</span>
-              <p>
-                Scaling transfers to robot control: seen score improves from
-                47.8 to 85.6 and unseen score improves from 37.6 to 60.2, with
-                identical robot-action post-training.
+                An action-centric encoder projects EgoLive clips from four data
+                scales into a shared embedding space. As the corpus grows from 10%
+                to 100%, samples extend into broader peripheral and low-density
+                regions rather than only becoming denser. This indicates that
+                additional video introduces new action types, execution styles, and
+                interaction modes, expanding behavioral coverage.
               </p>
             </article>
           </div>
         </div>
-
-        <figure class="wide-figure evidence-figure scaling-evidence-figure result-chart-figure transparent-result-figure" data-reveal>
-          <img
-            src="assets/result-human-scaling-redrawn.svg?v=20260805-muted-chart"
-            alt="Web-native chart of LAC-WM and policy pretraining results across increasing human-video data scales"
-            width="1400"
-            height="580"
-            loading="lazy"
-          />
-        </figure>
-      </section>
-
-      <section class="section" id="rl">
-        <div class="container report-layout">
-          <div class="section-title" data-reveal>
-            <h3>Inner–Outer Loop Reinforcement Learning</h3>
-          </div>
-          <div class="section-body" data-reveal>
-            <p>
-              The inner loop rapidly learns a lightweight residual policy for
-              task-level adaptation, while the asynchronous outer loop incorporates
-              accumulated interaction data into the foundation VLWA and
-              periodically sends an improved model back to the edge.
-            </p>
-            <p>
-              Under unseen object-position shifts, both loops improve over the
-              original policy, and their combination reaches a 70% success rate on
-              Mouse and 50% on Headphone pick-and-place tasks.
-            </p>
-          </div>
-        </div>
-
-        <figure class="wide-figure" data-reveal>
-          <img
-            src="assets/rl-inner-outer-loop-cropped.png?v=20260805-cropped"
-            alt="Inner-outer loop reinforcement learning with edge-server residual adaptation and central-server VLWA updates"
-            width="1830"
-            height="777"
-            loading="lazy"
-          />
-        </figure>
-
-        <figure class="wide-figure evidence-figure rl-results-figure result-chart-figure transparent-result-figure" data-reveal>
-          <img
-            src="assets/result-rl-redrawn.svg?v=20260805-muted-chart"
-            alt="Web-native success-rate comparison of the original VLWA policy, inner-loop RL, outer-loop RL, and inner-outer loop RL"
-            width="1200"
-            height="550"
-            loading="lazy"
-          />
-        </figure>
       </section>
 
       <section class="section" id="videos">
@@ -357,9 +372,12 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              Eight real-world AgiBot G1 demonstrations span object organization,
-              precise placement, and multi-stage manipulation under a consistent
-              desk-side evaluation setting.
+              Eight real-world demonstrations on AgiBot G1 cover object organization,
+              precise placement, and multi-stage manipulation in a consistent desk-side
+              setting. They provide qualitative evidence that the learned policy can
+              translate language-conditioned perception and physically grounded actions
+              into complete task sequences across different objects and workspace
+              configurations.
             </p>
           </div>
         </div>
