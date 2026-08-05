@@ -1787,10 +1787,9 @@ body,
 }
 
 .technical-page .hero {
-  min-height: calc(100svh - 84px);
   display: grid;
   align-items: center;
-  padding: 72px 0 104px;
+  padding: 72px 0 56px;
 }
 
 .technical-page .hero-container {
@@ -1800,7 +1799,7 @@ body,
 
 .technical-page .hero-copy {
   align-items: center;
-  gap: 34px;
+  gap: 24px;
   max-width: 1120px;
   text-align: center;
 }
@@ -1836,25 +1835,6 @@ body,
 .technical-page .hero-project-name {
   position: relative;
   display: inline-block;
-}
-
-.technical-page .hero-rainbow {
-  position: absolute;
-  left: 12%;
-  bottom: clamp(-25px, -1.5vw, -16px);
-  width: clamp(50px, 5vw, 76px);
-  height: clamp(13px, 1.25vw, 19px);
-  border-radius: 52% 48% 50% 50%;
-  background: linear-gradient(
-    90deg,
-    #40c9ff 0%,
-    #6be2ce 23%,
-    #f4ed57 51%,
-    #ffbd47 74%,
-    #ff7458 100%
-  );
-  box-shadow: 0 4px 14px rgba(91, 206, 255, 0.18);
-  transform: rotate(3deg);
 }
 
 .technical-page .hero-version {
@@ -1930,7 +1910,6 @@ a.hero-action:focus-visible {
   }
 
   .technical-page .hero {
-    min-height: calc(100svh - 124px);
     padding: 68px 0 88px;
   }
 }
@@ -1970,13 +1949,6 @@ a.hero-action:focus-visible {
     width: 42px;
     height: 44px;
     background-size: 315px auto;
-  }
-
-  .technical-page .hero-rainbow {
-    left: 10%;
-    bottom: -12px;
-    width: 34px;
-    height: 9px;
   }
 
   .technical-page .hero .subtitle {
