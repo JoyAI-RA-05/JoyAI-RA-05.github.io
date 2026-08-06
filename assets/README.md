@@ -60,8 +60,10 @@ The matching final paper is `JoyAI_RA_0_5 (4).pdf` (SHA-256
 ## Generated result charts
 
 - Files: `result-main-alignment.svg`, `result-human-scaling.svg`,
-  `result-human-scaling-lacwm.svg`, `result-human-scaling-policy.svg`, and
-  `result-rl.svg`
+  `result-human-scaling-policy.svg`, and `result-rl.svg`.
+- `result-human-scaling-lacwm.svg` is retained as a legacy redraw; the live
+  technical page uses the original `human-scaling-lacwm.png` rendered directly
+  from the Overleaf PDF.
 - Source values: the latest Overleaf archive and final paper listed above
 - Generator: `scripts/generate_result_charts.py`
 - Machine-readable source: `data/experiment-results.json`
