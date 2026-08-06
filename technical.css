@@ -2156,6 +2156,14 @@ html.technical-v2-root body,
   text-align: left;
 }
 
+.technical-page.technical-v2-page .abstract-copy p,
+.technical-page.technical-v2-page .section-body p,
+.technical-page.technical-v2-page .scaling-panel-copy,
+.technical-page.technical-v2-page .g1-task-heading p {
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
 .technical-page.technical-v2-page .scaling-panel-grid {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
