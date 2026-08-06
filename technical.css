@@ -1937,23 +1937,25 @@ html.technical-v2-root body,
 .technical-page.technical-v2-page .brand-corporate {
   width: auto;
   height: auto;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-  transform: translateY(7px);
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(-1px);
 }
 
 .technical-page.technical-v2-page .brand-corporate .brand-wordmark {
-  width: 150px;
+  width: 156px;
   height: auto;
+  transform: translateY(-2px);
 }
 
 .technical-page.technical-v2-page .brand-corporate span {
   color: #191c23;
-  font-size: 0.62rem;
+  font-size: 0.86rem;
   font-weight: 520;
   letter-spacing: 0.02em;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .technical-page.technical-v2-page .site-nav nav a.is-active,
@@ -1989,7 +1991,7 @@ html.technical-v2-root body,
 
 .technical-page.technical-v2-page .hero-action {
   color: var(--text);
-  border: 0;
+  border: 1px solid rgba(25, 28, 35, 0.18);
   background: #ffffff;
   box-shadow: none;
 }
@@ -2046,6 +2048,154 @@ html.technical-v2-root body,
   margin-top: 16px;
 }
 
+.technical-page.technical-v2-page .result-tabs-switcher {
+  margin-top: 34px;
+}
+
+.technical-page.technical-v2-page .result-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.technical-page.technical-v2-page .result-tab-trigger {
+  padding: 11px 18px;
+  border: 1px solid rgba(25, 28, 35, 0.14);
+  border-radius: 999px;
+  color: var(--text);
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 620;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.technical-page.technical-v2-page .result-tab-trigger:hover,
+.technical-page.technical-v2-page .result-tab-trigger:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(25, 28, 35, 0.34);
+}
+
+.technical-page.technical-v2-page .result-tab-trigger.is-active {
+  color: #ffffff;
+  border-color: #252932;
+  background: #252932;
+}
+
+.technical-page.technical-v2-page .result-tab-trigger:focus-visible {
+  outline: 2px solid rgba(37, 41, 50, 0.2);
+  outline-offset: 3px;
+}
+
+.technical-page.technical-v2-page .result-tab-panel[hidden] {
+  display: none;
+}
+
+.technical-page.technical-v2-page .result-tab-panel {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.technical-page.technical-v2-page #scaling-policy-panel {
+  width: 100%;
+  max-width: none;
+}
+
+.technical-page.technical-v2-page #scaling-lacwm-panel {
+  width: 100%;
+  max-width: none;
+}
+
+.technical-page.technical-v2-page #scaling-lacwm-panel .result-chart-figure {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.technical-page.technical-v2-page .result-tab-panel .result-chart-figure {
+  width: 100%;
+  margin-top: 0;
+}
+
+.technical-page.technical-v2-page .scaling-panel-copy {
+  width: 90%;
+  max-width: none;
+  margin: 0 auto 22px;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.technical-page.technical-v2-page .scaling-panel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.technical-page.technical-v2-page .scaling-panel-grid .paper-figure {
+  width: 100%;
+  margin: 0;
+}
+
+.technical-page.technical-v2-page .rl-results-figure {
+  width: min(60%, 600px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.technical-page.technical-v2-page .dual-view-demo {
+  position: relative;
+  margin-top: 34px;
+}
+
+.technical-page.technical-v2-page .dual-view-labels {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1152fr) minmax(0, 406fr);
+  gap: 16px;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 620;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+.technical-page.technical-v2-page .dual-view-labels span {
+  justify-self: start;
+  margin-left: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(25, 28, 35, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.technical-page.technical-v2-page .dual-view-demo video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1574 / 720;
+  border: 0;
+  border-radius: 4px;
+  background: #ffffff;
+  object-fit: contain;
+}
+
 .technical-page.technical-v2-page .wide-figure,
 .technical-page.technical-v2-page .paper-figure,
 .technical-page.technical-v2-page .wide-figure img,
@@ -2087,6 +2237,17 @@ html.technical-v2-root body,
   .technical-page.technical-v2-page .subsection-title h3,
   .technical-page.technical-v2-page .citation-card h2 {
     font-size: 1.125rem;
+  }
+
+  .technical-page.technical-v2-page .result-tab-panel,
+  .technical-page.technical-v2-page .rl-results-figure,
+  .technical-page.technical-v2-page #scaling-lacwm-panel .result-chart-figure {
+    width: 100%;
+  }
+
+  .technical-page.technical-v2-page .scaling-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 }
 

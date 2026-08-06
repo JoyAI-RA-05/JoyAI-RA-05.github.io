@@ -6,8 +6,10 @@ Status: Active source-of-truth generator for result SVG assets.
 Inputs: data/experiment-results.json.
 Outputs: assets/result-main-alignment.svg, assets/result-human-scaling.svg,
          assets/result-human-scaling-lacwm.svg,
-         assets/result-human-scaling-policy.svg, assets/result-rl.svg, plus
-         optional PNG previews.
+         assets/result-human-scaling-policy.svg,
+         assets/result-human-scaling-lacwm-light.svg,
+         assets/result-human-scaling-policy-light.svg, assets/result-rl.svg,
+         assets/result-rl-compact-light.svg, plus optional PNG previews.
 Owner/module: JoyAI-RA 0.5 project page / results visualization.
 Safe-to-delete/move: Do not delete while generated assets are used by the site.
 """
@@ -178,7 +180,22 @@ def style_light_axis(ax: mpl.axes.Axes, title: str) -> None:
     ax.tick_params(axis="y", colors=LIGHT_MUTED, length=0, pad=8)
 
 
-def add_values(ax: mpl.axes.Axes, bars, *, fontsize: float = 8.5) -> None:
+def style_compact_light_axis(ax: mpl.axes.Axes, title: str) -> None:
+    """Use larger labels and tighter spacing for charts shown at 60% width."""
+    style_light_axis(ax, title)
+    ax.set_title(title, loc="center", fontsize=18.5, fontweight="bold", pad=17, color=LIGHT_TEXT)
+    ax.set_ylabel("Task Score", fontsize=11.5, fontweight="bold", labelpad=8, color=LIGHT_TEXT)
+    ax.tick_params(axis="x", labelsize=11.5, pad=9)
+    ax.tick_params(axis="y", labelsize=10.5, pad=7)
+
+
+def add_values(
+    ax: mpl.axes.Axes,
+    bars,
+    *,
+    fontsize: float = 8.5,
+    color: str = MUTED_STRONG,
+) -> None:
     for bar in bars:
         value = bar.get_height()
         ax.text(
@@ -188,7 +205,7 @@ def add_values(ax: mpl.axes.Axes, bars, *, fontsize: float = 8.5) -> None:
             ha="center",
             va="bottom",
             fontsize=fontsize,
-            color=MUTED_STRONG,
+            color=color,
             fontweight="bold",
         )
 
@@ -271,6 +288,127 @@ def main_alignment(data: dict[str, Any], preview_dir: Path | None) -> None:
     for label in legend.get_texts():
         label.set_color(MUTED_STRONG)
     save(fig, "result-main-alignment.svg", preview_dir)
+
+
+def main_alignment_split(data: dict[str, Any], preview_dir: Path | None) -> None:
+    """Render independently selectable seen and unseen benchmark panels."""
+    benchmark = data["main_benchmark"]
+    methods = benchmark["methods"]
+    styles = {
+        "pi_05": {"color": BLUE, "hatch": None, "edgecolor": "none"},
+        "without_both": {"color": ABLATION_LIGHT, "hatch": "////", "edgecolor": LIGHT_TEXT},
+        "without_implicit": {"color": ABLATION_MID, "hatch": "////", "edgecolor": LIGHT_TEXT},
+        "without_explicit": {"color": ABLATION_DARK, "hatch": "////", "edgecolor": LIGHT_TEXT},
+        "joyai_ra_05": {"color": OURS_RED, "hatch": None, "edgecolor": "none"},
+    }
+
+    panels = [
+        (
+            "seen",
+            "Seen Performance",
+            benchmark["seen_categories"] + ["Average"],
+            np.array([item["seen"] + [item["seen_average"]] for item in methods]),
+            "result-main-alignment-seen-light.svg",
+        ),
+        (
+            "unseen",
+            "Unseen Generalization",
+            [label.replace(" & ", " &\n") for label in benchmark["unseen_categories"]] + ["Average"],
+            np.array([item["unseen"] + [item["unseen_average"]] for item in methods]),
+            "result-main-alignment-unseen-light.svg",
+        ),
+    ]
+
+    for _key, title, labels, values, filename in panels:
+        fig, ax = plt.subplots(figsize=(8.4, 5.8))
+        fig.subplots_adjust(top=0.86, bottom=0.29, left=0.11, right=0.985)
+        style_compact_light_axis(ax, title)
+        width = 0.155
+        x = np.arange(4)
+        for index, method in enumerate(methods):
+            style = styles[method["id"]]
+            bars = ax.bar(
+                x + (index - 2) * width,
+                values[index],
+                width=width * 0.9,
+                label=method["label"],
+                color=style["color"],
+                hatch=style["hatch"],
+                edgecolor=style["edgecolor"],
+                linewidth=0.7 if style["hatch"] else 0,
+            )
+            add_values(ax, bars, fontsize=8.8, color=LIGHT_TEXT)
+        ax.set_xticks(x, labels)
+
+        legend = ax.legend(
+            loc="upper center",
+            bbox_to_anchor=(0.5, -0.19),
+            ncol=2,
+            frameon=False,
+            fontsize=9.8,
+            handlelength=1.4,
+            columnspacing=1.4,
+        )
+        for label in legend.get_texts():
+            label.set_color(LIGHT_MUTED)
+        save(fig, filename, preview_dir)
+
+
+def human_scaling_split_light(data: dict[str, Any], preview_dir: Path | None) -> None:
+    """Render the two human-video scaling studies as selectable light panels."""
+    scaling = data["human_video_scaling"]
+    panels = [
+        (
+            "LAC-WM Pretraining",
+            scaling["lac_wm"],
+            "result-human-scaling-lacwm-light.svg",
+        ),
+        (
+            "Policy Pretraining",
+            scaling["policy_pretraining"],
+            "result-human-scaling-policy-light.svg",
+        ),
+    ]
+
+    for title, result, filename in panels:
+        fig, ax = plt.subplots(figsize=(8.4, 5.35))
+        fig.subplots_adjust(top=0.85, bottom=0.25, left=0.11, right=0.985)
+        style_compact_light_axis(ax, title)
+
+        labels = [f"{fraction}%" for fraction in result["fractions"]]
+        x = np.arange(len(labels))
+        width = 0.32
+        seen_bars = ax.bar(x - width / 2, result["seen"], width, color=BLUE, label="Seen")
+        unseen_bars = ax.bar(
+            x + width / 2,
+            result["unseen"],
+            width,
+            color=OURS_RED,
+            label="Unseen",
+        )
+        add_values(ax, seen_bars, fontsize=10.5, color=LIGHT_TEXT)
+        add_values(ax, unseen_bars, fontsize=10.5, color=LIGHT_TEXT)
+        ax.set_xticks(x, labels)
+        ax.set_xlabel(
+            "Human Video Fraction",
+            fontsize=11,
+            fontweight="bold",
+            labelpad=13,
+            color=LIGHT_TEXT,
+        )
+
+        legend = ax.legend(
+            loc="upper center",
+            bbox_to_anchor=(0.5, -0.17),
+            ncol=2,
+            frameon=False,
+            fontsize=11,
+            handlelength=1.5,
+            columnspacing=1.8,
+        )
+        for label in legend.get_texts():
+            label.set_color(LIGHT_MUTED)
+        save(fig, filename, preview_dir)
 
 
 def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
@@ -449,6 +587,45 @@ def rl_results(data: dict[str, Any], preview_dir: Path | None) -> None:
     save(fig, "result-rl.svg", preview_dir)
 
 
+def rl_results_compact_light(data: dict[str, Any], preview_dir: Path | None) -> None:
+    """Render the RL comparison for the narrower results column."""
+    results = data["reinforcement_learning"]
+    labels = [
+        "Original VLWA\nPolicy",
+        "Inner-loop RL\nOnly",
+        "Outer-loop RL\nOnly",
+        "Inner–Outer Loop\nRL",
+    ]
+
+    fig, ax = plt.subplots(figsize=(8.4, 5.35))
+    fig.subplots_adjust(top=0.85, bottom=0.22, left=0.12, right=0.985)
+    style_compact_light_axis(ax, "Success Rate under Unseen Position Shifts")
+    ax.set_ylabel(
+        "Task Success Rate (%)",
+        fontsize=11.5,
+        fontweight="bold",
+        labelpad=8,
+        color=LIGHT_TEXT,
+    )
+    x = np.arange(len(labels))
+    width = 0.31
+    mouse_bars = ax.bar(x - width / 2, results["mouse"], width, color=BLUE, label="Mouse")
+    headphone_bars = ax.bar(
+        x + width / 2,
+        results["headphone"],
+        width,
+        color=OURS_RED,
+        label="Headphone",
+    )
+    add_values(ax, mouse_bars, fontsize=10.5, color=LIGHT_TEXT)
+    add_values(ax, headphone_bars, fontsize=10.5, color=LIGHT_TEXT)
+    ax.set_xticks(x, labels)
+    legend = ax.legend(loc="upper left", frameon=False, ncol=2, fontsize=11)
+    for label in legend.get_texts():
+        label.set_color(LIGHT_MUTED)
+    save(fig, "result-rl-compact-light.svg", preview_dir)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA, help="Result data JSON.")
@@ -471,8 +648,11 @@ def main() -> None:
         return
     configure()
     main_alignment(data, args.preview_dir)
+    main_alignment_split(data, args.preview_dir)
     human_scaling(data, args.preview_dir)
+    human_scaling_split_light(data, args.preview_dir)
     rl_results(data, args.preview_dir)
+    rl_results_compact_light(data, args.preview_dir)
 
 
 if __name__ == "__main__":

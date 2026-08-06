@@ -21,8 +21,8 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/joyai-ra-05-title-user.png" />
-    <link rel="stylesheet" href="technical.css?v=20260806-v2-white-header" />
-    <script src="technical.js?v=20260805-clean-images" defer></script>
+    <link rel="stylesheet" href="technical.css?v=20260806-v11-demo-copy" />
+    <script src="technical.js?v=20260806-result-tabs" defer></script>
   </head>
   <body class="technical-page technical-v2-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +45,7 @@
         <span>Joy Future Academy</span>
       </a>
       <nav aria-label="Site navigation">
-        <a href="https://jdai.jd.com/portal" target="_blank" rel="noreferrer">Homepage</a>
+        <a href="https://research.joyai.com/" target="_blank" rel="noreferrer">Homepage</a>
         <a class="is-active" href="#abstract">Technology</a>
         <a href="https://zhaopin.jd.com/home" target="_blank" rel="noreferrer">Join JoyAI</a>
       </nav>
@@ -258,17 +258,75 @@
           </div>
         </div>
 
-        <div class="container">
-          <figure class="paper-figure evidence-figure evidence-figure-wide result-chart-figure transparent-result-figure" data-reveal>
-            <img
-              src="assets/result-main-alignment-light.svg?v=20260805-light-chart"
-              alt="Web-native chart of seen and unseen Real-World AgiBot Benchmark scores for JoyAI-RA 0.5, the baseline, and dual-alignment ablations"
-              width="1400"
-              height="620"
-              loading="lazy"
-            />
-          </figure>
+        <div class="container result-tabs-switcher">
+          <div class="result-tabs" role="tablist" aria-label="Real-World AgiBot Benchmark views">
+            <button
+              class="result-tab-trigger is-active"
+              id="benchmark-seen-tab"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="benchmark-seen-panel"
+              data-tab-trigger
+              data-tab-group="real-world"
+              data-tab-target="seen"
+            >
+              Seen Performance
+            </button>
+            <button
+              class="result-tab-trigger"
+              id="benchmark-unseen-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="benchmark-unseen-panel"
+              tabindex="-1"
+              data-tab-trigger
+              data-tab-group="real-world"
+              data-tab-target="unseen"
+            >
+              Unseen Generalization
+            </button>
+          </div>
 
+          <section
+            class="result-tab-panel"
+            id="benchmark-seen-panel"
+            role="tabpanel"
+            aria-labelledby="benchmark-seen-tab"
+            data-tab-panel="real-world"
+            data-tab-key="seen"
+          >
+            <figure class="paper-figure evidence-figure evidence-figure-wide result-chart-figure transparent-result-figure" data-reveal>
+              <img
+                src="assets/result-main-alignment-seen-light.svg?v=20260806-benchmark-tabs"
+                alt="Seen Performance chart for the Real-World AgiBot Benchmark"
+                width="587"
+                height="378"
+                loading="lazy"
+              />
+            </figure>
+          </section>
+
+          <section
+            class="result-tab-panel"
+            id="benchmark-unseen-panel"
+            role="tabpanel"
+            aria-labelledby="benchmark-unseen-tab"
+            data-tab-panel="real-world"
+            data-tab-key="unseen"
+            hidden
+          >
+            <figure class="paper-figure evidence-figure evidence-figure-wide result-chart-figure transparent-result-figure">
+              <img
+                src="assets/result-main-alignment-unseen-light.svg?v=20260806-benchmark-tabs"
+                alt="Unseen Generalization chart for the Real-World AgiBot Benchmark"
+                width="587"
+                height="378"
+                loading="lazy"
+              />
+            </figure>
+          </section>
         </div>
 
         <div class="container report-layout experiment-followup">
@@ -289,10 +347,10 @@
 
         <figure class="wide-figure evidence-figure rl-results-figure result-chart-figure transparent-result-figure" data-reveal>
           <img
-            src="assets/result-rl-light.svg?v=20260805-light-chart"
+            src="assets/result-rl-compact-light.svg?v=20260806-compact-chart"
             alt="Web-native success-rate comparison of the original VLWA policy, inner-loop RL, outer-loop RL, and inner-outer loop RL"
-            width="1200"
-            height="550"
+            width="581"
+            height="319"
             loading="lazy"
           />
         </figure>
@@ -305,24 +363,105 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              Scaling human-video pretraining consistently improves robot control
-              without saturation. From 10% to 100% data, LAC-WM raises seen/unseen
-              scores from 83.13/56.88 to 97.50/72.40, while EgoLive policy pretraining
-              raises them from 47.8/37.6 to 85.6/60.2. These gains show that scale
-              strengthens both transferable dynamics priors and policy initialization.
+              We run two controlled studies: scaling human video for LAC-WM
+              pretraining with downstream policy training fixed, and scaling EgoLive
+              for latent-action policy pretraining before identical robot post-training.
             </p>
           </div>
         </div>
 
-        <figure class="wide-figure evidence-figure scaling-evidence-figure result-chart-figure transparent-result-figure" data-reveal>
-          <img
-            src="assets/result-human-scaling-light.svg?v=20260805-light-chart"
-            alt="Web-native chart of LAC-WM and policy pretraining results across increasing human-video data scales"
-            width="1400"
-            height="580"
-            loading="lazy"
-          />
-        </figure>
+        <div class="container result-tabs-switcher">
+          <div class="result-tabs" role="tablist" aria-label="Human Video Scaling views">
+            <button
+              class="result-tab-trigger is-active"
+              id="scaling-policy-tab"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="scaling-policy-panel"
+              data-tab-trigger
+              data-tab-group="human-scaling"
+              data-tab-target="policy"
+            >
+              Policy Pretraining
+            </button>
+            <button
+              class="result-tab-trigger"
+              id="scaling-lacwm-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="scaling-lacwm-panel"
+              tabindex="-1"
+              data-tab-trigger
+              data-tab-group="human-scaling"
+              data-tab-target="lacwm"
+            >
+              LAC-WM Scaling
+            </button>
+          </div>
+
+          <section
+            class="result-tab-panel"
+            id="scaling-lacwm-panel"
+            role="tabpanel"
+            aria-labelledby="scaling-lacwm-tab"
+            data-tab-panel="human-scaling"
+            data-tab-key="lacwm"
+            hidden
+          >
+            <p class="scaling-panel-copy" data-reveal>
+              More human video produces a stronger transferable dynamics prior.
+              Scaling from 10% to 100% raises seen/unseen scores from 83.13/56.88
+              to 97.50/72.40, with no saturation at the largest tested scale.
+            </p>
+            <figure class="paper-figure evidence-figure result-chart-figure transparent-result-figure" data-reveal>
+              <img
+                src="assets/result-human-scaling-lacwm-light.svg?v=20260806-result-tabs"
+                alt="LAC-WM performance across increasing fractions of human-video pretraining data"
+                width="587"
+                height="340"
+                loading="lazy"
+              />
+            </figure>
+          </section>
+
+          <section
+            class="result-tab-panel"
+            id="scaling-policy-panel"
+            role="tabpanel"
+            aria-labelledby="scaling-policy-tab"
+            data-tab-panel="human-scaling"
+            data-tab-key="policy"
+          >
+            <p class="scaling-panel-copy">
+              With the world model frozen, larger EgoLive subsets improve both
+              pretraining generalization and downstream policy initialization. The
+              full dataset maintains the lowest validation loss and raises seen/unseen
+              scores from 47.8/37.6 to 85.6/60.2 after identical robot post-training.
+            </p>
+            <div class="scaling-panel-grid">
+              <figure class="paper-figure evidence-figure result-chart-figure transparent-result-figure">
+                <img
+                  src="assets/human-scaling-validation-loss.png?v=20260806-paper-crop"
+                  alt="Validation-loss curves for policy pretraining with 10%, 25%, 50%, and 100% of EgoLive"
+                  width="1800"
+                  height="1564"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="paper-figure evidence-figure result-chart-figure transparent-result-figure">
+                <img
+                  src="assets/result-human-scaling-policy-light.svg?v=20260806-result-tabs"
+                  alt="Policy performance across increasing fractions of human-video pretraining data"
+                  width="587"
+                  height="339"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </section>
+        </div>
 
       </section>
 
@@ -333,15 +472,33 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              Eight real-world demonstrations on AgiBot G1 cover object organization,
-              precise placement, and multi-stage manipulation in a consistent desk-side
-              setting. They provide qualitative evidence that the learned policy can
-              translate language-conditioned perception and physically grounded actions
-              into complete task sequences across different objects and workspace
-              configurations.
+              Synchronized first- and third-person views show perception, bimanual
+              motion, and object-state changes throughout a complete rollout. Eight
+              additional tasks cover object organization, precise placement, and
+              multi-stage desk-side manipulation.
             </p>
           </div>
         </div>
+
+        <figure class="container dual-view-demo" data-reveal>
+          <figcaption class="dual-view-labels">
+            <span>First View</span>
+            <span>Third View</span>
+          </figcaption>
+          <video
+            src="assets/demos/g1/first-third-view-2x.mp4"
+            poster="assets/demos/g1/first-third-view.jpg"
+            aria-label="Two-times-speed synchronized first-person and third-person views of an AgiBot G1 manipulation task"
+            width="1574"
+            height="720"
+            autoplay
+            muted
+            loop
+            controls
+            playsinline
+            preload="metadata"
+          ></video>
+        </figure>
 
         <div class="container">
           <div class="g1-task-heading" data-reveal>

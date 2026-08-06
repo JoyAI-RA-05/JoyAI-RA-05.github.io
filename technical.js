@@ -111,6 +111,49 @@ if (reducedMotion.matches || !("IntersectionObserver" in window)) {
 document.querySelector("[data-g1-prev]")?.addEventListener("click", () => scrollG1Tasks(-1));
 document.querySelector("[data-g1-next]")?.addEventListener("click", () => scrollG1Tasks(1));
 
+function bindTabs() {
+  const triggers = [...document.querySelectorAll("[data-tab-trigger]")];
+  if (!triggers.length) return;
+
+  const panels = [...document.querySelectorAll("[data-tab-panel]")];
+
+  function activate(trigger) {
+    const group = trigger.dataset.tabGroup;
+    const target = trigger.dataset.tabTarget;
+
+    for (const item of triggers) {
+      if (item.dataset.tabGroup !== group) continue;
+      const selected = item === trigger;
+      item.classList.toggle("is-active", selected);
+      item.setAttribute("aria-selected", String(selected));
+      item.tabIndex = selected ? 0 : -1;
+    }
+
+    for (const panel of panels) {
+      if (panel.dataset.tabPanel !== group) continue;
+      panel.hidden = panel.dataset.tabKey !== target;
+    }
+  }
+
+  for (const trigger of triggers) {
+    trigger.addEventListener("click", () => activate(trigger));
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const groupTriggers = triggers.filter(
+        (item) => item.dataset.tabGroup === trigger.dataset.tabGroup,
+      );
+      const currentIndex = groupTriggers.indexOf(trigger);
+      const offset = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex = (currentIndex + offset + groupTriggers.length) % groupTriggers.length;
+      groupTriggers[nextIndex].focus();
+      activate(groupTriggers[nextIndex]);
+    });
+  }
+}
+
+bindTabs();
+
 if (g1TaskRail && !reducedMotion.matches) {
   g1TaskRail.addEventListener("mouseenter", () => {
     g1AutoScrollPaused = true;

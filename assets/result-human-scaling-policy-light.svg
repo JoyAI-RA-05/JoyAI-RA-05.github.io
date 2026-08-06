@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="586.617891pt" height="339.412197pt" viewBox="0 0 586.617891 339.412197" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-06T14:06:48.272931</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 339.412197
+L 586.617891 339.412197
+L 586.617891 0
+L 0 0
+L 0 339.412197
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 50.217891 268.561953
+L 579.417891 268.561953
+L 579.417891 37.441953
+L 50.217891 37.441953
+L 50.217891 268.561953
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="fill: #626a78; font: 11.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="116.566142" y="285.793437" transform="rotate(-0 116.566142 285.793437)">10%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="fill: #626a78; font: 11.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="248.733975" y="285.793437" transform="rotate(-0 248.733975 285.793437)">25%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="fill: #626a78; font: 11.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="380.901807" y="285.793437" transform="rotate(-0 380.901807 285.793437)">50%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="fill: #626a78; font: 11.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="513.069639" y="285.793437" transform="rotate(-0 513.069639 285.793437)">100%</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="fill: #20242c; font: 700 11px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="314.817891" y="308.952656" transform="rotate(-0 314.817891 308.952656)">Human Video Fraction</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <path d="M 50.217891 268.561953
+L 579.417891 268.561953
+" clip-path="url(#pf1b52ca564)" style="fill: none; stroke-dasharray: 4,4; stroke-dashoffset: 0; stroke: #d8dde6; stroke-opacity: 0.9"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="fill: #626a78; font: 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="43.217891" y="272.319805" transform="rotate(-0 43.217891 272.319805)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <path d="M 50.217891 224.539096
+L 579.417891 224.539096
+" clip-path="url(#pf1b52ca564)" style="fill: none; stroke-dasharray: 4,4; stroke-dashoffset: 0; stroke: #d8dde6; stroke-opacity: 0.9"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_7">
+      <text style="fill: #626a78; font: 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="43.217891" y="228.296948" transform="rotate(-0 43.217891 228.296948)">20</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <path d="M 50.217891 180.516239
+L 579.417891 180.516239
+" clip-path="url(#pf1b52ca564)" style="fill: none; stroke-dasharray: 4,4; stroke-dashoffset: 0; stroke: #d8dde6; stroke-opacity: 0.9"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_8">
+      <text style="fill: #626a78; font: 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="43.217891" y="184.27409" transform="rotate(-0 43.217891 184.27409)">40</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_11">
+      <path d="M 50.217891 136.493382
+L 579.417891 136.493382
+" clip-path="url(#pf1b52ca564)" style="fill: none; stroke-dasharray: 4,4; stroke-dashoffset: 0; stroke: #d8dde6; stroke-opacity: 0.9"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_9">
+      <text style="fill: #626a78; font: 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="43.217891" y="140.251233" transform="rotate(-0 43.217891 140.251233)">60</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <path d="M 50.217891 92.470525
+L 579.417891 92.470525
+" clip-path="url(#pf1b52ca564)" style="fill: none; stroke-dasharray: 4,4; stroke-dashoffset: 0; stroke: #d8dde6; stroke-opacity: 0.9"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_10">
+      <text style="fill: #626a78; font: 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="43.217891" y="96.228376" transform="rotate(-0 43.217891 96.228376)">80</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15">
+      <path d="M 50.217891 48.447667
+L 579.417891 48.447667
+" clip-path="url(#pf1b52ca564)" style="fill: none; stroke-dasharray: 4,4; stroke-dashoffset: 0; stroke: #d8dde6; stroke-opacity: 0.9"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_11">
+      <text style="fill: #626a78; font: 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="43.217891" y="52.205519" transform="rotate(-0 43.217891 52.205519)">100</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="fill: #20242c; font: 700 11.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="15.431484" y="153.001953" transform="rotate(-90 15.431484 153.001953)">Task Score</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 74.272436 268.561953
+L 116.566142 268.561953
+L 116.566142 163.347325
+L 74.272436 163.347325
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #73acd1"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 206.440268 268.561953
+L 248.733975 268.561953
+L 248.733975 102.815896
+L 206.440268 102.815896
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #73acd1"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 338.6081 268.561953
+L 380.901807 268.561953
+L 380.901807 91.369953
+L 338.6081 91.369953
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #73acd1"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 470.775933 268.561953
+L 513.069639 268.561953
+L 513.069639 80.144125
+L 470.775933 80.144125
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #73acd1"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 116.566142 268.561953
+L 158.859849 268.561953
+L 158.859849 185.798982
+L 116.566142 185.798982
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #cb181d"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 248.733975 268.561953
+L 291.027681 268.561953
+L 291.027681 151.020925
+L 248.733975 151.020925
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #cb181d"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 380.901807 268.561953
+L 423.195513 268.561953
+L 423.195513 139.574982
+L 380.901807 139.574982
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #cb181d"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 513.069639 268.561953
+L 555.363345 268.561953
+L 555.363345 136.053153
+L 513.069639 136.053153
+z
+" clip-path="url(#pf1b52ca564)" style="fill: #cb181d"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 50.217891 268.561953
+L 50.217891 37.441953
+" style="fill: none; stroke: #8e97a6; stroke-width: 1.15; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 50.217891 268.561953
+L 579.417891 268.561953
+" style="fill: none; stroke: #8e97a6; stroke-width: 1.15; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_13">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="95.419289" y="158.303672" transform="rotate(-0 95.419289 158.303672)">47.8</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="227.587121" y="97.772244" transform="rotate(-0 227.587121 97.772244)">75.3</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="359.754954" y="86.326301" transform="rotate(-0 359.754954 86.326301)">80.5</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="491.922786" y="75.100472" transform="rotate(-0 491.922786 75.100472)">85.6</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="137.712996" y="180.755329" transform="rotate(-0 137.712996 180.755329)">37.6</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="269.880828" y="145.977272" transform="rotate(-0 269.880828 145.977272)">53.4</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="402.04866" y="134.531329" transform="rotate(-0 402.04866 134.531329)">58.6</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #20242c; font: 700 10.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="534.216492" y="131.009501" transform="rotate(-0 534.216492 131.009501)">60.2</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #20242c; font: 700 18.5px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="314.817891" y="20.441953" transform="rotate(-0 314.817891 20.441953)">Policy Pretraining</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_13">
+     <path d="M 247.817578 325.625947
+L 264.317578 325.625947
+L 264.317578 317.925947
+L 247.817578 317.925947
+z
+" style="fill: #73acd1"/>
+    </g>
+    <g id="text_22">
+     <text style="fill: #626a78; font: 11px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="273.117578" y="325.625947" transform="rotate(-0 273.117578 325.625947)">Seen</text>
+    </g>
+    <g id="patch_14">
+     <path d="M 318.606016 325.625947
+L 335.106016 325.625947
+L 335.106016 317.925947
+L 318.606016 317.925947
+z
+" style="fill: #cb181d"/>
+    </g>
+    <g id="text_23">
+     <text style="fill: #626a78; font: 11px 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="343.906016" y="325.625947" transform="rotate(-0 343.906016 325.625947)">Unseen</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf1b52ca564">
+   <rect x="50.217891" y="37.441953" width="529.2" height="231.12"/>
+  </clipPath>
+ </defs>
+</svg>
