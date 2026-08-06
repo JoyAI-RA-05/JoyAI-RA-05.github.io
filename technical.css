@@ -2044,6 +2044,25 @@ html.technical-v2-root body,
   scrollbar-color: rgba(63, 115, 150, 0.5) rgba(25, 28, 35, 0.06);
 }
 
+.technical-page.technical-v2-page .g1-task-heading {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technical-page.technical-v2-page .g1-task-heading p {
+  flex: 1 1 auto;
+  width: auto;
+  max-width: 90%;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.technical-page.technical-v2-page .g1-task-controls {
+  flex: 0 0 auto;
+}
+
 .technical-page.technical-v2-page .section-summary {
   margin-top: 16px;
 }
@@ -2248,6 +2267,12 @@ html.technical-v2-root body,
   .technical-page.technical-v2-page .scaling-panel-grid {
     grid-template-columns: 1fr;
     gap: 22px;
+  }
+
+  .technical-page.technical-v2-page .g1-task-heading p {
+    flex-basis: 100%;
+    width: 100%;
+    max-width: none;
   }
 }
 

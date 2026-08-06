@@ -21,7 +21,7 @@
     <title>JoyAI-RA 0.5 — Technical Report</title>
     <link rel="icon" href="assets/jd-mascot.png" />
     <link rel="preload" as="image" href="assets/joyai-ra-05-title-user.png" />
-    <link rel="stylesheet" href="technical.css?v=20260806-v11-demo-copy" />
+    <link rel="stylesheet" href="technical.css?v=20260806-v12-demo-tasks" />
     <script src="technical.js?v=20260806-result-tabs" defer></script>
   </head>
   <body class="technical-page technical-v2-page">
@@ -83,10 +83,10 @@
 
           <figure class="wide-figure overview-figure" data-reveal>
             <img
-              src="assets/joyra05-overview-final.png?v=20260805-cropped"
+              src="assets/joyra05-overview-teaser-20260806.png"
               alt="JoyAI-RA 0.5 overview covering heterogeneous data, dual action alignment, VLWA training, reinforcement learning, real-world generalization, and human-video scaling"
-              width="3856"
-              height="1609"
+              width="3819"
+              height="1581"
               loading="eager"
             />
           </figure>
@@ -472,10 +472,11 @@
           </div>
           <div class="section-body" data-reveal>
             <p>
-              Synchronized first- and third-person views show perception, bimanual
-              motion, and object-state changes throughout a complete rollout. Eight
-              additional tasks cover object organization, precise placement, and
-              multi-stage desk-side manipulation.
+              In this multi-stage desk-organizing task, AgiBot G1 places the headphones
+              on their stand and then returns the mouse to its pad. The sequence combines
+              the paper's precision-demanding headphone manipulation (PnP-Hard) with
+              common-object mouse placement (PnP-Easy), shown from synchronized first-
+              and third-person views.
             </p>
           </div>
         </div>
@@ -488,7 +489,7 @@
           <video
             src="assets/demos/g1/first-third-view-2x.mp4"
             poster="assets/demos/g1/first-third-view.jpg"
-            aria-label="Two-times-speed synchronized first-person and third-person views of an AgiBot G1 manipulation task"
+            aria-label="Two-times-speed synchronized first-person and third-person views of AgiBot G1 placing headphones on their stand and a mouse on its pad"
             width="1574"
             height="720"
             autoplay
@@ -502,6 +503,12 @@
 
         <div class="container">
           <div class="g1-task-heading" data-reveal>
+            <p>
+              More task rollouts cover storing pens, pencil cases, erasers, staplers,
+              chargers, and correction fluid, shelving books, and discarding trash.
+              Together, they span common-object organization, higher-precision placement,
+              and longer multi-step execution across different target locations.
+            </p>
             <div class="g1-task-controls" aria-label="Browse demonstration tasks">
               <button type="button" data-g1-prev aria-label="Show previous tasks">←</button>
               <button type="button" data-g1-next aria-label="Show next tasks">→</button>
