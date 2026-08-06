@@ -47,6 +47,10 @@ ABLATION_MID = "#fb6a4a"
 ABLATION_DARK = "#ef3b2c"
 OURS_RED = "#cb181d"
 SCALING_COLORS = ["#f3c5a4", "#e9a064", "#e99087", "#d96a66"]
+LIGHT_TEXT = "#20242c"
+LIGHT_MUTED = "#626a78"
+LIGHT_GRID = "#d8dde6"
+LIGHT_BORDER = "#8e97a6"
 
 
 def configure() -> None:
@@ -156,6 +160,22 @@ def style_axis(ax: mpl.axes.Axes, title: str) -> None:
     ax.spines[["left", "bottom"]].set_linewidth(1.15)
     ax.tick_params(axis="x", length=0, pad=11)
     ax.tick_params(axis="y", length=0, pad=8)
+
+
+def style_light_axis(ax: mpl.axes.Axes, title: str) -> None:
+    """Style the policy-scaling chart to match the adjacent paper figure."""
+    ax.set_facecolor("#ffffff")
+    ax.set_title(title, loc="center", fontsize=21, fontweight="bold", pad=24, color=LIGHT_TEXT)
+    ax.set_ylim(0, 105)
+    ax.set_yticks([0, 20, 40, 60, 80, 100])
+    ax.set_ylabel("Task Score", fontsize=12.5, fontweight="bold", labelpad=10, color=LIGHT_TEXT)
+    ax.grid(axis="y", color=LIGHT_GRID, linewidth=1.0, alpha=0.9, linestyle=(0, (4, 4)))
+    ax.set_axisbelow(True)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.spines[["left", "bottom"]].set_color(LIGHT_BORDER)
+    ax.spines[["left", "bottom"]].set_linewidth(1.15)
+    ax.tick_params(axis="x", colors=LIGHT_MUTED, length=0, pad=11)
+    ax.tick_params(axis="y", colors=LIGHT_MUTED, length=0, pad=8)
 
 
 def add_values(ax: mpl.axes.Axes, bars, *, fontsize: float = 8.5) -> None:
@@ -302,8 +322,18 @@ def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
             fig.subplots_adjust(top=0.85, bottom=0.17, left=0.14, right=0.97)
         else:
             fig.subplots_adjust(top=0.84, bottom=0.19, left=0.09, right=0.98)
-        style_axis(ax, title)
+        if is_policy_panel:
+            fig.patch.set_facecolor("#ffffff")
+            style_light_axis(ax, title)
+        else:
+            style_axis(ax, title)
         width = 0.48
+
+        line_primary = LIGHT_TEXT if is_policy_panel else TEXT
+        line_secondary = RED if is_policy_panel else MUTED_STRONG
+        marker_face = "#ffffff" if is_policy_panel else PANEL
+        value_color = LIGHT_TEXT if is_policy_panel else TEXT
+        edge_color = "#b7bec9" if is_policy_panel else MUTED_STRONG
 
         # Match the paper: the saturated unseen bar overlays the lighter seen bar,
         # while marker lines make both trends explicit across data fractions.
@@ -312,7 +342,7 @@ def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
             result["seen"],
             width,
             color=[mpl.colors.to_rgba(color, 0.38) for color in colors],
-            edgecolor=MUTED_STRONG,
+            edgecolor=edge_color,
             linewidth=1.0,
             zorder=2,
         )
@@ -321,31 +351,31 @@ def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
             result["unseen"],
             width,
             color=colors,
-            edgecolor=MUTED_STRONG,
+            edgecolor=edge_color,
             linewidth=1.0,
             zorder=3,
         )
         ax.plot(
             x,
             result["seen"],
-            color=TEXT,
+            color=line_primary,
             linewidth=2.0,
             marker="o",
             markersize=7,
-            markerfacecolor=PANEL,
-            markeredgecolor=TEXT,
+            markerfacecolor=marker_face,
+            markeredgecolor=line_primary,
             markeredgewidth=1.5,
             zorder=4,
         )
         ax.plot(
             x,
             result["unseen"],
-            color=MUTED_STRONG,
+            color=line_secondary,
             linewidth=2.0,
             marker="s",
             markersize=6.5,
-            markerfacecolor=PANEL,
-            markeredgecolor=MUTED_STRONG,
+            markerfacecolor=marker_face,
+            markeredgecolor=line_secondary,
             markeredgewidth=1.5,
             zorder=4,
         )
@@ -356,7 +386,7 @@ def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
                 f"{seen:.1f}",
                 ha="center",
                 va="bottom",
-                color=TEXT,
+                color=value_color,
                 fontsize=10.5,
                 fontweight="bold",
             )
@@ -366,24 +396,30 @@ def human_scaling(data: dict[str, Any], preview_dir: Path | None) -> None:
                 f"{unseen:.1f}",
                 ha="center",
                 va="top",
-                color=TEXT,
+                color=value_color,
                 fontsize=10.5,
                 fontweight="bold",
             )
 
         ax.set_xticks(x, [f"{fraction}%" for fraction in fractions])
-        ax.set_xlabel("Human Video Fraction", fontsize=12, fontweight="bold", labelpad=14)
+        ax.set_xlabel(
+            "Human Video Fraction",
+            fontsize=12,
+            fontweight="bold",
+            labelpad=14,
+            color=LIGHT_TEXT if is_policy_panel else TEXT,
+        )
         legend = ax.legend(
             handles=[
-                Line2D([0], [0], color=TEXT, marker="o", markerfacecolor=PANEL, label="Seen"),
-                Line2D([0], [0], color=MUTED_STRONG, marker="s", markerfacecolor=PANEL, label="Unseen"),
+                Line2D([0], [0], color=line_primary, marker="o", markerfacecolor=marker_face, label="Seen"),
+                Line2D([0], [0], color=line_secondary, marker="s", markerfacecolor=marker_face, label="Unseen"),
             ],
             loc="upper left",
             frameon=False,
             fontsize=11.5,
         )
         for label in legend.get_texts():
-            label.set_color(MUTED_STRONG)
+            label.set_color(LIGHT_MUTED if is_policy_panel else MUTED_STRONG)
         save(fig, filename, preview_dir)
 
 

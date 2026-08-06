@@ -2297,6 +2297,9 @@ a.hero-action:focus-visible {
 
 .policy-scaling-grid .scaling-result-figure {
   padding: 18px;
+  background: #fff;
+  border-color: rgba(32, 36, 44, 0.12);
+  box-shadow: none;
 }
 
 .scaling-result-figure-wide {
