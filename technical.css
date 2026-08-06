@@ -1924,7 +1924,7 @@ html.technical-v2-root body,
 }
 
 .technical-page.technical-v2-page .site-nav {
-  border-bottom-color: #e8e8e8;
+  border: 0;
   background: #ffffff;
 }
 
@@ -1934,8 +1934,26 @@ html.technical-v2-root body,
   font-weight: 420;
 }
 
-.technical-page.technical-v2-page .brand {
+.technical-page.technical-v2-page .brand-corporate {
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
   transform: translateY(7px);
+}
+
+.technical-page.technical-v2-page .brand-corporate .brand-wordmark {
+  width: 150px;
+  height: auto;
+}
+
+.technical-page.technical-v2-page .brand-corporate span {
+  color: #191c23;
+  font-size: 0.62rem;
+  font-weight: 520;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
 }
 
 .technical-page.technical-v2-page .site-nav nav a.is-active,
@@ -1950,17 +1968,18 @@ html.technical-v2-root body,
 
 .technical-page.technical-v2-page .top-link {
   color: var(--text);
-  border-color: rgba(25, 28, 35, 0.14);
+  border: 0;
   background: #ffffff;
-  box-shadow: 0 10px 26px rgba(25, 28, 35, 0.12);
+  box-shadow: none;
 }
 
 .technical-page.technical-v2-page .data-table,
 .technical-page.technical-v2-page .ablation-card,
 .technical-page.technical-v2-page .score-panel,
 .technical-page.technical-v2-page .g1-task-card {
+  border: 0;
   background: #ffffff;
-  box-shadow: 0 14px 38px rgba(25, 28, 35, 0.08);
+  box-shadow: none;
   backdrop-filter: none;
 }
 
@@ -1970,9 +1989,9 @@ html.technical-v2-root body,
 
 .technical-page.technical-v2-page .hero-action {
   color: var(--text);
-  border-color: rgba(25, 28, 35, 0.16);
+  border: 0;
   background: #ffffff;
-  box-shadow: 0 7px 20px rgba(25, 28, 35, 0.08);
+  box-shadow: none;
 }
 
 .technical-page.technical-v2-page a.hero-action:hover,
@@ -1988,13 +2007,15 @@ html.technical-v2-root body,
 .technical-page.technical-v2-page .paper-figure.result-chart-figure,
 .technical-page.technical-v2-page .wide-figure.result-chart-figure {
   background: #ffffff;
-  border-color: rgba(25, 28, 35, 0.1);
-  box-shadow: 0 14px 38px rgba(25, 28, 35, 0.08);
+  border: 0;
+  box-shadow: none;
 }
 
 .technical-page.technical-v2-page .wide-figure,
 .technical-page.technical-v2-page .paper-figure {
+  border: 0;
   background-color: #ffffff;
+  box-shadow: none;
 }
 
 .technical-page.technical-v2-page .paper-figure.transparent-result-figure,
@@ -2012,8 +2033,9 @@ html.technical-v2-root body,
 
 .technical-page.technical-v2-page .g1-task-controls button {
   color: var(--text);
-  border-color: rgba(25, 28, 35, 0.14);
+  border: 0;
   background: #ffffff;
+  box-shadow: none;
 }
 
 .technical-page.technical-v2-page .g1-task-rail {
