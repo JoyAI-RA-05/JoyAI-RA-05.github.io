@@ -18,11 +18,17 @@
 
 ## Paper figures
 
-The paper-derived PNGs below were refreshed on 2026-08-05 from the latest
-downloaded Overleaf archive, `JoyAI_RA_0_5 (2).zip` (SHA-256
+The paper-derived PNGs below were refreshed on 2026-08-05 from the downloaded
+Overleaf archive, `JoyAI_RA_0_5 (2).zip` (SHA-256
 `acafb9d8a11a6e59b734554960d133066b70285a2054422f868924418d074a14`).
 Each PDF was rasterized as a single-page PNG at 144 DPI without changing its
 content or aspect ratio.
+
+`joyra05-overview.png` was subsequently refreshed on 2026-08-06 from
+`JoyAI_RA_0_5 (3).zip` (SHA-256
+`8708d6be7f09b1fc34fc031ba35f26aab4b038fd5210f54037374498df88de9a`)
+to incorporate the revised LAC-WM scaling-axis labels. It retains the same
+144-DPI rasterization and source crop as the previous web asset.
 
 For the web presentation, two rasterized figures were cropped on 2026-08-05 to
 remove only their surrounding white page margins. `joyra05-overview.png` uses
@@ -32,7 +38,7 @@ figure was resized, reconstructed, or otherwise altered.
 
 | Web asset | Overleaf source | Source SHA-256 |
 | --- | --- | --- |
-| `joyra05-overview.png` | `images/JoyRA05_teaser_final.pdf` | `509ea47c4bf8f67eaa346cc350c4651a6554f39e4f50a5bd12237289bb302043` |
+| `joyra05-overview.png` | `images/JoyRA05_teaser_final.pdf` | `bef3b3d8700e618290ee573a0dafd064ffcf26a6540808eac40df5b69a12f8f7` |
 | `data-composition.png` | `images/joyra05_Data.pdf` | `9c0ccc4491b468e22f25e040473a585bd321bd9ef3b711fcba16be82c592a682` |
 | `data-pipeline.png` | `images/data_pipe.pdf` | `fbe85e4f169a30804deb67a4b78ba10608499686bae08e920240b5024da5ed5c` |
 | `architecture.png` | `images/framework.pdf` | `5bdee18009e4a1ab512d34f1491d3ccfa1fd8b2957895d13cf8cc6508b7d5d1d` |
