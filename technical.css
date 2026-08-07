@@ -1653,6 +1653,35 @@ body,
   margin: 0 0 18px;
 }
 
+.citation-card .citation-reference {
+  max-width: 850px;
+}
+
+.citation-links {
+  display: flex;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.citation-links a {
+  color: var(--red);
+  font-weight: 650;
+}
+
+.citation-bibtex {
+  max-width: 100%;
+  margin: 26px 0 0;
+  padding: 20px;
+  overflow-x: auto;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(25, 28, 35, 0.03);
+  font: 0.875rem/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  white-space: pre;
+}
+
 .g1-task-heading {
   justify-content: flex-end;
   margin-top: 30px;
@@ -1926,6 +1955,12 @@ html.technical-v2-root body,
 .technical-page.technical-v2-page .site-nav {
   border: 0;
   background: #ffffff;
+}
+
+@media (min-width: 981px) {
+  .technical-page.technical-v2-page .site-nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
 }
 
 .technical-page.technical-v2-page .site-nav nav {
