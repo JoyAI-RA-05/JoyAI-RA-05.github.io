@@ -1653,21 +1653,6 @@ body,
   margin: 0 0 18px;
 }
 
-.citation-card .citation-reference {
-  max-width: 850px;
-}
-
-.citation-links {
-  display: flex;
-  gap: 22px;
-  margin-top: 18px;
-}
-
-.citation-links a {
-  color: var(--red);
-  font-weight: 650;
-}
-
 .citation-bibtex {
   max-width: 100%;
   margin: 26px 0 0;
@@ -2084,7 +2069,6 @@ html.technical-v2-root body,
   max-width: none;
 }
 
-.technical-page.technical-v2-page .citation-reference,
 .technical-page.technical-v2-page .citation-bibtex {
   width: 100%;
   max-width: none;
